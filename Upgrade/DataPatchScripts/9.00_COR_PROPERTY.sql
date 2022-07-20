@@ -1,0 +1,3 @@
+DELETE COR_PROPERTY
+WHERE C_PROPERTY_NAME = 'ion_runtime_schema_version'
+INSERT INTO COR_PROPERTY (C_PROPERTY_NAME, C_PROPERTY_VALUE) VALUES ('ion_runtime_schema_version', '3.0.0')

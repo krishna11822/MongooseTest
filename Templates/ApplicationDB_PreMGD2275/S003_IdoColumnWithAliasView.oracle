@@ -1,0 +1,42 @@
+﻿CREATE VIEW IdoColumnWithAliasView
+AS
+WITH ColumnSchema (TableName, ColumnName, OrdinalPosition, DataType, DataLength, DataDecimalPos, ColumnDataType)
+AS
+(
+  SELECT
+    TABLE_NAME
+  , COLUMN_NAME
+  , COLUMN_ID
+  , 'x' -- dbo.MongooseTypeFromSqlType(DATA_TYPE)
+  , CASE
+      WHEN DATA_TYPE IN (N'NVARCHAR2', N'NCHAR', N'VARCHAR2', N'CLOB') THEN DATA_LENGTH
+      WHEN DATA_TYPE IN (N'ntext', N'nchar', N'nvarchar')          THEN DATA_LENGTH
+      WHEN DATA_TYPE IN (N'NUMBER')                   THEN DATA_PRECISION
+      ELSE NULL
+    END
+  , CASE
+      WHEN DATA_TYPE IN (N'NUMBER') THEN DATA_SCALE
+      ELSE NULL
+    END
+  , DATA_TYPE
+  FROM user_tab_cols
+
+)
+SELECT
+  CollectionName
+, ColumnSchema.TableName
+, ColumnSchema.ColumnName
+, ColumnSchema.OrdinalPosition
+, TableAlias
+, TableAlias || '.' || ColumnSchema.ColumnName AS ColumnWithAlias
+, TableType
+, JoinType
+, JoinText
+, DevelopmentFlag
+, ColumnSchema.DataType
+, ColumnSchema.DataLength
+, ColumnSchema.DataDecimalPos
+, 'EMPTY' as ColumnDataType
+FROM toolsdev_objects.Tables t
+INNER JOIN ColumnSchema ON ColumnSchema.TableName = upper(t.TableName)
+

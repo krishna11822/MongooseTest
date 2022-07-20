@@ -1,0 +1,17 @@
+#
+# File Format (comma separated)
+#   UDDT Name - DataType Name
+#   Orig Base Type
+#   Orig Length
+#   Orig Precision
+#   Orig Scale
+#   New Base Type
+#   New Length
+#   New Precision
+#   New Scale
+#
+OSMachineNameType,nvarchar,30,,,nvarchar,253,,
+URLType,nvarchar,150,,,nvarchar,max,,
+EventResultType,nvarchar,512,,,nvarchar,max,,
+FldNameType,nvarchar,32,,,nvarchar,128,,
+

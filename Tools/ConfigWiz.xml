@@ -1,0 +1,32 @@
+<Components>
+	<CompWebClient>
+		<PreSelect>true</PreSelect>
+	</CompWebClient>
+	<CompSmart>
+		<Optional>true</Optional>
+	</CompSmart>
+	<CompDb>
+		<PreSelect>true</PreSelect>
+	</CompDb>
+	<CompServices>
+		<PreSelect>true</PreSelect>
+	</CompServices>
+	<CompHelp>
+		<PreSelect>true</PreSelect>
+	</CompHelp>
+	<CompIDOReqWeb>
+		<PreSelect>true</PreSelect>
+	</CompIDOReqWeb>
+	<CompInboundWeb>
+		<PreSelect>true</PreSelect>
+	</CompInboundWeb>
+	<CompSSRS>
+		<Optional>true</Optional>
+	</CompSSRS>
+	<EnableAllInOneDb/>
+	<RequireTranslationDLLs/>
+  <RestrictWebPermissions/>
+  <SetNoCountOnPrem>false</SetNoCountOnPrem>
+  <loadcountrypackinfo>true</loadcountrypackinfo>
+  <CVMDName>Mongoose_CVMD</CVMDName>
+</Components>

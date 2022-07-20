@@ -1,0 +1,2 @@
+﻿DELETE FROM [ApplicationMessages] WHERE [MessageLanguage] = N'1044' AND [AccessAs] IN ('Core')
+

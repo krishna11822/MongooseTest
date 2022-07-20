@@ -1,0 +1,83 @@
+IF OBJECTPROPERTY(OBJECT_ID(N'[dbo].[cor_inbox_entry]'), N'IsUserTable') = 1
+   AND NOT EXISTS (SELECT 1 FROM [sys].[columns]
+      WHERE [object_id] = OBJECT_ID(N'[dbo].[cor_inbox_entry]')
+      AND [name] = N'C_LOGICAL_ID')
+   ALTER TABLE [dbo].[cor_inbox_entry] ADD
+      [C_LOGICAL_ID] [dbo].[ESBTenantIDType] NULL
+GO
+IF OBJECTPROPERTY(OBJECT_ID(N'[dbo].[cor_outbox_entry]'), N'IsUserTable') = 1
+   AND NOT EXISTS (SELECT 1 FROM [sys].[columns]
+      WHERE [object_id] = OBJECT_ID(N'[dbo].[cor_outbox_entry]')
+      AND [name] = N'C_LOGICAL_ID')
+   ALTER TABLE [dbo].[cor_outbox_entry] ADD
+      [C_LOGICAL_ID] [dbo].[ESBTenantIDType] NULL 
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.indexes
+              WHERE name = N'IX_WAS_PROCESSED_OUTBOX_LID'
+              AND   object_id  = OBJECT_ID( N'[dbo].[COR_OUTBOX_ENTRY]'))
+	CREATE NONCLUSTERED INDEX [IX_WAS_PROCESSED_OUTBOX_LID] ON [COR_OUTBOX_ENTRY] 
+	(
+		[C_WAS_PROCESSED] ASC,
+		[C_LOGICAL_ID] ASC,
+		[C_MESSAGE_PRIORITY] DESC,
+		[C_ID] ASC
+	)
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.indexes
+              WHERE name = N'IX_CREATED_DATE_TIME_OUTBOX_TENANT'
+              AND   object_id  = OBJECT_ID( N'[dbo].[COR_OUTBOX_ENTRY]'))	
+	CREATE NONCLUSTERED INDEX [IX_CREATED_DATE_TIME_OUTBOX_TENANT] ON [COR_OUTBOX_ENTRY] 
+	(
+		[C_WAS_PROCESSED] ASC,
+		[C_TENANT_ID] ASC,
+		[C_CREATED_DATE_TIME] ASC
+	)
+GO	
+
+IF NOT EXISTS(SELECT 1 FROM sys.indexes
+              WHERE name = N'IX_WAS_PROCESSED_INBOX_TENANT'
+              AND   object_id  = OBJECT_ID( N'[dbo].[COR_INBOX_ENTRY]'))	
+	CREATE NONCLUSTERED INDEX [IX_WAS_PROCESSED_INBOX_TENANT] ON [COR_INBOX_ENTRY] 
+	(
+		[C_WAS_PROCESSED] ASC,
+		[C_TENANT_ID] ASC,
+		[C_MESSAGE_PRIORITY] DESC,
+		[C_ID] ASC
+	)
+GO
+	 
+IF NOT EXISTS(SELECT 1 FROM sys.indexes
+              WHERE name = N'IX_WAS_PROCESSED_INBOX_LID'
+              AND   object_id  = OBJECT_ID( N'[dbo].[COR_INBOX_ENTRY]'))	
+	CREATE NONCLUSTERED INDEX [IX_WAS_PROCESSED_INBOX_LID] ON [COR_INBOX_ENTRY] 
+	(
+		[C_WAS_PROCESSED] ASC,
+		[C_LOGICAL_ID] ASC,
+		[C_MESSAGE_PRIORITY] DESC,
+		[C_ID] ASC
+	)
+GO
+	 
+IF NOT EXISTS(SELECT 1 FROM sys.indexes
+              WHERE name = N'IX_CREATED_DATE_TIME_INBOX_TENANT'
+              AND   object_id  = OBJECT_ID( N'[dbo].[COR_INBOX_ENTRY]'))	
+	CREATE NONCLUSTERED INDEX [IX_CREATED_DATE_TIME_INBOX_TENANT] ON [COR_INBOX_ENTRY] 
+	(
+		[C_WAS_PROCESSED] ASC,
+		[C_TENANT_ID] ASC,
+		[C_CREATED_DATE_TIME] ASC
+	)
+GO
+	 	 
+IF NOT EXISTS(SELECT 1 FROM sys.indexes
+              WHERE name = N'IX_CREATED_DATE_TIME_INBOX_LID'
+              AND   object_id  = OBJECT_ID( N'[dbo].[COR_INBOX_ENTRY]'))	
+	CREATE NONCLUSTERED INDEX [IX_CREATED_DATE_TIME_INBOX_LID] ON [COR_INBOX_ENTRY] 
+	(
+		[C_WAS_PROCESSED] ASC,
+		[C_LOGICAL_ID] ASC,
+		[C_CREATED_DATE_TIME] ASC
+	)
+GO

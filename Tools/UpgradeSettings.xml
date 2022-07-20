@@ -1,0 +1,7 @@
+<Upgrade>
+	<EnableAllinOneDb/>
+	<UpdateAllDataTypes/>
+	<loadcountrypackinfo>true</loadcountrypackinfo>
+	<minimumcompatibilitylevel>130</minimumcompatibilitylevel>
+	<RequireBCP/>
+</Upgrade>

@@ -1,0 +1,6 @@
+IF OBJECT_ID('dbo.ApsInvLevelRangeTbl') IS NOT NULL
+   DROP FUNCTION dbo.ApsInvLevelRangeTbl
+GO
+IF OBJECT_ID('dbo.DecodePRTFLAGS') IS NOT NULL
+   DROP FUNCTION dbo.DecodePRTFLAGS
+GO

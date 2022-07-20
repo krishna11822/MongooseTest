@@ -1,0 +1,68 @@
+﻿/* $Header: /Mongoose/MAIN/Tools/Managed/Apps/ConfigManager/Templates/ApplicationDB/S004_EventMyWorkflowsView.sql $ */
+/*
+***************************************************************
+*                                                             *
+*                           NOTICE                            *
+*                                                             *
+*   THIS SOFTWARE IS THE PROPERTY OF AND CONTAINS             *
+*   CONFIDENTIAL INFORMATION OF INFOR AND/OR ITS AFFILIATES   *
+*   OR SUBSIDIARIES AND SHALL NOT BE DISCLOSED WITHOUT PRIOR  *
+*   WRITTEN PERMISSION. LICENSED CUSTOMERS MAY COPY AND       *
+*   ADAPT THIS SOFTWARE FOR THEIR OWN USE IN ACCORDANCE WITH  *
+*   THE TERMS OF THEIR SOFTWARE LICENSE AGREEMENT.            *
+*   ALL OTHER RIGHTS RESERVED.                                *
+*                                                             *
+*   (c) COPYRIGHT 2013 INFOR.  ALL RIGHTS RESERVED.           *
+*   THE WORD AND DESIGN MARKS SET FORTH HEREIN ARE            *
+*   TRADEMARKS AND/OR REGISTERED TRADEMARKS OF INFOR          *
+*   AND/OR ITS AFFILIATES AND SUBSIDIARIES. ALL RIGHTS        *
+*   RESERVED.  ALL OTHER TRADEMARKS LISTED HEREIN ARE         *
+*   THE PROPERTY OF THEIR RESPECTIVE OWNERS.                  *
+*                                                             *
+***************************************************************
+*/
+/* $Archive: /Mongoose/MAIN/Tools/Managed/Apps/ConfigManager/Templates/ApplicationDB/S004_EventMyWorkflowsView.sql $
+ *
+ * ____ Issue 169476 NThurn 9/26/2013
+ * Allow for AccessAs IS NULL.  (Issue 169476)
+ *
+ * 8630 RS5905 DJohnson 4/8/2013 8:00:42 AM
+ * RS5905 - Filter AppliesToSite to the local site (or NULL).
+ *
+ * CoreDev 1 RS5337 Gmalakar Fri Jun 08 11:30:55 2012
+ * RS5337
+ * $NoKeywords: $
+ */
+CREATE VIEW EventMyWorkflowsView
+AS
+SELECT
+   NVL(eh.Description, eh.EventName || ': ' || TO_CHAR(eh.Sequence)) AS Description,
+   eh.Purpose,
+   CASE WHEN SUBSTR(eh.AppliesToInitiators, 1, 5) = N'Form.'
+      -- Replace with a FormServer call!?  (because the following trick works only for MG & SL forms!)
+      -- Maybe you have to do that up in the IDO layer?
+      THEN N'STRINGS(f' || Entry(1, SUBSTR(eh.AppliesToInitiators, 6, LENGTH(eh.AppliesToInitiators)), N',') || N')'
+      ELSE NULL
+   END AS FormTitle,
+   N'STRINGS(' || ido1.LabelStringID || ')' AS IDOCaption,
+   eh.AppliesToObjects,
+   eh.AppliesToInitiators,
+   eh.TriggeringProperty,
+   eh.MethodToCall,
+   eh.EditableByWizard,
+   eh.EventName,
+   eh.Sequence,
+   eh.RowPointer,
+   eh.AccessAs,
+   eh.CreateDate,
+   eh.CreatedBy,
+   eh.RecordDate,
+   eh.UpdatedBy,
+   eh.InWorkflow
+FROM EventHandler eh
+INNER JOIN ido_AccessAs aa ON 1=1
+LEFT OUTER JOIN ido_Collections ido1
+   ON ido1.CollectionName = Entry(1, eh.AppliesToObjects, N',')
+WHERE eh.CreatedBy = UserNameSp()
+AND NVL(eh.AccessAs, '') = NVL(aa.AccessAs, '')
+AND IsInListFast(DefaultToLocalSite(NULL), NVL(eh.AppliesToSites, DefaultToLocalSite(NULL)), ',') = 1

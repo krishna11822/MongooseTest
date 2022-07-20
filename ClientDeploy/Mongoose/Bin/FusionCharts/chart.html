@@ -1,0 +1,81 @@
+﻿<html>
+<head>
+   <title></title>
+   <script type="text/javascript" src="fusioncharts.js"></script>
+   <script type="text/javascript" src="fusioncharts.charts.js"></script>
+   <script type="text/javascript" src="fusioncharts.powercharts.js"></script>
+   <script type="text/javascript" src="../Scripts/coherent.js"></script>
+
+   <script type="text/javascript">
+      var MG = {};
+      MG.app = {};
+      FusionCharts.ready(function () {
+
+         createMGChart = function (fusionChartId, chartType) {
+            var theChart = FusionCharts(fusionChartId);
+
+            if (!theChart) {
+               theChart = new FusionCharts({
+                  id: fusionChartId,
+                  swfUrl: chartType,
+                  width: "100%",
+                  height: "100%",
+                  dataFormat: "xml",
+                  renderer: "javascript",
+                  renderAt: "chartContainer",
+                  events : {
+                     "renderComplete": function (eventObj, dataObj) {
+                        engine.trigger('RenderCompleted')
+                     }
+                  }
+               });
+            }
+         };
+
+         changeMGChartType = function (fusionChartId, chartType) {
+            var theChart = FusionCharts(fusionChartId);
+            theChart.chartType(chartType);
+         };
+
+         setMGChartXmlData = function (fusionChartId, chartXml) {
+            var theChart = FusionCharts(fusionChartId);
+            theChart.setXMLData(chartXml);
+         };
+
+         renderMGChart = function (fusionChartId) {
+            var theChart = FusionCharts(fusionChartId);
+            theChart.render("chartContainer");
+         };
+
+         // ----------------------------------------
+         // MG.app.ChartDrillDown
+         // ----------------------------------------
+         MG.app.ChartDrillDown = (function () {
+            return {
+               drillDown: function (parms) {
+                  engine.trigger('ChartDrillDown', parms);
+               }
+            };
+         })();
+      });
+
+      engine.on('Ready', function () {
+         engine.trigger('EngineReady');
+      });
+
+      engine.on('createMGChart', function (fusionChartId, chartType) { createMGChart(fusionChartId, chartType); });
+      engine.on('changeMGChartType', function (fusionChartId, chartType) { changeMGChartType(fusionChartId, chartType); });
+      engine.on('setMGChartXmlData', function (fusionChartId, chartXml) { setMGChartXmlData(fusionChartId, chartXml); });
+      engine.on('renderMGChart', function (fusionChartId) { renderMGChart(fusionChartId); });
+
+      window.oncontextmenu = function (e) {
+         var showMenu = null,
+             promise = engine.trigger('ContextMenuShowing', e.clientX, e.clientY);
+         return false;
+      };
+   </script>
+</head>
+<body style="margin: 0px">
+   <div id="chartContainer" style="height: 100%; width: 100%;" />
+</body>
+</html>

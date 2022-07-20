@@ -1,0 +1,222 @@
+{
+   "I": [
+      {
+         "key": "authentication_mode",
+         "desc": "Required. Authentication to be used",
+         "value": "<0=Basic, 6=OAuth1, 9=Token>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "use_tenant",
+         "desc": "Optional. Pass true if connction needs to use tenant",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "map_entity_with_logial_folder",
+         "desc": "Optional. Pass true if you want to use IDM document type mapped as attached document to logical folder",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "delete_all_versions",
+         "desc": "Optional. Use wisely to set the flag if you want to delete all previuos versions of any document before saving",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "workstationlogin",
+         "desc": "To set Single IDM User Name/ID",
+         "value": "<IDM User ID>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "oauth_json_keys",
+         "desc": "JSON Strings having consumerKey and sharedSecret. Pass for OAuth1 mode",
+         "value": "{\"consumerKey\":\"xxx\",\"sharedSecret\":\"yyy\"}",
+         "encrypt": "<Pass 1>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "use_single_idm_user_as_default",
+         "desc": "Optional to use Single IDM User for all or default ",
+         "value": "true/false. true for default, false for all",
+         "encrypt": "<Pass 1>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "auth_service_name",
+         "desc": "Optional name of the service name from Security Tokens to be used to connect to IDM ",
+         "value": "<service name>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "provisioned",
+         "desc": "Optional. Pass 1 to make the file server information readonly so that no one can modify in PASS/SAAS environment.",
+         "value": "1",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "idm_keep_open_connection",
+         "desc": "The optional flag to keep the connection open",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "has_printer",
+         "desc": "The optional flag to set the server as print server",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      }
+   ],
+   "3": [
+      {
+         "key": "aws_bucket",
+         "desc": "Optional s3 bucket key when default bucket is not used",
+         "value": "<Bucket key>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "aws_access_key_id",
+         "desc": "Optional AWS Key",
+         "value": "<Access Key>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "aws_secret_access_key",
+         "desc": "Optional AWS Secret Key",
+         "value": "<Secret Key>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "aws_session_token",
+         "desc": "Optional AWS Session Token",
+         "value": "<Session Token",
+         "encrypt": "<Pass 1>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "aws_server_side_encryption_method",
+         "desc": "Optional AWS Server Side Encryption Method. Example AWSKMS",
+         "value": "<Encryption Method>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "aws_server_side_encryption_key",
+         "desc": "Optional AWS Server Side Encryption Key.",
+         "value": "<Encryption Key>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "aws_request_expires_after_seconds",
+         "desc": "Optional Pre-signed URL expiration in seconds",
+         "value": "<Expiration Seconds>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      }
+   ],
+   "F": [
+      {
+         "key": "enablessl",
+         "desc": "Optional to enable SSL",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "usepassive",
+         "desc": "Optional to use pasive mode",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "timeout",
+         "desc": "Optional millisecinds to wait for a response of a request",
+         "value": "<Milliseconds>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      }
+   ],
+   "T": [
+      {
+         "key": "authentication_mode",
+         "desc": "Required. Authentication to be used",
+         "value": "<0=Basic, 1=Use Private/ Public Key, 2=Use Both Password and Key>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "enablessl",
+         "desc": "Optional to enable SSL",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "usepassive",
+         "desc": "Optional to use pasive mode",
+         "value": "true/false. Don't use for false",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "timeout",
+         "desc": "Optional millisecinds to wait for a response of a request",
+         "value": "<Milliseconds>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "keyfilepath",
+         "desc": "Optional path of the SSH/OpenSSH key file path",
+         "value": "<key file path>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "keyfilecontent",
+         "desc": "Optional content of the SSH/OpenSSH key file. Pass keyfilepath or keyfilecontent ",
+         "value": "<file content of the key file>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<Pass 1>"
+      },
+      {
+         "key": "keypassphrase",
+         "desc": "Optional passphrase to be used for SSH/OpenSSH ",
+         "value": "<pass phrase>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<Pass 1>"
+      }
+   ],
+   "W": [
+      {
+         "key": "ws_authentication_key",
+         "desc": "Key to accees the web service",
+         "value": "<Key>",
+         "encrypt": "<Pass 1>",
+         "readonly": "<optional 1=ReadOnly>"
+      },
+      {
+         "key": "ws_security_mode",
+         "desc": "Optional basic http security mode",
+         "value": "<pass 1=Transport, 2=Message, 3=TransportWithMessageCredential, 4=TransportCredentialOnly>",
+         "encrypt": "<optional 1=Encrypt>",
+         "readonly": "<optional 1=ReadOnly>"
+      }
+   ]
+}

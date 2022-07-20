@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- saved from url=(0017)http://localhost/ -->
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>XML Parser</title>
+    <link href="style/style.css" rel="stylesheet" type="text/css" />
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.contextMenu.js" type="text/javascript"></script>
+    <script src="scripts/xmlparse.js" type="text/javascript"></script>
+
+</head>
+
+<body onload="disableTextSelect()">
+	<div class="inforToolbar" role="toolbar">
+		<label class="inforLabel" for="tbSearch">Search</label>
+		<input type="text" class="inforTextbox" id="tbSearch" style="width: 150px">
+		<button id="btnSearch" class="inforIconButton search"  title="Search"><span></span></button>
+		<span class="inforToolbarSpacer"></span>	
+		<button id="btnToggleNodes" class="inforIconButton expandAll" title="Search"><span></span></button>
+        <span class="inforToolbarSpacer"></span>
+        <button id="btnToggleDock" class="inforIconButton detach" title="Detach"><span></span></button>
+     </div>
+
+    <br />	
+    <br />
+    <br />
+    <div id="jstree" ></div>
+
+    <ul id="conMenu" class="contextMenu">
+	    <li class="add"><a href="#add">Add</a></li>
+	    <li class="update"><a href="#update">Update</a></li>
+	    <li class="info separator"><a href="#info">Info</a></li>
+    </ul>
+    
+    <script src="scripts/jstree.min.js"></script>
+   
+</body>
+</html>

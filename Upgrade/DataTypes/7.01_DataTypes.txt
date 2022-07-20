@@ -1,0 +1,12 @@
+#
+# File Format (comma separated)
+#   UDDT Name - DataType Name
+#   Orig Base Type
+#   Orig Length
+#   Orig Precision
+#   Orig Scale
+#   New Base Type
+#   New Length
+#   New Precision
+#   New Scale
+#

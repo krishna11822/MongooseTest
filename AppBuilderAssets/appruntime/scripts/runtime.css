@@ -1,0 +1,1410 @@
+html .transparent {
+  background-color: transparent;
+}
+.sticky-bottom {
+  position: sticky;
+  top: 0;
+  z-index: 3001;
+}
+.modal-page-container {
+  overflow: auto;
+}
+.modal-page-container .warning-text .modal-title {
+  color: #ff9426;
+}
+/* override soho input width.
+using our with-button class */
+.with-button.field-short > .dropdown-wrapper,
+.with-button.field-short input[type="text"] {
+  /* FIXME: calc() is not properly working in edge */
+  width: 230px;
+  /* calc(100% - 40px); */
+}
+.with-button.field-short > .dropdown-wrapper > div,
+.with-button.field-short input[type="text"] > div {
+  width: 100%;
+}
+.with-button.field-short .btn-icon {
+  position: absolute;
+}
+.with-button.field .btn-icon {
+  bottom: 3px;
+}
+.project-setting-button {
+  display: flex;
+}
+.project-setting-button > eir-input-field-component {
+  width: 260px;
+}
+.project-setting-button > .btn-icon {
+  top: 22px;
+}
+.popover.alternate {
+  padding-bottom: 15px;
+}
+.datagrid-container.is-windows.has-vertical-scroll .datagrid-header {
+  margin-right: 8px;
+  /* override from soho 18px */
+}
+.modal-content p.message {
+  white-space: pre-wrap;
+}
+.modal-buttonset {
+  z-index: 1;
+}
+.modal-content {
+  min-width: 320px;
+}
+.pop-tag {
+  display: inline-flex;
+  height: 22px;
+  margin: 0 10px 10px 0;
+  padding: 5px 10px;
+  background-color: #d8d8d8;
+  border-radius: 15px;
+}
+eir-input-field-component.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+eir-input-field-component.disabled > div {
+  opacity: inherit;
+}
+eir-input-field-component input + div.error-message {
+  margin-left: 3px;
+  padding-top: 1px;
+  text-align: left;
+}
+eir-input-field-component input + div.error-message svg {
+  top: 3px;
+}
+eir-input-field-component input + div.error-message p.message-text {
+  max-width: 100%;
+}
+.field-short eir-input-field-component input {
+  width: 100%;
+}
+.field-short eir-input-field-component input + div.error-message {
+  margin-left: 3px;
+  padding-top: 3px;
+}
+.field-short eir-input-field-component input + div.error-message > p.message-text {
+  margin-top: 1px;
+}
+.field-short eir-input-field-component input + div.error-message > svg {
+  top: 3px;
+}
+.field eir-input-field-component input {
+  width: 100%;
+}
+eir-dropdown-field-component .dropdown-field {
+  padding-bottom: 7px;
+}
+.field eir-textarea-field-component textarea {
+  width: 100%;
+}
+.field eir-textarea-field-component div.error-message > p.message-text {
+  margin-top: 10px;
+}
+eir-tag-dropdown.light .searchfield-wrapper {
+  background-color: #fff;
+}
+eir-tag-dropdown.light .btn-icon {
+  background-color: #bdbdbd;
+}
+eir-tag-dropdown.admin .tag.is-dismissable {
+  color: #fff;
+  background-color: #999;
+}
+eir-tag-dropdown.admin .tag.is-dismissable .icon {
+  fill: #fff;
+}
+eir-tag-dropdown .searchfield-wrapper {
+  /* sohoverride v.4.3.1: extra size */
+  width: calc(100% - 45px);
+}
+eir-tag-dropdown .searchfield-wrapper .searchfield {
+  width: 100%;
+}
+eir-tag-dropdown .btn-icon {
+  bottom: 2px;
+  margin-left: 5px;
+  background-color: #7a7b82;
+  border-radius: 5px;
+}
+eir-tag-dropdown .tag-container {
+  margin-top: 5px;
+}
+eir-tag-dropdown .tag-container .tag {
+  margin: 0 10px 15px 0;
+}
+eir-tag-dropdown .tag-container .tag span.dismissable-btn {
+  margin-top: -1px;
+  padding-left: 5px;
+}
+eir-tag-dropdown .tag-container .tag span.dismissable-btn svg.icon {
+  width: 10px;
+  height: 10px;
+}
+eir-filter-tag-component .filter-tag {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+eir-filter-tag-component .filter-tag .btn-icon {
+  bottom: 1px;
+  margin-left: 5px;
+  background-color: #bdbdbd;
+  border-radius: 5px;
+}
+eir-filter-tag-component .filter-tag .tag-container {
+  display: flex;
+  margin-top: 5px;
+}
+eir-filter-tag-component .filter-tag .tag-container .tag {
+  margin: 0 10px 15px 0;
+}
+eir-filter-tag-component .filter-tag .tag-container .tag span.dismissable-btn {
+  margin-top: -1px;
+  padding-left: 5px;
+}
+eir-filter-tag-component .filter-tag .tag-container .tag span.dismissable-btn svg.icon {
+  width: 10px;
+  height: 10px;
+}
+eir-project-tags {
+  display: inline-block;
+  width: 100%;
+}
+eir-project-tags .tag-field {
+  display: flex;
+}
+eir-project-tags .tag-field .tag-container {
+  width: 85%;
+  max-height: 32px;
+  margin: 8px 8px 0;
+  overflow: hidden;
+}
+eir-project-tags .tag-field .tag-container .tag {
+  margin: 0 10px 10px 0;
+}
+eir-project-tags .tag-field .more-tag {
+  margin: 8px 10px 10px 0;
+  font-weight: bold;
+}
+.licenses-dialog {
+  text-align: center;
+}
+.licenses-dialog .modal-content h1 {
+  text-align: center;
+}
+/* For both design- and run-time */
+#mainCanvas,
+#runtime {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  color: #666;
+}
+.runtimeMode .eir-component > div,
+.runtimeMode .eir-component dcustomcomponent {
+  pointer-events: auto;
+}
+.insertMode .generatedComponent,
+.insertMode .eir-component:not(.layoutComponent) {
+  pointer-events: none;
+}
+.insertMode .isInsertChild {
+  border: 2px solid #806594;
+  opacity: 0.5;
+}
+.insertMode .isInsertChild,
+.insertMode .isInsertChild * {
+  pointer-events: none !important;
+}
+.selectionMode eir-component *,
+.selectionMode eir-component.layoutComponent.generatedComponent {
+  pointer-events: none !important;
+}
+.selectionMode .componentCommon *,
+.selectionMode eir-component.eir-component,
+.selectionMode eir-component eir-selection-box * {
+  pointer-events: auto !important;
+}
+.eir-component {
+  position: relative;
+  display: block;
+  pointer-events: auto;
+  /* Mixins to DRY */
+}
+.eir-component.isSelected.layoutComponent {
+  box-shadow: inset 0 0 0 2px #1e7bb1;
+}
+.eir-component.isSelected.layoutComponent eir-selection-box .arrow-down-outer {
+  display: none;
+}
+.eir-component .inWizard eir-selection-box {
+  display: none;
+}
+.eir-component .component-tooltip {
+  position: relative;
+  top: -20px;
+  display: none;
+  min-width: 60px;
+  height: 22px;
+  pointer-events: none !important;
+}
+.eir-component .component-name {
+  position: relative;
+  display: none;
+  min-width: 60px;
+  max-width: 160px;
+  height: 16px;
+  margin-left: -1px;
+  padding: 0 22px 0 5px;
+  overflow: hidden;
+  color: white;
+  line-height: 16px;
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  border: 1px solid white;
+  border-bottom-width: 0;
+  border-radius: 2px;
+  pointer-events: auto !important;
+}
+.eir-component .component-name > span {
+  margin-top: 2px;
+  color: #fff;
+}
+.eir-component .component-name .focus-type-source,
+.eir-component .component-name .focus-type-target {
+  display: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.eir-component .wizard-source .focus-type-source {
+  display: block;
+}
+.eir-component .wizard-source:hover ~ .arrow-down-outer {
+  opacity: 0.5;
+}
+.eir-component .wizard-source:hover {
+  opacity: 0.5;
+}
+.eir-component .wizard-target .focus-type-target {
+  display: block;
+}
+.eir-component .wizard-target:hover ~ .arrow-down-outer {
+  opacity: 0.5;
+}
+.eir-component .wizard-target:hover {
+  opacity: 0.5;
+}
+.eir-component .arrow-down-outer {
+  position: absolute;
+  z-index: 1001;
+  display: none;
+  margin-left: 5px;
+  border-top: 9px solid white;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+.eir-component .arrow-down-outer .arrow-down-inner {
+  position: absolute;
+  left: 1px;
+  margin-top: -10px;
+  margin-left: -7px;
+  border-top: 8px solid #66a140;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}
+.eir-component.isSelected eir-selection-box .arrow-down-outer {
+  display: block;
+  margin-top: -3px;
+}
+.eir-component.isSelected eir-selection-box .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #1d5f8a;
+}
+.eir-component.isWizardFocus > .componentCommon .component-tooltip {
+  display: inline-block;
+}
+.eir-component.isWizardFocus > .componentCommon .component-tooltip:hover {
+  pointer-events: none !important;
+}
+.eir-component.isWizardFocus > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  width: 150px;
+  height: 34px;
+  margin-top: -16px;
+  background-color: #66a140;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isWizardFocus > .componentCommon .component-name .icon-selectionbox {
+  display: none;
+}
+.eir-component.isWizardFocus > .componentCommon .arrow-down-outer {
+  display: block;
+}
+.eir-component.isWizardFocus > .componentCommon .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #66a140;
+}
+.eir-component.isWizardRest > .componentCommon .component-tooltip {
+  display: inline-block;
+}
+.eir-component.isWizardRest > .componentCommon .component-tooltip:hover {
+  pointer-events: none !important;
+}
+.eir-component.isWizardRest > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  width: 150px;
+  height: 34px;
+  margin-top: -16px;
+  background-color: #7d7d7d;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isWizardRest > .componentCommon .component-name .icon-selectionbox {
+  display: none;
+}
+.eir-component.isWizardRest > .componentCommon .arrow-down-outer {
+  display: block;
+}
+.eir-component.isWizardRest > .componentCommon .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #7d7d7d;
+}
+.eir-component.isHovered.layoutComponent {
+  outline: 1px solid #999 !important;
+}
+.eir-component.isHovered.layoutComponent > .componentCommon .component-tooltip {
+  display: inline-block;
+  pointer-events: all !important;
+}
+.eir-component.isHovered.layoutComponent > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  z-index: 1000;
+  height: 18px;
+  background-color: #7d7d7d;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isHovered.layoutComponent > .componentCommon .component-name .icon-selectionbox {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  width: 11px;
+  height: 13px;
+  margin-top: -1px;
+  margin-right: 1px;
+  fill: #b0b0b0;
+}
+.eir-component.isHovered.generatedComponent.eir-component > .componentCommon .component-name p {
+  margin-top: 2px !important;
+  color: white;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent),
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) {
+  outline: 1px solid #999 !important;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .component-tooltip,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .component-tooltip {
+  display: inline-block;
+  pointer-events: all !important;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .component-name,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  z-index: 1000;
+  height: 18px;
+  background-color: #7d7d7d;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .component-name .icon-selectionbox,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .component-name .icon-selectionbox {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  width: 11px;
+  height: 13px;
+  margin-top: -1px;
+  margin-right: 1px;
+  fill: #b0b0b0;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .arrow-down-outer,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .arrow-down-outer {
+  display: block;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .arrow-down-outer .arrow-down-inner,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #7d7d7d;
+}
+.eir-component.isInsertParent {
+  outline: 2px solid pink !important;
+}
+.eir-component.isInsertParent .ng-enter {
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+.eir-component.isInsertParent .ng-enter.ng-enter-active {
+  opacity: 0.5;
+}
+.eir-component.isInsertParent .ng-move {
+  transition: 0.25s ease left, 0.25s ease top;
+}
+.eir-component.isInsertParent.Horizontal .ng-move {
+  left: 50px;
+}
+.eir-component.isInsertParent.Horizontal .ng-move.ng-move-active {
+  left: 0;
+}
+.eir-component.isInsertParent.Vertical .ng-move {
+  top: 40px;
+}
+.eir-component.isInsertParent.Vertical .ng-move.ng-move-active {
+  top: 0;
+}
+.eir-component > div.componentCommon {
+  /* Using position: fixed; to get label above all elements (even outside of canvas).
+		However this impares us to use the top, left, right and bottom properties. */
+  position: fixed;
+  z-index: 25;
+  width: 0;
+  height: 0;
+}
+.eir-component > div.componentCommon > .errorMessage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin: 4px;
+  pointer-events: auto;
+}
+.eir-component > div.componentCommon > .errorMessage svg {
+  top: 0;
+  fill: #df332f;
+}
+.eir-component > div,
+.eir-component dcustomcomponent {
+  pointer-events: none;
+}
+eir-canvas .runtimeMode .eir-component,
+eir-app-launcher .eir-component {
+  border: none;
+}
+.eirButton {
+  width: auto;
+  height: auto;
+  border-width: 0;
+  /* No border by default */
+}
+.eirButton > div {
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+}
+.eirButton .btn-full-width {
+  height: 100%;
+}
+.eirCheckbox .checkbox {
+  display: none;
+  /* sohoverride: To avoid large "ghost" when dragging checkbox */
+}
+eir-component dcustomcomponent {
+  display: block;
+}
+.eirDatagrid .ab-datagrid-wrapper {
+  height: 100%;
+}
+.eirDatagrid .ab-datagrid-wrapper .title {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+.eirDatagrid .ab-datagrid-wrapper .title .datagrid-result-count {
+  margin-left: 5px;
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container.has-toolbar {
+  height: calc(100% - 45px);
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container.has-toolbar.paginated {
+  height: calc(100% - 90px);
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container.paginated {
+  height: calc(100% - 45px);
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container .remove-icon .icon {
+  display: none;
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-summary-row td.is-readonly {
+  background-color: #fff;
+}
+.datagrid-export-content .radio-group {
+  margin-bottom: 0;
+}
+.eirList.hide-header > .card > .card-header {
+  display: none;
+}
+.eirList.hide-header > .card > .card-content {
+  height: 100%;
+}
+.eirList > .card {
+  height: 100%;
+  min-height: 100%;
+  margin-bottom: 0;
+  background-color: inherit;
+}
+.eirList > .card > .card-header {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: inherit;
+}
+.eirList > .card > .card-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 50px);
+  min-height: calc(100% - 50px);
+}
+.eirList > .card > .card-content .searchfield {
+  background-color: #efeff0;
+}
+.eirList > .card > .card-content > .listview {
+  height: 100%;
+  pointer-events: auto;
+}
+.eirList > .card > .card-content > .listview > ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.eirList > .card > .card-content > .listview > ul > li:not(:hover):not(.is-selected) {
+  background-color: transparent;
+}
+.eirList > .card > .card-content > .listview > ul > li {
+  cursor: auto;
+}
+.eirList > .card > .card-content > .listview > ul > li > eir-component {
+  height: auto;
+  margin: 0;
+}
+.eirList > .card > .card-content > .listview > ul > li > eir-component .childCage {
+  position: static;
+  /* Resetting to static for all childCages in list template, i.e. scrolling overflow does not work here */
+}
+.eirList > .card > .card-content > .listview > ul > li eir-component {
+  border: none;
+}
+.eirList > .card > .card-content > .listview > ul > li label,
+.eirList > .card > .card-content > .listview > ul > li .label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.eirList > .card > .card-content > .listview > ul > li:first-of-type eir-component:not(.eirFlexbox) {
+  pointer-events: auto;
+}
+.eirList > .card > .card-content .eirFlexbox {
+  outline: none;
+}
+.eirList > .card > .card-content .eirFlexbox > .childCage {
+  overflow: visible;
+}
+.runtimeMode .eirList .card > .card-content > .listview > ul > li {
+  cursor: pointer;
+  pointer-events: auto;
+}
+.runtimeMode .eirList .card > .card-content > .listview > ul > li * {
+  background-color: transparent;
+  /* TODO: Temporary until stylesets are good */
+  cursor: inherit;
+  pointer-events: auto;
+}
+.runtimeMode .eirList .card > .card-content > .listview > ul > li .errorMessage {
+  cursor: help;
+}
+.radio-group {
+  padding-top: 0;
+}
+.mashupRootContainer > .eir-component.eirFlexbox {
+  height: 100%;
+}
+.eir-component.eirFlexbox,
+.eir-component.eirTabPanel {
+  margin: 0;
+}
+.eir-component.eirFlexbox.overflowWrap > .childCage > eir-children,
+.eir-component.eirTabPanel.overflowWrap > .childCage > eir-children {
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirFlexbox.overflowScroll > .childCage,
+.eir-component.eirTabPanel.overflowScroll > .childCage {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.eir-component.eirFlexbox.overflowScroll > .childCage.vertical,
+.eir-component.eirTabPanel.overflowScroll > .childCage.vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.eir-component.eirFlexbox.generatedComponent .childCage,
+.eir-component.eirTabPanel.generatedComponent .childCage {
+  height: auto;
+}
+.eir-component.eirFlexbox > .childCage,
+.eir-component.eirTabPanel > .childCage {
+  position: absolute;
+  /* Needed to make overflow work */
+  display: flex;
+  /* Used for alignment setting */
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.eir-component.eirFlexbox > .childCage > eir-children,
+.eir-component.eirTabPanel > .childCage > eir-children {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: inherit;
+  align-items: inherit;
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirFlexbox > .childCage > eir-children > eir-component.eirFlexbox,
+.eir-component.eirTabPanel > .childCage > eir-children > eir-component.eirFlexbox {
+  height: 100%;
+}
+.eir-component.eirFlexbox > .childCage > eir-children > eir-component,
+.eir-component.eirTabPanel > .childCage > eir-children > eir-component {
+  display: inline-block;
+  flex: 0 0 auto;
+  height: auto;
+}
+.eir-component.eirFlexbox > .childCage.flex-parent > eir-children,
+.eir-component.eirTabPanel > .childCage.flex-parent > eir-children {
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirFlexbox > .childCage.vertical > eir-children,
+.eir-component.eirTabPanel > .childCage.vertical > eir-children {
+  flex-direction: column;
+}
+.eir-component.eirFlexbox > .childCage.vertical > eir-children > eir-component.eirFlexbox,
+.eir-component.eirTabPanel > .childCage.vertical > eir-children > eir-component.eirFlexbox {
+  width: 100%;
+  height: 0;
+}
+eir-canvas .eirFlexbox {
+  outline: 1px solid #d0d0d0;
+}
+eir-canvas .runtimeMode .eirFlexbox {
+  outline: none;
+}
+.eir-component.eirImage {
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirImage .image {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0;
+}
+.eir-component.eirImage .img-fill {
+  background-size: 100% 100%;
+}
+.eir-component.eirImage .img-fit {
+  background-size: contain;
+}
+.eir-component.eirLabel {
+  width: auto;
+  height: auto;
+}
+.eir-component.eirLabel > .label-container > span {
+  min-width: 10px;
+  margin: 0;
+  /* Sohoverride v4.3.1, Margin should be controlled by label-settings */
+}
+.eir-component.eirLabel > .label-container > .paragraph {
+  margin-bottom: 3px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 13px;
+}
+.eir-component.eirLabel > .label-container > .small-heading {
+  font-weight: bold;
+}
+.eir-component.eirLabel > .label-container > .medium-heading {
+  min-height: 16px;
+  font-size: 15px;
+  font-size: 1.5rem;
+  line-height: 15px;
+}
+.eir-component.eirLabel > .label-container > .large-heading {
+  min-height: 21px;
+  margin-bottom: 3px;
+  font-size: 20px;
+  font-size: 2rem;
+  line-height: 20px;
+}
+.label-container .font-size-px-72 {
+  font-size: 7.2rem;
+  line-height: 1.25em;
+}
+.label-container .font-size-px-60 {
+  font-size: 6rem;
+  line-height: 1.2em;
+}
+.label-container .font-size-px-48 {
+  font-size: 4.8rem;
+  line-height: 1.25em;
+}
+.label-container .font-size-px-40 {
+  font-size: 4rem;
+  line-height: 1.2em;
+}
+.label-container .font-size-px-32 {
+  font-size: 3.2rem;
+  line-height: 1.25em;
+}
+.label-container .font-size-px-28 {
+  font-size: 2.8rem;
+  line-height: 1.28em;
+}
+.label-container .font-size-px-24 {
+  font-size: 2.4rem;
+  line-height: 1.3em;
+}
+.label-container .font-size-px-20 {
+  font-size: 2rem;
+  line-height: 1.4em;
+}
+.label-container .font-size-px-16 {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+}
+.label-container .font-size-px-14 {
+  font-size: 1.4rem;
+  line-height: 1.7em;
+}
+.label-container .font-size-px-12 {
+  font-size: 1.2rem;
+  line-height: 1.5em;
+  text-transform: uppercase;
+}
+.label-container .font-size-px-10 {
+  font-size: 1rem;
+  line-height: 1.6em;
+  text-transform: uppercase;
+}
+.label-container .text-descriptive {
+  color: #737373 !important;
+}
+.label-container .text-link {
+  color: #368ac0 !important;
+  text-decoration: underline;
+}
+.label-container .text-muted {
+  color: #999 !important;
+}
+.label-container .text-emphasis {
+  font-style: italic !important;
+}
+.label-container .text-strong {
+  font-weight: 700 !important;
+}
+.label-container .text-alert {
+  color: #e84f4f !important;
+}
+.eirHyperlink {
+  width: auto;
+  height: auto;
+  border-width: 0;
+  /* No border by default */
+}
+.eirHyperlink .hyperlink svg.icon {
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+.chart {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+.chart .widget-header h2 {
+  float: none;
+  width: 100%;
+  text-align: center;
+}
+.chart .widget-content {
+  height: calc(100% - 30px);
+  min-height: 200px;
+  overflow: visible;
+}
+.chart .widget-content.has-header {
+  height: calc(100% - 60px - 30px);
+}
+.chart .widget-content.has-title {
+  height: calc(100% - 50px - 30px);
+}
+.chart .widget-content.has-header.has-title {
+  height: calc(100% - 50px - 60px - 30px);
+}
+.chart .widget-content .chart-container {
+  overflow: visible;
+  font-size: 14px;
+}
+.chart .widget-content .chart-container .chart-legend {
+  height: 100%;
+}
+.eir-component.eirTabs {
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirTabs .tab-container.vertical {
+  background: unset;
+}
+.eir-component.eirTabs .tab-container.vertical .tab-panel {
+  margin: 0;
+}
+.eir-component.eirTabs .tab-container.vertical .tab-list-container,
+.eir-component.eirTabs .tab-container.vertical .tab-list {
+  padding-top: 0;
+  background: unset;
+}
+.eir-component.eirTabs .tab-container .tab-panel-container {
+  background: unset;
+}
+.eir-component.eirTabs .tab-panel {
+  width: 100%;
+  height: 100%;
+  padding-top: 0;
+  /* sohoverride v4.3.1: removing padding */
+}
+.eir-component.eirTabs .tab-panel .eirTabPanel {
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirTabs .tab-wrapper.horizontal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.eir-component.eirTabs .tab-wrapper.horizontal > .tab-panel {
+  position: absolute;
+}
+.eirTextBox {
+  width: auto;
+  height: auto;
+}
+.eirTextBox .warning-text {
+  vertical-align: middle;
+}
+.application-header .toolbar .title {
+  width: calc(100% - 1rem);
+  /* If no themeswitch, fill out */
+}
+.application-header .toolbar .title > * {
+  width: calc(100% - 1.7rem - 1.7rem);
+  overflow: hidden;
+}
+.application-header.with-themeswitcher .toolbar .title {
+  width: calc(100% - 1rem - 60px);
+}
+.application-header.with-themeswitcher .toolbar .buttonset {
+  width: 60px;
+}
+.sizePredicter {
+  position: absolute;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 4px;
+  white-space: nowrap;
+  visibility: hidden;
+}
+.apphub .tab-focus-indicator {
+  display: none;
+}
+.apphub .accordion {
+  height: 100%;
+  overflow-y: auto;
+}
+.apphub .footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 20px;
+  background-color: #313236;
+  border-top: 1px solid #212224;
+}
+.apphub .footer .btn-tertiary-reverse {
+  font-size: 18px;
+  /* sohoverride v4.3.1: change font size */
+}
+.apphub .footer > a {
+  color: #fff;
+  font-size: 16px;
+  line-height: 34px;
+  text-decoration: none;
+}
+.apphub #apphub-tabs {
+  height: 28px;
+  background: #414247;
+}
+.apphub .tab-container.module-tabs {
+  border-bottom: 1px solid #313236;
+}
+.apphub .tab-container.module-tabs .tab-list-container .tab-list {
+  height: 28px;
+  background-color: #414247;
+}
+.apphub .tab-container.module-tabs .tab-list-container .tab:hover,
+.apphub .tab-container.module-tabs .tab-list-container .tab-more:hover,
+.apphub .tab-container.module-tabs .tab-list-container .tab-more.is-open {
+  background-color: #50535a;
+}
+.apphub .tab-container.module-tabs .tab-list-container .tab.inactiveTab.is-selected {
+  background-color: #414247;
+  pointer-events: none;
+}
+.apphub .tab-container.module-tabs .tab-list-container .tab,
+.apphub .tab-container.module-tabs .tab-list-container .tab-more {
+  height: 28px;
+  background-color: #414247;
+  border-left: 1px solid #313236;
+}
+.apphub .tab-container.module-tabs .tab-list-container .tab.is-selected,
+.apphub .tab-container.module-tabs .tab-list-container .tab-more.is-selected {
+  background-color: #50535a;
+}
+.apphub .tab-container.module-tabs .tab-list-container .tab .close.icon,
+.apphub .tab-container.module-tabs .tab-list-container .tab-more .close.icon {
+  top: 49%;
+  width: 13px;
+  fill: #dee1e8;
+}
+.apphub .tab-container.module-tabs .tab-list-container .tab a,
+.apphub .tab-container.module-tabs .tab-list-container .tab-more,
+.apphub .tab-container.module-tabs .tab-list-container .more-text {
+  height: 28px;
+  padding: 6px 0 0 0;
+  color: #c8cbd4;
+  font-weight: normal;
+}
+.apphub .tab-container.module-tabs .tab-list-container .application-menu-trigger {
+  border-left: none;
+}
+.apphub .tab-container.module-tabs .tab-list-container .application-menu-trigger a {
+  padding: 5px 0 0 35px;
+}
+.apphub .tab-container.module-tabs .tab-list-container .application-menu-trigger a span {
+  font-weight: normal;
+}
+.apphub .start-page {
+  width: 100%;
+  height: 100%;
+}
+.apphub .start-page .apphubSplash {
+  position: relative;
+  top: 50%;
+  width: 250px;
+  height: 180px;
+  margin: auto;
+  background-image: url(../assets/images/InforLogo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateY(-50%);
+}
+.apphub .start-page .apphubTitle {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  left: 5%;
+  z-index: -1;
+  font-size: 25px;
+  text-align: center;
+}
+.apphub eir-licenses-button {
+  position: absolute;
+  bottom: 0;
+}
+.apphub #frame-holder .module-tabs + .page-container.tab-panel-container {
+  height: calc(100% - 28px);
+  margin-top: 28px;
+}
+.apphub .project-frame {
+  width: 100%;
+  height: 100%;
+}
+.apphub .project-frame iframe {
+  width: 100%;
+  height: 100%;
+}
+eir-admin-sidebar .has-save-button .role-list {
+  margin-bottom: 100px;
+  /* MUPS-1159: adds some space between save/discard button */
+}
+eir-admin-sidebar .sidebar {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  width: 380px;
+  height: 100%;
+  padding: 40px 40px 40px 40px;
+  overflow: auto;
+  background-color: #d8d8d8;
+  border-left: 1px solid #bdbdbd;
+}
+eir-admin-sidebar .sidebar .splash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+eir-admin-sidebar .sidebar .splash p {
+  color: #313236;
+}
+eir-admin-sidebar .sidebar .content.project-settings .group-roles {
+  margin-bottom: 0;
+}
+eir-admin-sidebar .sidebar .content.project-settings .buttonset {
+  float: right;
+}
+eir-admin-sidebar .sidebar .content.project-settings .sidebar-field {
+  background-color: white;
+}
+eir-admin-sidebar .sidebar .content.project-settings .version-label {
+  margin-bottom: 0;
+}
+eir-admin-sidebar .sidebar .content.project-settings .text-data {
+  color: black;
+}
+eir-admin-sidebar .sidebar .content.project-settings .text-block {
+  display: block;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+}
+eir-admin-sidebar .sidebar .content.project-settings .imported-field {
+  margin-bottom: 24px;
+}
+eir-admin-sidebar .sidebar .content.project-settings .data-field {
+  margin-bottom: 18px;
+}
+eir-admin-sidebar .sidebar .content.project-settings .show-more {
+  padding-right: 0;
+  padding-left: 0;
+}
+eir-admin-sidebar .sidebar .content.project-settings .btn-field {
+  height: 30px;
+  margin: -3px 0 20px 0;
+}
+eir-admin-sidebar .sidebar .content.project-settings .btn-field .copy-btn {
+  position: absolute;
+  right: 0;
+  padding-right: 0;
+}
+eir-admin-sidebar .sidebar .content.project-settings .url-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+eir-admin-sidebar .sidebar .content.project-settings .url-button button {
+  min-width: 0;
+  padding: 0;
+}
+eir-admin-sidebar .sidebar .content.project-settings .horizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+eir-admin-sidebar .sidebar .content.project-settings .horizontal button {
+  min-width: 0;
+  padding: 0;
+}
+eir-admin-sidebar .sidebar .content.project-settings .card {
+  margin-bottom: 0;
+}
+eir-admin-sidebar .sidebar .project-settings-buttonset {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  width: 380px;
+  margin-bottom: 0;
+  /* Sohoverride v4.3.1, To remove the margin-bottom that was introduced in 4.3.1 */
+  background-color: #5c5c5c;
+}
+eir-admin-sidebar .sidebar .project-settings-buttonset button {
+  width: 50%;
+  height: 50px;
+  margin: 0;
+  color: #fff;
+  font: bold 12px Arial;
+  text-transform: uppercase;
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+}
+eir-admin-sidebar .sidebar .disabled {
+  background-color: #999;
+}
+eir-admin-sidebar .sidebar .disabled button {
+  border-top: 1px solid #bdbdbd;
+  border-left: 1px solid #bdbdbd;
+  cursor: default;
+}
+eir-admin-sidebar .animate-show-hide.ng-hide {
+  opacity: 0;
+}
+eir-admin-sidebar .animate-show-hide.ng-hide-add,
+eir-admin-sidebar .animate-show-hide.ng-hide-remove {
+  transition: all linear 0.25s;
+}
+@keyframes card-fade {
+  0% {
+    background: #fff;
+  }
+  30% {
+    background: #69b5dd;
+  }
+  100% {
+    background: #fff;
+  }
+}
+.highlighted {
+  animation: card-fade 3s ease-in 1;
+}
+eir-app-card.card {
+  position: relative;
+  display: inline-block;
+  width: 320px;
+  min-width: 320px;
+  height: 320px;
+  min-height: 322px;
+  margin: 15px;
+  vertical-align: top;
+  /* Needed for Edge */
+}
+eir-app-card.card:hover:not(.selected) .card-overlay {
+  height: 221px;
+  opacity: 1;
+}
+eir-app-card.card.selected {
+  height: 322px;
+  margin: 14px 16px 14px 14px;
+  border: 2px solid #368ac0;
+  border-radius: 2px;
+}
+eir-app-card.card.selected .card-overlay {
+  opacity: 1;
+}
+eir-app-card.card .widget-title {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+eir-app-card.card .status-icon {
+  float: right;
+  margin: 2px -5px 0 0;
+  line-height: 0;
+}
+eir-app-card.card .status-icon .icon-activated {
+  color: #80ce4d;
+}
+eir-app-card.card .status-offline {
+  width: 20px;
+  height: 20px;
+  background-color: #d8d8d8;
+  border: 1px solid #d8d8d8;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+eir-app-card.card .card-content {
+  width: 100%;
+  height: 268px;
+  min-height: 268px;
+  overflow: hidden;
+}
+eir-app-card.card .card-content .image-container {
+  padding: 20px;
+  text-align: center;
+}
+eir-app-card.card .card-content .image-container img {
+  max-height: 180px;
+  border: 1px solid #d8d8d8;
+}
+eir-app-card.card .card-content .description {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #ccc;
+}
+eir-app-card.card .card-content .description > .import-info {
+  border-right: 1px solid #ccc;
+}
+eir-app-card.card .card-content .description > .information {
+  flex: 1;
+  width: 50%;
+  padding: 5px;
+  text-align: center;
+}
+eir-app-card.card .card-content .description > .information > span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+eir-app-card.card .card-content .description > .information .date {
+  margin-top: 2px;
+}
+eir-app-card.card .card-overlay {
+  position: absolute;
+  top: 50px;
+  z-index: 10;
+  width: 100%;
+  height: 268px;
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+eir-app-card.card .card-overlay > .components {
+  position: absolute;
+  top: calc(100% - 60px);
+  left: 2px;
+  display: none;
+  width: calc(100% - 5px);
+  height: 46px;
+  text-align: center;
+  background-color: #fff;
+}
+eir-app-card.card .card-overlay .overlay-buttons {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  height: 80px;
+  padding: 0 6px 0 6px;
+  background-color: #fff;
+  cursor: default;
+}
+eir-app-card.card .card-overlay .overlay-buttons > .disabled-action {
+  color: #5c5c5c;
+  cursor: default;
+  opacity: 0.5;
+}
+eir-app-card.card .card-overlay .overlay-buttons > button {
+  width: 100px;
+  min-width: 100px;
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+eir-app-card.card .card-overlay .overlay-buttons > button span {
+  display: block;
+  padding: 10px 0 0 0;
+}
+eir-app-card.card .card-overlay .project-description {
+  height: 100px;
+  margin: 20px;
+  overflow: hidden;
+  font-size: 13px;
+}
+eir-app-card.card .card-overlay .project-description p {
+  color: #d8d8d8;
+}
+eir-app-card.card .card-overlay .open-project {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+}
+eir-app-card.card .card-overlay .open-project > label {
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+.modal-page-container .add-roles {
+  border: 0;
+}
+.eir-version-dialog .listview {
+  height: 247px;
+  /* TEMP: Remove whenever */
+  border: 1px solid #bdbdbd;
+  /* Color copied from xi listview border */
+}
+.eir-version-dialog .listview i {
+  float: right;
+  font-weight: normal;
+  font-style: italic;
+}
+.eir-url-value-dialog {
+  max-height: 300px;
+}
+.eir-url-value-dialog .url-datagrid {
+  padding: 0 20px;
+}
+.eir-url-value-dialog .url-datagrid table.datagrid {
+  width: inherit;
+}
+eir-feature-catalog .list-container .list-item {
+  padding: 1rem 0 1rem 0;
+}
+eir-administration .custom-fixed {
+  background-color: #f0f0f0;
+}
+eir-administration .custom-fixed .main {
+  display: inline-block;
+  width: calc(100% - 380px);
+  background-color: #f0f0f0;
+  border-right: 0;
+}
+@media screen and (max-width: 1280px) {
+  eir-administration .custom-fixed .main {
+    max-width: 1000px;
+  }
+}
+eir-administration .main {
+  height: calc(100% - 15px);
+  overflow: auto;
+  background-color: #f0f0f0;
+}
+eir-administration .main .content {
+  margin: 20px 60px 0 60px;
+}
+eir-administration .main .content .sort-container {
+  text-align: right;
+}
+eir-administration eir-licenses-button {
+  position: absolute;
+  bottom: 0;
+}
+
+
+/*# sourceMappingURL=runtime.css.map*/

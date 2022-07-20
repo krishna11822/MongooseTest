@@ -1,0 +1,9 @@
+IF EXISTS (SELECT 1 FROM SYS.TABLES WHERE NAME = 'ProductPatchItems')
+DROP TABLE [dbo].[ProductPatchItems]
+GO
+
+IF EXISTS (SELECT 1 FROM SYS.TABLES WHERE NAME = 'ProductSPItems')
+DROP TABLE [dbo].[ProductSPItems]
+GO
+
+

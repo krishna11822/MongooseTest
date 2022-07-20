@@ -1,0 +1,10 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF OBJECT_ID('dbo.CopySitesNotes1vSp') IS NOT NULL
+DROP PROCEDURE [dbo].[CopySitesNotes1vSp]
+GO
+IF OBJECT_ID('dbo.CopySitesNotes1xSp') IS NOT NULL
+DROP PROCEDURE [dbo].[CopySitesNotes1xSp]
+GO

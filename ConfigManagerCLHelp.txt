@@ -1,0 +1,388 @@
+Basic Usage:    ConfigManager -U:[Utility] -[argument name]:[argumant value] --[flag]
+Batch Usage:    ConfigManager -BATCH:"-U:[Utility] -[argument name]:[argumant value] -U:[Utility] -[argument name]:[argumant value]" --[flag]
+
+For New Configuration:
+
+ConfigManager 
+For Configuration
+   -U:CONFIG 
+   -mode:                  new/edit
+   -name:                  Configuration name
+   -application:           Application Name (optional)
+   -application_dbsource:  Application Datasource (database server)
+   -application_dbname:    Application Database Name
+   -application_userid:    Application Database user
+   -application_password:  Application Database password
+   -application_miscinfo:  Application Database Misc. Connect Info
+
+   -site:                  Site Name (optional)
+   -idoecpartialtrust:     1 (optional)
+   -smpartialtrust:        1 (optional)
+   -sourccontrolenabled:   1 (optional)
+   -wcpartialtrust:        1 (optional)
+   -developmentlocation:   Location Name (optional)
+   -dtc:                   0 (optional)
+   -generatexmlenabled:    0 (optional)
+   -encryptionkey:         key (optional)
+   -maxloadresponse:       LoadCollection response size limit in bytes (integer or "reset")
+
+   -forms_dbsource:        Forms Datasource (database server)
+   -forms_dbname:          Forms Database Name
+   -forms_userid:          Forms Database user
+   -forms_password:        Forms Database password
+   -forms_miscinfo:        Forms Database Misc. Connect Info
+
+   -template_dbname:       Template Database Name (optional)
+   
+   -master_dbsource:       Forms Datasource (database server)
+   -master_dbname:         Forms Database Name
+   -master_userid:         Forms Database user
+   -master_password:       Forms Database password
+   -master_miscinfo:       Forms Database Misc. Connect Info
+
+   -master_template_dbname: Template Database Name (optional)
+
+   -archive_dbsource:      Forms Datasource (database server)
+   -archive_dbname:        Forms Database Name
+   -archive_userid:        Forms Database user
+   -archive_password:      Forms Database password
+   -archive_miscinfo:      Forms Database Misc. Connect Info
+
+   -archive_template_dbname: Template Database Name (optional)
+
+   -objects_dbsource:   IDOMetadata Datasource (database server) 
+           (optional)
+   -objects_dbname:     IDOMetadata Database Name
+   -objects_userid:     IDOMetadata Database user (optional)
+   -objects_password:   IDOMetadata Database password (optional)
+   -objects_miscinfo:   IDOMetadata Database Misc. Connect Info
+
+   -customtitle:        Custom Title (optional)
+   -customlogo:         Custom Logo (optional)
+   -customurl:          Custom Logo URL (optional)
+   -ishideconfig:       0 (optional) 
+
+   -version:               Version attribute added to "More Settings..." (optional)
+   -key:                   Key name in key:value attribute of "More Settings...". Key is case sensitive. (optional)
+   -value:                 Value associated with -key in key:value attribute. (optional)
+
+For Configuration Delete
+   -U:CONFIG 
+   -mode:         delete
+   -name:         Configuration name
+
+For Configuration Copy:
+   -U:CONFIG
+   -mode:         copy
+   -source:       Existing Configuration name
+   -target:       New Configuration name
+
+For Configuration Batch Edit:
+   -U:CONFIG
+   -mode:                  batchedit
+   -application_dbsource:  Match Configuration with app database server name
+   -application_dbname:    Match Configuration with app database name
+   (use all additional arguments listed for CONFIG "edit" mode with the exception of "-name")
+
+For Application
+   -U:APP 
+   -mode:                           new/edit
+   -name:                           Application ID
+   -application_name:               Application name (optional)
+   -application_path:               Relative WebServer URL (optional)
+   -helpserverpath:                 Help Server URL (optional)
+   -copyright:                      Copyright (optional)
+   -version:                        Version (optional)
+   -companyname:                    Company name (optional)
+   -subfolder:                      Help subfolder (optional)
+   -helpstartpage:                  Help Start Page (optional)
+   -usehtmlhelp:                    1 to Use Html Help (optional)
+   -splashfilename                  Splash Image File (optional)
+   -vbfilename:                     VB Image File (optional)
+   -appiconfile:                    Application Icon File (optional)
+   -deleteexistingprompt:           Delete Existing Prompt (optional)
+   -deletenewprompt:                Delete New Prompt (optional)
+   -objectsmenuname:                Objects Menu Name (optional)
+   -helpmenutextforcontents:        Help Menu Text for Contents and Index (optional)
+   -horizontalcomponentspacing:     Horizontal Component Spacing (optional)
+   -verticalcomponentspacing:       Vertical Component Spacing (optional)
+   -primarycachedefault:            1 for Primary Collection's Objects Menu Name is the Current Form Caption (optional)
+   -rightjustifynewlabel:           1 for Right Justify New Labels (optional)
+   -securitycollectionsetting:      1 for Security Collection Settings
+                                    Only Affect Primary (optional)
+   -wallpaperfilename:              Wallpaper Image File (optional)
+   -additionalaboutmessage:         Additional About Message (optional)
+   -wallpaperdisplayoption:         Wallpaper Display Style (optional)
+   -validatorerrorindicator:        1 for Display validation error indicators (optional)
+   -diableinvalidvalueprompt:       1 for Disable prompt to fix invalid value (optional)
+   -theme:                          Default Theme (optional)
+   -tokenauthenticator:             1 for Token Authentication Flag (optional)
+   -tokenauthenticatorserviceurl:   Token Authentication Service URL (optional)
+   -cloudreportserver:              1 for Cloud Report Server Flag (optional)
+   -reportservername:               Report File Server Name (optional)
+   -reportserverlogicalfolder:      Report File Server Logical Folder Name (optional)
+   -authservicename:                Service to Service Authentication Mongoose Core Service Name (optional)
+   -maxloadresponse:                LoadCollection response size limit in bytes (integer or "reset")
+
+   -cvmd_enable:                    1 to enable Central Vendor Metadata Database
+   -cvmd_dbsource:                  CVMD Datasource (database server)
+   -cvmd_dbname:                    CVMD Database Name
+   -cvmd_userid:                    CVMD Database user
+   -cvmd_password:                  CVMD Database password
+   -cvmd_miscinfo:                  CVMD Database Misc. Connect Info
+
+For Application Delete
+   -U:APP 
+   -mode:         delete
+   -name:         Application ID
+
+For Application Copy:
+   -U:APP
+   -mode:         copy
+   -source:       Existing Application ID
+   -target:       New Application ID
+   
+For Web Server
+   -U:WS 
+   -mode:         new/edit
+   -name:         Server name
+   -root_url:     Server URL (optional in edit)
+   -disabled      1 (optional)
+
+For Web Server Delete
+   -U:WS 
+   -mode:         delete
+   -name:         Web Server name
+
+For Web Server Copy:
+   -U:WS
+   -mode:         copy
+   -source:       Existing Web Server name
+   -target:       New Web Server name
+
+For Setting Object DB Specification
+   -U:SODS 
+   -configuration:   Configuration name
+   -dbsource:        IDOMetadata Datasource (database server)
+   -dbname:          IDOMetadata Database Name
+   -userid:          IDOMetadata Database user (optional)
+   -password:        IDOMetadata Database password (optional)
+   -miscinfo:        IDOMetadata Database Misc. Connect Info
+
+For Creating WinStudio User
+   -U:CU 
+   -configuration:   Configuration name
+   -userid:          Mongoose user
+   -password:        Mongoose Password (optional)
+   -workstationid:   Mongoose WorkstationID (optional)
+
+For Clearing Cache:
+   -U:CACHE
+   -a:               All Configuration Groups
+   -g:               Configuration Group
+   -c:               Configuration Name
+   -IDORUNTIMEHOST   Flag to clear IDO Runtime on Local Machine
+   -FARM             Unload IDO cache on all farm servers (Cloud only)
+   (optional)
+   -RELOADCONFIGLIST:   Flag to signal services to reload service config manager data.
+
+For Health Check:
+   -U:HEALTH
+   -service: [EVENT|IBS|IDO|REPL|REPLQUEUE|TASKMAN|LOG|AWSINTERFACE|CONFIGS|ROBIN]   Infor Service
+   -json     Generate JSON output (optional)
+
+   Status   
+   00 : Active
+   01 : NotInstalled
+   02 : NotRunning
+   03 : NotResponding   
+   04 : CheckFailure
+   05 : Undefined
+
+For IIS Health Check:
+   -U:IIS
+   -server: [name]   Server name of IDORequestService website
+   -json             Generate JSON output (optional)
+
+   Status   
+   00 : Active
+   01 : NotInstalled
+   02 : NotRunning
+   03 : NotResponding   
+   04 : CheckFailure
+   05 : Undefined
+
+For Publish Form:
+   -U:PUB
+   -g:         Configuration Group
+   -c:         Configuration Name
+   
+For Group Configuration Edit/New:
+   -U:GROUP
+   -mode:               new/edit
+   -name:               Configuration Group
+   -pendoguidesapikey:  PendoGuidesAPIKey (optional)
+   -ssorealm:           SSO Realm (optional)
+   -addconfigs:         Configuration name separated by comma ','
+   -deleteconfigs:      Configuration name separated by comma ','
+
+For Group Configuration Copy:
+   -U:GROUP
+   -mode:         copy
+   -source:       Existing Configuration Group
+   -target:       New Configuration Group
+   
+For Group Configuration Delete:
+   -U:GROUP
+   -mode:         delete
+   -name:         Existing Configuration Group
+   
+For Service Configuration General
+   -U:SCM
+   -service:GEN/GENERAL
+   -defaultconfig:   Existing Configuration Name
+   -configserverurl: Configuration Service URL
+
+For Service Configuration Event
+   -U:SCM
+   -service:EVENT
+   -mode:                   new/edit/delete
+   -config:                 Configuration Name
+   -sleep:                  integer value (optional)
+   -maxthreads:             integer value (optional)
+   -purgeeventdata:         true/false to indicate whether to purge or not. (Optional)
+   -purgeintervaleventdata: Integer value in hours (optional)
+   -purgedaysoldeventdata:  Integer value in days (optional)
+
+
+For Service Configuration Event ( CLI to set/reset/change values of purge triggers )
+   -U:SCM
+   -service:SEPT/SETEVENTPURGETRIGGERS
+   -config:                 Configuration Name
+   -purgeeventdata:         true/false to indicate whether to purge or not. (Optional)
+   -purgeintervaleventdata: Integer value in hours (optional)
+   -purgedaysoldeventdata:  Integer value in days (optional)
+   
+For Service Configuration TaskMan
+   -U:SCM
+   -service:TASKMANALL
+   -maxconfigconcurrenttasks:  Maximum Concurrent Tasks per Configuration (integer or "reset")
+   -maxreporttasks:            Maximum Concurrent Report Tasks (integer or "reset")
+
+For Service Configuration TaskMan Configurations
+   -U:SCM
+   -service:TASKMAN
+   -mode:        new/edit/delete
+   -config:      Configuration Name
+   -dsn:         DSN ( optional)
+
+For Service Configuration Inbound BUS
+   -U:SCM
+   -service:IBS
+   -defaultconfig:   Existing Configuration Name
+   
+For Service Configuration Replication
+   -U:SCM
+   -service:REPL/REPLICATION
+   -config:             Existing Configuration Name
+   -queue:              The name of the queue.
+   -master:             true/false to indicate whether or not the config is to be considered a master site on an intranet. 
+                        Only one config can do this (Optional)
+   -sleep:              integer value (optional) - Polling Interval (in seconds)
+   -mode:               new/edit/delete
+   -dfq:                true/false to indicate whether a queue is to be used as the default.
+                        Only one queue server can be the default (optional)
+   -repldir:            default/path of physical location (optional) 
+                        pass no argument or default to set configuration service path
+   -dmd:                default/path of physical location (optional) 
+                        pass no argument or default to set configuration service path
+   -rqd:                default/path of physical location (optional) 
+                        pass no argument or default to set configuration service path
+   -delay:              integer value (optional) - Retry Delay
+   -msgeditor:          string value (optional) - Messeage Editor
+   -notificationtype:   None/Event/E-mail (optional)
+   -notificationemail:  email address (optional). Send when notificationtype is E-mail
+   -notificationevent:  event name (optional). Send when notificationtype is Event
+   -notificationsender: email address (optional). Sender's email address
+            
+For Site Coordinator Configuration
+   -U:SCC   
+   -mode:   new/edit/delete
+   -config: Existing Configuration Name   
+
+For CommonSettings
+   -U:CS	A key/value pair. 
+   -mode:	new|edit|delete a key
+   -key:	This is a specific key (e.g. FarmUIMaxRecordCap/FarmReportMaxRecordCap). Key is case-sensitive
+   -value:	This is a value for the key (e.g. 200)
+   
+
+For General Configuration
+   -U:GEN   
+   -type:                        base or service ( optional ). default is base
+   -selfrefreshpollinginterval:  Self Refresh Polling Interval in Seconds (optional)
+   -refreshtraceflag:            Refresh Trace Flag ( optional ). 1 for on 0 for off.
+                                 Set this to collecet refresh trace as LogMessageTypes.General
+
+For Security Tokens ( To register the service in Infor Service to Service Authentication and store in Mongoose Configuration by passing addtoapp )
+   -U:AS/AUTHSERV    ( Use -U:AS or -U:AUTHSERV )
+   -service:         S2S 
+   -client :         Client Type ( mongoose_core )
+   -apigatewayid:    Client Registration API Gateway ID ( example ‘lwsemccup8’). Use apigatewayid or apigatewayurl.
+   -apigatewayurl:   Client Registration API Gateway URL ( example: https://lwsemccup8.execute-api.us-east-1.amazonaws.com )
+   -serviceendpoint: Client Registration API Service Path ( canonical path /test/as/v1/api/clients/)
+   -addtoapp:        Application Name (optional). If specified, the secrets will be saved in configuration for this application.
+   -servicename:     Optional ( if specified, this will be used as service name to save in configuration instead of client )
+   -trace            Optional flag ( to check internal values)
+   -overwrite        Optional flag ( pass to overwrite existing service name )
+
+For Security Tokens ( To register the service in Infor Service to Service Authentication 
+                      and store the generated JSON in a file )
+   -U:AS/AUTHSERV    ( Use -U:AS or -U:AUTHSERV )
+   -service:         S2SJSONTOFILE 
+   -client :         Client Type ( mongoose_core )
+   -apigatewayid:    Client Registration API Gateway ID ( example ‘lwsemccup8’). Use apigatewayid or apigatewayurl.
+   -apigatewayurl:   Client Registration API Gateway URL ( example: https://lwsemccup8.execute-api.us-east-1.amazonaws.com )
+   -serviceendpoint: Client Registration API Service Path ( canonical path /test/as/v1/api/clients/)
+   -filetostore:     Name of the file name with path to store generated JSON Keys
+   -trace            Optional flag ( to check internal values )
+
+For Security Tokens ( To add/renew/get/delete OAuth tokens for ION CE service access and store in Mongoose Configuration by passing addtoapp )
+   -U:AS/AUTHSERV    ( Use -U:AS or -U:AUTHSERV )
+   -service:         IONCE
+   -type:            Optional ( RequestResponse, Event, DryRun etc. Default is RequestResponse )
+   -functionname:    Lambda function (ionce-provision-oauth-token-ionce-app-integ-71int )
+   -servicetype:     Service Type is a string ( datacatalog )
+   -action:          Action is either "add", "renew", "delete", or "get"
+   -logicalid:       Logical id
+   -appfarmid:       The application farm id ( Optional )
+   -logtype:         Optional (Set to Tail to include the execution log in the response )
+   -uses             Comma (,) separated use (reader, admin, user, content-provisioner )
+   -addtoapp         Optional ( Application Name. If specified, the secrets will be save in configuration for the application. 
+                     This will only work for add and renew and type ‘RequestResponse’)
+   -servicename:     Optional ( if specified, this will be used as service name to save in configuration instead of servicetype )
+
+For Security Tokens ( To add/renew/get/delete OAuth tokens for ION CE service access and store the generated JSON in a file )
+   -U:AS/AUTHSERV    ( Use -U:AS or -U:AUTHSERV )
+   -service:         IONCEJSONTOFILE
+   -type:            Optional ( RequestResponse, Event, DryRun etc. Default is RequestResponse )
+   -functionname:    Lambda function (ionce-provision-oauth-token-ionce-app-integ-71int )
+   -servicetype:     Service Type is a string ( datacatalog )
+   -action:          Action is either "add", "renew", "delete", or "get"
+   -logicalid:       Logical id
+   -appfarmid:       The application farm id ( Optional )
+   -logtype:         Optional (Set to Tail to include the execution log in the response )
+   -uses             Comma (,) separated use (reader, admin, user, content-provisioner )
+   -filetostore:     Name of the file name with path to store generated JSON Keys
+
+For Security Tokens ( To add/edit/delete OAuth tokens in Mongoose Configs for any application )
+   -U:AS/AUTHSERV    ( Use -U:AS or -U:AUTHSERV )
+   -service:         AUTHTOKEN
+   -mode:            new/edit/delete
+   -app:             Application Name
+   -type:            I, S, O ( I = ION CE Connector, S = Service to Service Authentication, O = OAuth Credentials  )
+   -servicename:     Service Name ( datacatalog )
+   -logicalid:       Logical ID ( required for IONCE)
+   -key:             Consumer Key
+   -secret:          Consumer Secret
+   -additionalprops  Optional ( any other properties to store )

@@ -1,0 +1,7 @@
+IF NOT EXISTS ( SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'ABRuntimeApps'
+AND COLUMN_NAME = 'UrlVariables' )
+BEGIN
+       ALTER TABLE ABRuntimeApps
+       ADD UrlVariables [dbo].[JSONStringType] NULL
+END

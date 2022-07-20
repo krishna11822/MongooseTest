@@ -1,0 +1,1341 @@
+"Name"     = 'Mongoose Event Action Parameters'
+"Author"   = 'Infor'
+"Version"  = '2019.09'
+"About"    = 'EventAction.Parameters or EventTrigger.Condition, including Expressions used in Event Variables/Parameters/Conditions'
+
+! ***************************************************************
+! *                                                             *
+! *                           NOTICE                            *
+! *                                                             *
+! *   THIS SOFTWARE IS THE PROPERTY OF AND CONTAINS             *
+! *   CONFIDENTIAL INFORMATION OF INFOR AND/OR ITS AFFILIATES   *
+! *   OR SUBSIDIARIES AND SHALL NOT BE DISCLOSED WITHOUT PRIOR  *
+! *   WRITTEN PERMISSION. LICENSED CUSTOMERS MAY COPY AND       *
+! *   ADAPT THIS SOFTWARE FOR THEIR OWN USE IN ACCORDANCE WITH  *
+! *   THE TERMS OF THEIR SOFTWARE LICENSE AGREEMENT.            *
+! *   ALL OTHER RIGHTS RESERVED.                                *
+! *                                                             *
+! *   (c) COPYRIGHT 2019 INFOR.  ALL RIGHTS RESERVED.           *
+! *   THE WORD AND DESIGN MARKS SET FORTH HEREIN ARE            *
+! *   TRADEMARKS AND/OR REGISTERED TRADEMARKS OF INFOR          *
+! *   AND/OR ITS AFFILIATES AND SUBSIDIARIES. ALL RIGHTS        *
+! *   RESERVED.  ALL OTHER TRADEMARKS LISTED HEREIN ARE         *
+! *   THE PROPERTY OF THEIR RESPECTIVE OWNERS.                  *
+! *                                                             *
+! ***************************************************************
+
+! ------------------------------------------------- Restrictions
+
+! Restrictions with Expressions in this grammar include:
+!
+! 1.  Superfluous parentheses are usually not allowed.
+!        BAD:  (V(this)=1 and 2=V(that)) and 1=(2)
+!        GOOD: V(this)=1 and 2=V(that) and 1=2
+!        BUT:  2>V(x) or (V(this)=V(that))
+!
+! 2.  Operation chains containing a mix of typed & typeless arguments
+!     must begin with a typed value.
+!        BAD:  '12'=V(a)+'B'+V(c)
+!        GOOD: '12'=''+V(a)+'B'+V(c)  (because string concatenation is not commutative)
+!          OR: '12'=CAST(V(a) AS STRING)+'B'+V(c)
+!        BAD:  12>V(b)+1+5
+!        GOOD: 12>0+V(b)+1+5
+!          OR: 12>1+V(b)+5 (because numeric addition is commutative)
+!          OR: 12>CAST(V(b) AS NUMBER)+1+5
+!
+! 4.  Keywords may not be used for Variable/Parameter/Constant names.
+!        BAD:  y = 5    (because y is an abbreviation for year in the DATEPART()/DATEDIFF() functions.
+!        GOOD: yVar = 5
+!
+
+
+! ------------------------------------------------- Start Symbol
+
+"Start Symbol" = <Anything>
+
+<Anything>      ::= <KeywordParenList>
+                | <KeywordParenContents>
+
+                
+! ------------------------------------------------- Character Sets
+
+{ID Head}      = {Letter} + [_]
+{ID Tail}      = {Alphanumeric} + [_] + ['['] + [']'] + [.]
+
+{String Ch 1}      = {Printable} - ["] + {LF} + {CR}
+{String Ch 2}      = {Printable} - [''] + {LF} + {CR}
+
+! ------------------------------------------------- Terminals
+
+! String constants can:
+!   * be enclosed in double-quotes and contain no double-quotes, or
+!   * be enclosed in double-quotes and contain doubled-double-quotes to be interpreted as embedded double-quotes, or
+!   * be enclosed in single-quotes and contain no single-quotes, or
+!   * be enclosed in single-quotes and contain doubled-single-quotes to be interpreted as embedded single-quotes.
+
+StringLiteral   = '"'{String Ch 1}*'"' | '"'('"''"'|{String Ch 1})*'"' | ''{String Ch 2}*'' | ''(''''|{String Ch 2})*''
+
+
+! Integer constants contain no decimal point:
+
+IntegerLiteral  = {Digit}+
+
+! Real constants contain a decimal point:
+
+RealLiteral     = {Digit}+'.'{Digit}+
+
+
+! Identifiers (Variable/Constant/EventParm names) begin with a letter or underscore, and continue with 0 or more alphanumerics and/or underscores:
+
+Id    = {ID Head}{ID Tail}*
+
+
+! ------------------------------------------------- Rules
+
+
+! ============================================================================= 
+! Variable/Constant/EventParm References
+! =============================================================================
+
+<IdValue> ::= V '(' Id ')'
+         | GC '(' Id ')'
+         | GC '(' StringLiteral ')'
+         | SV '(' Id ')'
+         | SV '(' StringLiteral ')'
+         | E '(' Id ')'
+
+<FilterIdValue> ::= FV '(' Id ')'
+         | FGC '(' Id ')'
+         | FGC '(' StringLiteral ')'
+         | FSV '(' Id ')'
+         | FSV '(' StringLiteral ')'
+         | FE '(' Id ')'
+
+! ============================================================================= 
+! Expressions
+! =============================================================================
+
+! A Scalar Expression is either a Date, or something castable to a number.
+
+<Scalar Exp>  ::= <Numeric-castable Exp>
+         | <Date Exp>
+
+! A Numeric-castable Expression is either Number, String, or an unknown type.
+
+<Numeric-castable Exp>  ::= <Numeric Exp>
+         | <String Exp>
+         | <Typeless Exp>
+
+
+! A Parameter List is an ordered, comma-separated list of Scalar Expressions of any type:
+
+<Parameter List> ::= <Scalar Exp>
+         | <Scalar Exp> ',' <Parameter List>
+
+                 
+! A Scalar Tuple is a parenthesized set of one or more Scalar Expressions:
+
+<Scalar Tuple> ::= '(' <Scalar Expr Set> ')'
+
+! A Scalar Expression Set is a(n unordered) semi-colon-separated list of one or more Scalar Expressions:
+
+<Scalar Expr Set>  ::= <Scalar Exp>
+                | <Scalar Exp> ';' <Scalar Expr Set>
+
+
+! -------------------------------------------------
+! Boolean Rules
+! -------------------------------------------------
+
+! A Boolean Expression is an OR-conjunction of one or more AND-conjunctions:
+
+<Boolean Exp> ::= <And Exp>
+                | <And Exp> OR <Boolean Exp>
+
+! An And Expression is an AND-conjunction of one or more negatable predicates:
+
+<And Exp>     ::= <Not Exp>
+                | <Not Exp> AND <And Exp>
+
+
+! A Not Expression is a negatable predicate:
+
+<Not Exp>     ::= NOT <Predicate>
+                | <Predicate>
+
+
+! A Predicate is a comparison of like-typed expressions, or a call to a Boolean function, or a Boolean sub-expression enclosed in parentheses:
+
+<Predicate>    ::= <String Exp> LIKE <String Exp>
+                | <String Exp> IN   <Scalar Tuple>
+                | <String Exp> ':'  <Scalar Tuple>
+                | <String Exp> '!:' <Scalar Tuple>
+                | <String Exp> '='  <String Exp>
+                | <String Exp> '<>' <String Exp>
+                | <String Exp> '!=' <String Exp>
+                | <String Exp> '>'  <String Exp>
+                | <String Exp> '>=' <String Exp>
+                | <String Exp> '<'  <String Exp>
+                | <String Exp> '<=' <String Exp>
+                | <String Exp> LIKE <Typeless Exp>
+                | <String Exp> '='  <Typeless Exp>
+                | <String Exp> '<>' <Typeless Exp>
+                | <String Exp> '!=' <Typeless Exp>
+                | <String Exp> '>'  <Typeless Exp>
+                | <String Exp> '>=' <Typeless Exp>
+                | <String Exp> '<'  <Typeless Exp>
+                | <String Exp> '<=' <Typeless Exp>
+                | <Typeless Exp> LIKE <String Exp>
+                | <Typeless Exp> '='  <String Exp>
+                | <Typeless Exp> '<>' <String Exp>
+                | <Typeless Exp> '!=' <String Exp>
+                | <Typeless Exp> '>'  <String Exp>
+                | <Typeless Exp> '>=' <String Exp>
+                | <Typeless Exp> '<'  <String Exp>
+                | <Typeless Exp> '<=' <String Exp>
+                | <Date Exp> IN   <Scalar Tuple>
+                | <Date Exp> ':'  <Scalar Tuple>
+                | <Date Exp> '!:' <Scalar Tuple>
+                | <Date Exp> '='  <Date Exp>
+                | <Date Exp> '<>' <Date Exp>
+                | <Date Exp> '!=' <Date Exp>
+                | <Date Exp> '>'  <Date Exp>
+                | <Date Exp> '>=' <Date Exp>
+                | <Date Exp> '<'  <Date Exp>
+                | <Date Exp> '<=' <Date Exp>
+                | <Date Exp> '='  <Typeless Exp>
+                | <Date Exp> '<>' <Typeless Exp>
+                | <Date Exp> '!=' <Typeless Exp>
+                | <Date Exp> '>'  <Typeless Exp>
+                | <Date Exp> '>=' <Typeless Exp>
+                | <Date Exp> '<'  <Typeless Exp>
+                | <Date Exp> '<=' <Typeless Exp>
+                | <Typeless Exp> '='  <Date Exp>
+                | <Typeless Exp> '<>' <Date Exp>
+                | <Typeless Exp> '!=' <Date Exp>
+                | <Typeless Exp> '>'  <Date Exp>
+                | <Typeless Exp> '>=' <Date Exp>
+                | <Typeless Exp> '<'  <Date Exp>
+                | <Typeless Exp> '<=' <Date Exp>
+                | <Numeric Exp> IN   <Scalar Tuple>
+                | <Numeric Exp> ':'  <Scalar Tuple>
+                | <Numeric Exp> '!:' <Scalar Tuple>
+                | <Numeric Exp> '='  <Numeric Exp>
+                | <Numeric Exp> '<>' <Numeric Exp>
+                | <Numeric Exp> '!=' <Numeric Exp>
+                | <Numeric Exp> '>'  <Numeric Exp>
+                | <Numeric Exp> '>=' <Numeric Exp>
+                | <Numeric Exp> '<'  <Numeric Exp>
+                | <Numeric Exp> '<=' <Numeric Exp>
+                | <Numeric Exp> '='  <Typeless Exp>
+                | <Numeric Exp> '<>' <Typeless Exp>
+                | <Numeric Exp> '!=' <Typeless Exp>
+                | <Numeric Exp> '>'  <Typeless Exp>
+                | <Numeric Exp> '>=' <Typeless Exp>
+                | <Numeric Exp> '<'  <Typeless Exp>
+                | <Numeric Exp> '<=' <Typeless Exp>
+                | <Typeless Exp> '='  <Numeric Exp>
+                | <Typeless Exp> '<>' <Numeric Exp>
+                | <Typeless Exp> '!=' <Numeric Exp>
+                | <Typeless Exp> '>'  <Numeric Exp>
+                | <Typeless Exp> '>=' <Numeric Exp>
+                | <Typeless Exp> '<'  <Numeric Exp>
+                | <Typeless Exp> '<=' <Numeric Exp>
+                | <Typeless Exp> IN   <Scalar Tuple>
+                | <Typeless Exp> ':'  <Scalar Tuple>
+                | <Typeless Exp> '!:' <Scalar Tuple>
+                | <Typeless Exp> '='  <Typeless Exp>
+                | <Typeless Exp> '<>' <Typeless Exp>
+                | <Typeless Exp> '!=' <Typeless Exp>
+                | <Typeless Exp> '>'  <Typeless Exp>
+                | <Typeless Exp> '>=' <Typeless Exp>
+                | <Typeless Exp> '<'  <Typeless Exp>
+                | <Typeless Exp> '<=' <Typeless Exp>
+! ----------- Constants:
+         | TRUE
+         | FALSE
+! ----------- Event State attributes:
+         | ANYHANDLERSFAILED '(' ')'
+         | ATTACHMENTEMBEDDED '(' <Numeric-castable Exp> ')'
+         | DOCINTERNAL '(' <Numeric-castable Exp> ')'
+         | DOCMODIFIED '(' <Numeric-castable Exp> ')'
+         | DOCREADONLY '(' <Numeric-castable Exp> ')'
+! ----------- Event Handler Revision attributes:
+         | HANDLERSYNCHRONOUS '(' ')'
+         | HANDLERSUSPENDS '(' ')'
+         | HANDLERTRANSACTIONAL '(' ')'
+         | HANDLERIGNORESFAILURE '(' ')'
+! ----------- Event Action State attributes:
+         | VOTINGDISPARITY '(' <EventActionRef> ')'
+         | VOTINGTIE '(' <EventActionRef> ')'
+         | HASBEGUN '(' <EventActionRef> ')'
+         | HASFINISHED '(' <EventActionRef> ')'
+! ----------- Environment attributes:
+         | INSIDEDATABASE '(' ')'
+! ----------- Framework Event Parameters:
+         | PROPERTYAVAILABLE '(' <String Exp> ')'
+         | PROPERTYAVAILABLE '(' <Typeless Exp> ')'
+         | PROPERTYMODIFIED '(' <String Exp> ')'
+         | PROPERTYMODIFIED '(' <Typeless Exp> ')'
+! ----------- Sub-expression:
+                | '(' <Boolean Exp> ')'
+
+
+! -------------------------------------------------
+! Typeless Rules
+! -------------------------------------------------
+
+! A Typeless Expression is a concatenation or sum of elements whose type we cannot distinguish without context between String and Numeric:
+
+<Typeless Exp>  ::= <Typeless Exp> '+' <Typeless Value>
+         | <Typeless Value>
+
+
+! A Typeless Value is a variable reference, or a function call whose type we cannot determine without context, or a Typeless sub-expression enclosed in parentheses:
+
+<Typeless Value> ::= <IdValue>
+         | IF '(' <Boolean Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DBFUNCTION '(' <Parameter List> ')'
+! ----------- Framework Event Parameters:
+         | <PropertyRef>
+         | METHODPARM '(' <Numeric Exp> ')'
+         | METHODPARM '(' <Typeless Exp> ')'
+         | TASKPARM '(' <Numeric Exp> ')'
+         | TASKPARM '(' <Typeless Exp> ')'
+! ----------- Sub-expression:
+                | '(' <Typeless Exp> ')'
+
+                
+<PropertyRef> ::= PROPERTY '(' Id ',' <Numeric Exp> ',' <String Exp> ')'
+         | PROPERTY '(' Id ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | PROPERTY '(' Id ',' <Typeless Exp> ',' <String Exp> ')'
+         | PROPERTY '(' Id ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | P '(' Id ',' <Numeric Exp> ',' <String Exp> ')'
+         | P '(' Id ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | P '(' Id ',' <Typeless Exp> ',' <String Exp> ')'
+         | P '(' Id ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | PROPERTY '(' <Numeric Exp> ',' <String Exp> ')'
+         | PROPERTY '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | PROPERTY '(' <Typeless Exp> ',' <String Exp> ')'
+         | PROPERTY '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | P '(' <Numeric Exp> ',' <String Exp> ')'
+         | P '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | P '(' <Typeless Exp> ',' <String Exp> ')'
+         | P '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | PROPERTY '(' <String Exp> ')'
+         | PROPERTY '(' <Typeless Exp> ')'
+         | P '(' <String Exp> ')'
+         | P '(' <Typeless Exp> ')'
+
+
+! -------------------------------------------------
+! String Rules
+! -------------------------------------------------
+
+! A String expression is a concatenation of expressions of type String or of unknown type:
+! See Restriction 2 above.
+
+<String Exp>  ::= <String Value>
+         | <String Exp> '+' <String Value>
+         | <String Exp> '+' <Typeless Value>
+
+
+! A String value is a string literal, or a quoted variable reference, or a function call returning a string value, or a String sub-expression enclosed in parentheses:
+
+<String Value> ::= StringLiteral
+         | <FilterIdValue>
+         | IF '(' <Boolean Exp> ',' <String Exp> ',' <String Exp> ')'
+         | IF '(' <Boolean Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | IF '(' <Boolean Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+! ----------- String built-in functions:
+         | CLIENTSUBSTITUTE '(' <String Exp> ',' <String Expr List> ')'
+         | CLIENTSUBSTITUTE '(' <Typeless Exp> ',' <String Expr List> ')'
+         | ENTRY '(' <Numeric Exp> ',' <String Exp> ')'
+         | ENTRY '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | ENTRY '(' <Typeless Exp> ',' <String Exp> ')'
+         | ENTRY '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | ENTRY '(' <Numeric Exp> ',' <String Exp> ',' <String Exp> ')'
+         | ENTRY '(' <Numeric Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | ENTRY '(' <Numeric Exp> ',' <Typeless Exp> ',' <String Exp>  ')'
+         | ENTRY '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp>  ')'
+         | ENTRY '(' <Typeless Exp> ',' <String Exp> ',' <String Exp> ')'
+         | ENTRY '(' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | ENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | ENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | ENTRYNAMES '(' <String Exp> ')'
+         | ENTRYNAMES '(' <Typeless Exp> ')'
+         | ENTRYNAMES '(' <String Exp> ',' <String Exp> ')'
+         | ENTRYNAMES '(' <String Exp> ',' <Typeless Exp> ')'
+         | ENTRYNAMES '(' <Typeless Exp> ',' <String Exp> ')'
+         | ENTRYNAMES '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | ENTRYNAMES '(' <String Exp> ',' <String Exp> ',' <String Exp> ')'
+         | ENTRYNAMES '(' <String Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | ENTRYNAMES '(' <String Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | ENTRYNAMES '(' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | ENTRYNAMES '(' <Typeless Exp> ',' <String Exp> ',' <String Exp> ')'
+         | ENTRYNAMES '(' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | ENTRYNAMES '(' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | ENTRYNAMES '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <String Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <String Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <String Exp> ',' <String Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <String Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <String Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <Typeless Exp> ',' <String Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <String Exp> ',' <String Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <String Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | NAMEDENTRY '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | SUBSTITUTE '(' <String Exp> ',' <String Expr List> ')'
+         | SUBSTITUTE '(' <Typeless Exp> ',' <String Expr List> ')'
+         | SUBSTRING '(' <String Exp> ',' <Numeric Exp> ')'
+         | SUBSTRING '(' <String Exp> ',' <Typeless Exp> ')'
+         | SUBSTRING '(' <String Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | SUBSTRING '(' <String Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | SUBSTRING '(' <String Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | SUBSTRING '(' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | SUBSTRING '(' <Typeless Exp> ',' <Numeric Exp> ')'
+         | SUBSTRING '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | SUBSTRING '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | SUBSTRING '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | SUBSTRING '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | SUBSTRING '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | UPPER '(' <String Exp> ')'
+         | UPPER '(' <Typeless Exp> ')'
+         | LOWER '(' <String Exp> ')'
+         | LOWER '(' <Typeless Exp> ')'
+         | REPLACE '(' <String Exp> ',' <String Exp> ',' <String Exp> ')'
+         | REPLACE '(' <String Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | REPLACE '(' <String Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | REPLACE '(' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | REPLACE '(' <Typeless Exp> ',' <String Exp> ',' <String Exp> ')'
+         | REPLACE '(' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ')'
+         | REPLACE '(' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ')'
+         | REPLACE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+! ----------- Event State attributes:
+         | EVENTNAME '(' ')'
+         | ORIGINATOR '(' ')'
+         | CONFIGNAME '(' ')'
+         | EVENTPARMID '(' ')'
+         | EVENTSTATE '(' ')'
+         | EVENTSTATEID '(' ')'
+         | EVENTTITLE '(' ')'
+         | ATTACHMENTNAME '(' <Numeric-castable Exp> ')'
+         | ATTACHMENTLIST '(' ')'
+         | DOCDESC '(' <Numeric-castable Exp> ')'
+         | DOCEXT '(' <Numeric-castable Exp> ')'
+         | DOCMEDIATYPE '(' <Numeric-castable Exp> ')'
+         | DOCNAME '(' <Numeric-castable Exp> ')'
+         | DOCTYPE '(' <Numeric-castable Exp> ')'
+! ----------- Event Handler Revision attributes:
+         | HANDLERACCESSAS '(' ')'
+! ----------- Event Action State attributes:
+         | ACTIONTYPENAME '(' ')'
+         | VOTINGRESULT '(' <EventActionRef> ')'
+         | NONRESPONDERLIST '(' <EventActionRef> ')'
+         | RECIPIENTLIST '(' <EventActionRef> ')'
+         | RESPONDERLIST '(' <EventActionRef> ')'
+         | RESPONDERLIST '(' <EventActionRef> ',' <String Exp> ')'
+         | RESPONDERLIST '(' <EventActionRef> ',' <Typeless Exp> ')'
+! ----------- Environment attributes:
+         | APPNAME '(' ')'
+         | COMPANYNAME '(' ')'
+         | USERNAME '(' ')'
+         | USERDESC '(' ')'
+         | WORKINGDIR '(' ')'
+         | FILECONTENTS '(' <String Exp> ')'
+         | FILECONTENTS '(' <Typeless Exp> ')'
+         | FILECONTENTS '(' <String Exp> ',' <String Exp> ',' <String Exp> ')'
+         | FILECONTENTS '(' <String Exp> ',' <String Exp> ',' <Typeless Exp> ')'     
+         | FILECONTENTS '(' <String Exp> ',' <Typeless Exp> ',' <String Exp> ')'     
+         | FILECONTENTS '(' <String Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'   
+         | FILECONTENTS '(' <Typeless Exp> ',' <String Exp> ',' <String Exp> ')'     
+         | FILECONTENTS '(' <Typeless Exp> ',' <String Exp> ',' <Typeless Exp> ')'   
+         | FILECONTENTS '(' <Typeless Exp> ',' <Typeless Exp> ',' <String Exp> ')'   
+         | FILECONTENTS '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')' 
+! Not sure what we can do with this except maybe pass to a database routine, so will make it a String for now:
+         | NEWGUID '(' ')'
+! ----------- Framework Event Parameters:
+         | IDO '(' ')'
+         | INITIATOR '(' ')'
+         | FILTERSTRING '(' ')'
+         | LOADFLAGS '(' ')'
+         | PROPERTYNAMES '(' ')'
+         | POSTQUERYACTIONS '(' ')'
+         | CUSTOMINSERT '(' ')'
+         | CUSTOMUPDATE '(' ')'
+         | CUSTOMDELETE '(' ')'
+         | VARIABLENAME '(' ')'
+         | VARIABLEVALUE '(' ')'
+         | FILTERPROPERTY '(' Id ',' <Numeric Exp> ',' <String Exp> ')'
+         | FILTERPROPERTY '(' Id ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | FILTERPROPERTY '(' Id ',' <Typeless Exp> ',' <String Exp> ')'
+         | FILTERPROPERTY '(' Id ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | FP '(' Id ',' <Numeric Exp> ',' <String Exp> ')'
+         | FP '(' Id ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | FP '(' Id ',' <Typeless Exp> ',' <String Exp> ')'
+         | FP '(' Id ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | FILTERPROPERTY '(' <Numeric Exp> ',' <String Exp> ')'
+         | FILTERPROPERTY '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | FILTERPROPERTY '(' <Typeless Exp> ',' <String Exp> ')'
+         | FILTERPROPERTY '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | FP '(' <Numeric Exp> ',' <String Exp> ')'
+         | FP '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | FP '(' <Typeless Exp> ',' <String Exp> ')'
+         | FP '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | FILTERPROPERTY '(' <String Exp> ')'
+         | FILTERPROPERTY '(' <Typeless Exp> ')'
+         | FP '(' <String Exp> ')'
+         | FP '(' <Typeless Exp> ')'
+         | METHOD '(' ')'
+         | FILTERMETHODPARM '(' <Numeric Exp> ')'
+         | FILTERMETHODPARM '(' <Typeless Exp> ')'
+         | BODNOUN '(' ')'
+         | BODVERB '(' ')'
+         | BODXML '(' ')'
+         | XML '(' Id ',' <Scalar Exp> ',' <Scalar Exp> ',' <Scalar Exp> ',' <Scalar Exp> ',' <Scalar Exp> ')'
+         | XML '(' Id ',' <Scalar Exp> ',' <Scalar Exp> ')'
+         | XML '(' Id ',' <Scalar Exp> ')'
+         | SUBXML '(' <Scalar Exp> ',' <Scalar Exp> ',' <Scalar Exp> ')'
+         | SUBXML '(' <Scalar Exp> ',' <Scalar Exp> ')'
+         | TASKNAME '(' ')'
+         | TASKPARMLIST '(' ')'
+         | FILTERTASKPARM '(' <Numeric Exp> ')'
+         | FILTERTASKPARM '(' <Typeless Exp> ')'
+         | TASKSTATUS '(' ')'
+! ----------- Conversion functions:
+         | FILTER '(' <String Exp> ')'
+         | FILTER '(' <Typeless Exp> ')'
+         | CAST '(' <Scalar Exp> AS STRING ')'
+! ----------- Sub-expression:
+         | '(' <String Exp> ')'
+         | <Message Conversation>
+
+
+! A String Expression List is an ordered, comma-separated list of Scalar Expressions that we convert to Strings where necessary:
+
+<String Expr List>  ::= <Scalar Exp>
+        | <String Expr List> ',' <Scalar Exp>
+
+
+! A Message Conversation is one or more MESSAGE() calls separated by | newline/concatenation operators:
+
+<Message Conversation>  ::= <Message>
+        | <Message Conversation> '|' <Message>
+
+
+! A Message is the MESSAGE keyword surrounding a parenthesized, ordered, comma-separated list of String and/or Typeless Expressions:
+
+<Message>   ::= MESSAGE '(' <String Exp> ')'
+        | MESSAGE '(' <Typeless Exp> ')'
+        | MESSAGE '(' <String Exp> ',' <String Expr List> ')'
+        | MESSAGE '(' <Typeless Exp> ',' <String Expr List> ')'
+
+
+! -------------------------------------------------
+! Numeric Rules
+! -------------------------------------------------
+
+<Numeric Exp> ::= <Sum>
+
+
+! A Sum is a chain of sums and/or differences:
+
+<Sum>           ::= <Addend>
+                 | <Sum> '+' <Addend>
+                 | <Sum> '-' <Addend>
+         | <Sum> '+' <Typeless Value>
+         | <Sum> '-' <Typeless Value>
+
+                 
+! An Addend is a negatable expression, or a product.
+! These can be added to or subtracted from one another without parentheses surrounding each, due to the accepted Arithmetic operator precedence.
+
+<Addend>        ::= <Negate Exp>
+         | <Addend> '*' <Negate Exp> 
+                 | <Addend> '/' <Negate Exp>
+                 | <Addend> '*' <Typeless Value>
+                 | <Addend> '/' <Typeless Value>
+                 | <Typeless Value> '*' <Typeless Value> 
+                 | <Typeless Value> '/' <Typeless Value>
+
+
+! A Negatable Expression is a numeric value with or without a unary negative:
+                 
+<Negate Exp>  ::= '-' <Numeric Value>
+                | <Numeric Value>
+             | '-' <IdValue>
+
+
+! A Numeric Value is a numeric constant, or a function call returning a numeric value, or a Numeric sub-expression enclosed in parentheses:
+                 
+<Numeric Value> ::= IntegerLiteral
+                | RealLiteral
+         | IF '(' <Boolean Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | IF '(' <Boolean Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | IF '(' <Boolean Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+! ----------- Numeric built-in functions:
+         | DATEDIFF '(' <TimeInterval> ',' <Date Exp> ',' <Date Exp> ')'
+         | DATEDIFF '(' <TimeInterval> ',' <Date Exp> ',' <Typeless Exp> ')'
+         | DATEDIFF '(' <TimeInterval> ',' <Typeless Exp> ',' <Date Exp> ')'
+         | DATEDIFF '(' <TimeInterval> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATEPART '(' <TimeInterval> ',' <Date Exp> ')'
+         | DATEPART '(' <TimeInterval> ',' <Typeless Exp> ')'
+         | LEN '(' <String Exp> ')'
+         | LEN '(' <Typeless Exp> ')'
+         | INSTR '(' <String Exp> ',' <String Exp> ')'
+         | INSTR '(' <String Exp> ',' <Typeless Exp> ')'
+         | INSTR '(' <Typeless Exp> ',' <String Exp> ')'
+         | INSTR '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | CEILING '(' <Numeric Exp> ')'
+         | CEILING '(' <Typeless Exp> ')'
+         | FLOOR '(' <Numeric Exp> ')'
+         | FLOOR '(' <Typeless Exp> ')'
+         | NUMENTRIES '(' <String Exp> ')'
+         | NUMENTRIES '(' <Typeless Exp> ')'
+         | NUMENTRIES '(' <String Exp> ',' <String Exp> ')'
+         | NUMENTRIES '(' <String Exp> ',' <Typeless Exp> ')'
+         | NUMENTRIES '(' <Typeless Exp> ',' <String Exp>  ')'
+         | NUMENTRIES '(' <Typeless Exp> ',' <Typeless Exp>  ')'
+         | POWER '(' <Numeric Exp> ',' <Numeric Exp> ')'
+         | POWER '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | POWER '(' <Typeless Exp> ',' <Numeric Exp> ')'
+         | POWER '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | ROUND '(' <Numeric Exp> ',' <Numeric Exp> ')'
+         | ROUND '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | ROUND '(' <Typeless Exp> ',' <Numeric Exp> ')'
+         | ROUND '(' <Typeless Exp> ',' <Typeless Exp> ')'
+         | TRUNC '(' <Numeric Exp> ',' <Numeric Exp> ')'
+         | TRUNC '(' <Numeric Exp> ',' <Typeless Exp> ')'
+         | TRUNC '(' <Typeless Exp> ',' <Numeric Exp> ')'
+         | TRUNC '(' <Typeless Exp> ',' <Typeless Exp> ')'
+! ----------- Event State attributes:
+         | ATTACHMENTS '(' ')'
+         | ATTACHMENTSEQ '(' <Scalar Exp> ')'
+         | DOCSEQ '(' <Numeric-castable Exp> ')'
+! ----------- Event Action Revision attributes:
+         | EVENTREVISION '(' ')'
+         | HANDLERSEQ '(' ')'
+         | ACTIONSEQ '(' ')'
+! ----------- Event Action State attributes:
+         | RECIPIENTS '(' <EventActionRef> ')'
+         | RESPONDERS '(' <EventActionRef> ')'
+         | RESPONDERS '(' <EventActionRef> ',' <String Exp> ')'
+         | RESPONDERS '(' <EventActionRef> ',' <Typeless Exp> ')'
+! ----------- Framework Event Parameters:
+         | RECORDCAP '(' ')'
+         | ROWS '(' Id ')'
+         | ROWS '(' ')'
+         | METHODPARMS '(' ')'
+         | TASKPARMS '(' ')'
+         | TASKNUMBER '(' ')'
+! ----------- Conversion function:
+         | CAST '(' <Scalar Exp> AS NUMBER ')'
+! ----------- Sub-expression:
+         | '(' <Numeric Exp> ')'
+
+
+! -------------------------------------------------
+! Date Rules
+! -------------------------------------------------
+
+! A Date Expression is a Date Value (because there are no natural Arithmetic Date operators):
+
+<Date Exp>  ::= <Date Value>
+
+
+! A Date Value is a function call returning a date value, or a Date sub-expression enclosed in parentheses:
+
+<Date Value>    ::= DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Numeric Exp> ')'
+         | DATE '(' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | CURDATETIME '(' ')'
+         | DATEADD '(' <TimeInterval> ',' <Numeric Exp> ',' <Date Exp> ')'
+         | DATEADD '(' <TimeInterval> ',' <Numeric Exp> ',' <Typeless Exp> ')'
+         | DATEADD '(' <TimeInterval> ',' <Typeless Exp> ',' <Date Exp> ')'
+         | DATEADD '(' <TimeInterval> ',' <Typeless Exp> ',' <Typeless Exp> ')'
+         | BEGINDATE '(' ')'
+         | CAST '(' <Scalar Exp> AS DATE ')'
+! ----------- Sub-expression:
+                | '(' <Date Exp> ')'
+
+                 
+! ------------------------------------------------- Date Enumerations
+
+<TimeInterval>  ::= <DatePartYear>
+         | <DatePartQuarter>
+         | <DatePartMonth>
+         | <DatePartDayOfYear>
+         | <DatePartDay>
+         | <DatePartWeek>
+         | <DatePartWeekDay>
+         | <DatePartHour>
+         | <DatePartMinute>
+         | <DatePartSecond>
+         | <DatePartMillisecond>
+
+<DatePartYear> ::= year | yy | yyyy
+
+<DatePartQuarter> ::= quarter | qq | q
+
+<DatePartMonth> ::= month | mm | m
+
+<DatePartDayOfYear> ::= dayofyear | dy | y
+
+<DatePartDay> ::= day | dd | d
+
+<DatePartWeek> ::= week | wk | ww
+
+<DatePartWeekDay> ::= weekday | dw
+
+<DatePartHour> ::= hour | hh
+
+<DatePartMinute> ::= minute | mi | n
+
+<DatePartSecond> ::= second | ss | s
+
+<DatePartMillisecond> ::= millisecond | ms
+
+
+! -------------------------------------------------
+! Restricted Arguments
+! -------------------------------------------------
+
+<EventActionRef> ::= IntegerLiteral
+
+
+! ============================================================================= 
+! Keyword Paren Lists
+! =============================================================================
+
+! A Keyword Paren List is zero or more "KEYWORD(contents)" separated by whitespace:
+
+<KeywordParenList> ::= <EmptyKeywordParenList>
+            | <NonEmptyKeywordParenList>
+
+<EmptyKeywordParenList> ::=
+
+<NonEmptyKeywordParenList> ::= <KeywordParen>
+            | <NonEmptyKeywordParenList> <KeywordParen>
+
+
+! A Keyword Paren has the form "KEYWORD(contents)"
+
+! ActionTypes: UpdateCollection
+<KeywordParen> ::= ACTION '(' <SaveAction> ')'
+! ActionTypes: Attach
+        | ATTACHMENTEMBEDDED '(' <Boolean Exp> ')'
+        | ATTACHMENTNAME '(' <Scalar Exp> ')'
+        | ATTACHMENTSEQ '(' Id ')'
+! ActionTypes: Notify, Prompt, SendEmail
+        | ATTACH '(' <AttachSpec> ')'
+! ActionTypes: SendBOD
+        | BODATTRS '(' <SetNamedTargetList> ')'
+        | BODNOUN '(' <Scalar Exp> ')'
+        | BODVERB '(' <Scalar Exp> ')'
+! ActionTypes: SendBOD, SetValues
+        | BODXML '(' <Scalar Exp> ')'
+        | BODXMLNAME '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt, SendEmail
+        | BODY '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt
+        | CATEGORY '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt, SendEmail
+        | BCC '(' <Scalar Exp> ')'
+        | CC '(' <Scalar Exp> ')'
+! ActionTypes: Prompt
+        | CHOICES '(' <Scalar Exp> ')'
+! ActionTypes: UpdateCollection
+        | COLLECTION '(' Id ')'
+! ActionTypes: UpdateCollection
+        | COMMIT '(' <Boolean Exp> ')'
+! ActionTypes: Notify, Prompt, Wait, Branch, SetValues, GenerateEvent, AchieveMilestone, Finish, Fail, SendEmail
+        | CONDITION '(' <Boolean Exp> ')'
+! ActionTypes: DispatchIDORequest
+        | CONFIGNAME '(' <Scalar Exp> ')'
+! ActionTypes: LoadIDORow, LoadCollection
+        | CUSTOMLOAD '(' <Scalar Exp> ')'
+        | CUSTOMLOADPARMS '(' <Parameter List> ')'
+! ActionTypes: Audit
+        | DESC '(' <Scalar Exp> ')'
+! ActionTypes: Prompt, Wait, Branch, Goto, DiscoverFile
+        | DEST '(' <EventActionRef> ')'
+! ActionTypes: LoadCollection
+        | DISTINCT '(' <Boolean Exp> ')'
+! ActionTypes: Attach
+        | DOCACTION '(' <DocumentAction> ')'
+        | DOCBLOB '(' <PropertyRef> ')'
+        | DOCNAME '(' <Scalar Exp> ')'
+        | DOCSEQ '(' <Numeric-castable Exp> ')'
+        | DOCTYPE '(' <Scalar Exp> ')'
+        | DOCDESC '(' <Scalar Exp> ')'
+        | DOCEXT '(' <Scalar Exp> ')'
+        | DOCINTERNAL '(' <Boolean Exp> ')'
+        | DOCMEDIATYPE '(' <Scalar Exp> ')'
+        | FILENAME '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt
+        | ENTRYFORM '(' <Scalar Exp> ')'
+! ActionTypes: GenerateEvent
+        | EVENTNAME '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt, LoadIDORow, LoadCollection, DiscoverFile
+        | FILTER '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt
+        | FILTERFORM '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt:
+        | HTMLBODY '(' <Scalar Exp> ')'
+! ActionTypes: SendEmail
+        | HTMLFORMAT '(' <Boolean Exp> ')'
+! ActionTypes: LoadIDORow, LoadCollection, UpdateCollection, CallIDOMethod
+        | IDO '(' <Scalar Exp> ')'
+! ActionTypes: DispatchIDORequest, ExecuteIDORequest
+        | IDOREQUEST '(' <Scalar Exp> ')'
+! ActionTypes: AchieveMilestone, Finish
+        | IMAGE '(' <Scalar Exp> ')'
+! ActionTypes: Sleep
+        | INTERVAL '(' <Numeric-castable Exp> ')'
+! ActionTypes: Audit
+        | KEY '(' <Scalar Exp> ')'
+! ActionTypes: Attach
+        | LOGICALFOLDERNAME '(' <Scalar Exp> ')'
+! ActionTypes: CallIDOMethod, CallDatabaseMethod
+        | METHOD '(' <Scalar Exp> ')'
+! ActionTypes: Prompt
+        | MINIMUM '(' <Numeric-castable Exp> ')'
+        | MODIFIEDPAYLOADACCESS '(' <PayloadAccess> ')'
+! ActionTypes: Audit
+        | NEW '(' <Scalar Exp> ')'
+        | OLD '(' <Scalar Exp> ')'
+! ActionTypes: UpdateCollection
+        | OPTIMISTICLOCKING '(' <Boolean Exp> ')'
+! ActionTypes: LoadIDORow, LoadCollection
+        | ORDERBY '(' <Scalar Exp> ')'
+! ActionTypes: GenerateEvent, CallWebService
+        | PARMS '(' <EventParmList> ')'
+! ActionTypes: CallIDOMethod, CallDatabaseMethod
+        | PARMS '(' <MethodParmList> ')'
+! ActionTypes: DispatchIDORequest
+        | PASSWORD '(' <Scalar Exp> ')'
+! ActionTypes: ExtractXmlCollection, DiscoverFile
+        | PATH '(' <Scalar Exp> ')'
+! ActionTypes: Prompt
+        | PAYLOADACCESS '(' <PayloadAccess> ')'
+        | PREFCHOICE '(' <Scalar Exp> ')'
+! ActionTypes: LoadIDORow, LoadCollection
+        | PROPERTIES '(' <Scalar Exp> ')'
+! ActionTypes: ExtractXmlCollection
+        | PROPERTYMAP '(' <PropertyMap> ')'
+! ActionTypes: Prompt
+        | QUESTION '(' <Scalar Exp> ')'
+        | QUORUM '(' <Numeric-castable Exp> ')'
+! ActionTypes: LoadCollection
+        | RECORDCAP '(' <Numeric-castable Exp> ')'
+! ActionTypes: SendEmail
+        | REPLYTO '(' <Scalar Exp> ')'
+! ActionTypes: Finish, Fail
+        | RESULT '(' <Scalar Exp> ')'
+! ActionTypes: Wait
+        | RETEST '(' <Numeric-castable Exp> ')'
+! ActionTypes: UpdateCollection, SetValues
+        | ROW '(' <Numeric-castable Exp> ')'
+! ActionTypes: Notify, Prompt, SendEmail
+        | SAVEMESSAGE '(' <Boolean Exp> ')'
+! ActionTypes: Attach
+        | SERVERNAME '(' <Scalar Exp> ')'
+! ActionTypes: SetAttributes
+        | SET '(' <SetEventAttrList> ')'
+! ActionTypes: GenerateEvent
+        | SET '(' <SetTargetList> ')'
+! ActionTypes: LoadCollection, DispatchIDORequest, ExecuteIDORequest, TransformXML, ExtractXmlCollection
+        | SET '(' <ResultTarget> ')'
+! ActionTypes: CallWebService, LoadIDORow
+        | SET '(' <SetExprTargetList> ')'
+! ActionTypes: SetValues
+        | SETGLOBVALUES '(' <SetQuotableKnownTargetList> ')'
+        | SETMETHODPARMVALUES '(' <SetPositionalTargetList> ')'
+        | SETPARMVALUES '(' <SetKnownTargetList> ')'
+        | SETTASKPARMLIST '(' <Scalar Exp> ')'
+        | SETTASKPARMVALUES '(' <SetPositionalTargetList> ')'
+! ActionTypes: SetValues
+        | SETPARMENTRIES '(' Id ',' <SetPositionalTargetList> ')'
+        | SETPARMENTRIES '(' Id ',' <String Exp> ',' <SetPositionalTargetList> ')'
+        | SETPARMENTRIES '(' Id ',' <Typeless Exp> ',' <SetPositionalTargetList> ')'
+        | SETVARENTRIES '(' Id ',' <SetPositionalTargetList> ')'
+        | SETVARENTRIES '(' Id ',' <String Exp> ',' <SetPositionalTargetList> ')'
+        | SETVARENTRIES '(' Id ',' <Typeless Exp> ',' <SetPositionalTargetList> ')'
+        | SETPARMNAMEDENTRIES '(' Id ',' <SetNamedTargetListSimple> ')'
+        | SETPARMNAMEDENTRIES '(' Id ',' <String Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETPARMNAMEDENTRIES '(' Id ',' <Typeless Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETPARMNAMEDENTRIES '(' Id ',' <String Exp> ',' <String Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETPARMNAMEDENTRIES '(' Id ',' <String Exp> ',' <Typeless Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETPARMNAMEDENTRIES '(' Id ',' <Typeless Exp> ',' <String Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETPARMNAMEDENTRIES '(' Id ',' <Typeless Exp> ',' <Typeless Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETVARNAMEDENTRIES '(' Id ',' <SetNamedTargetListSimple> ')'
+        | SETVARNAMEDENTRIES '(' Id ',' <String Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETVARNAMEDENTRIES '(' Id ',' <Typeless Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETVARNAMEDENTRIES '(' Id ',' <String Exp> ',' <String Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETVARNAMEDENTRIES '(' Id ',' <String Exp> ',' <Typeless Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETVARNAMEDENTRIES '(' Id ',' <Typeless Exp> ',' <String Exp> ',' <SetNamedTargetListSimple> ')'
+        | SETVARNAMEDENTRIES '(' Id ',' <Typeless Exp> ',' <Typeless Exp> ',' <SetNamedTargetListSimple> ')'
+! ActionTypes: UpdateCollection, SetValues
+        | SETPROPVALUES '(' <SetNamedTargetList> ')'
+! ActionTypes: SetValues
+        | SETVARVALUES '(' <SetKnownTargetList> ')'
+! ActionTypes: SetValues
+        | SETVARVALUESFROMBOD '(' <SetKnownTargetList> ')'
+        | SETPARMVALUESFROMBOD '(' <SetKnownTargetList> ')'
+        | SETGLOBVALUESFROMBOD '(' <SetQuotableKnownTargetList> ')'
+! ActionTypes: SetValues
+        | SETVALUE '(' <Scalar Exp> ')'
+! ActionTypes: AchieveMilestone, Finish
+        | STATE '(' <Scalar Exp> ')'
+! ActionTypes: Notify, Prompt, SendEmail
+        | SUBJECT '(' <Scalar Exp> ')'
+! ActionTypes: GenerateEvent
+        | SYNCHRONOUS '(' <Boolean Exp> ')'
+! ActionTypes: RunBackgroundTask
+        | TASKNAME '(' <Scalar Exp> ')'
+        | TASKNUMBER '(' Id ')'
+        | TASKPARMS '(' <Scalar Exp> ')'
+        | TASKSTATUS '(' <InitialTaskStatus> ')'
+! ActionTypes: ExtractXmlCollection
+        | TEMPLATE '(' StringLiteral ')'
+        | TEMPLATENAME '(' StringLiteral ')'
+        | TEMPLATEFILE '(' StringLiteral ')'
+        | TEMPLATELOGICALFOLDER '(' StringLiteral ')'
+        | TEMPLATESERVER '(' StringLiteral ')'
+! ActionTypes: Prompt, Wait, DiscoverFile
+        | TIMEOUT '(' <Numeric-castable Exp> ')'
+! ActionTypes: Notify, Prompt, SendEmail
+        | TO '(' <Scalar Exp> ')'
+! ActionTypes: GenerateEvent
+        | TRANSACTIONAL '(' <Boolean Exp> ')'
+! ActionTypes: Prompt
+        | UNMODIFIEDPAYLOADACCESS '(' <PayloadAccess> ')'
+! ActionTypes: DispatchIDORequest, CallWebService
+        | URL '(' <Scalar Exp> ')'
+! ActionTypes: DispatchIDORequest
+        | USELOCALPASSWORD '(' <Boolean Exp> ')'
+        | USERNAME '(' <Scalar Exp> ')'
+! ActionTypes: Prompt
+        | VOTINGRULE '(' <VotingRule> ')'
+        | WAITFORQUORUM '(' <Boolean Exp> ')'
+! ActionTypes: DiscoverFile
+        | WATCHSUBDIRECTORIES '(' <Boolean Exp> ')'
+! ActionTypes: TransformXML, ExtractXmlCollection
+        | XML '(' <Scalar Exp> ')'
+! ActionTypes: TransformXML
+        | XSLT '(' <Scalar Exp> ')'
+
+
+! ------------------------------------------------- Keyword Paren Contents
+
+<KeywordParenContents> ::= ADDEND '<' <Addend> '>'
+        | AND_EXP '<' <And Exp> '>'
+        | ATTACHSPEC '<' <AttachSpec> '>'
+        | BOOLEAN_EXP '<' <Boolean Exp> '>'
+        | DATE_EXP '<' <Date Exp> '>'
+        | DATE_VALUE '<' <Date Value> '>'
+        | DOCUMENTACTION '<' <DocumentAction> '>'
+        | EVENTACTIONREF '<' <EventActionRef> '>'
+        | EVENTATTRNAME '<' <EventAttrName> '>'
+        | EVENTPARM '<' <EventParm> '>'
+        | EVENTPARMLIST '<' <EventParmList> '>'
+        | FILTERIDVALUE '<' <FilterIdValue> '>'
+        | IDENTIFIER '<' Id '>'
+        | IDVALUE '<' <IdValue> '>'
+        | INITIALTASKSTATUS '<' <InitialTaskStatus> '>'
+        | MESSAGE '<' <Message> '>'
+        | MESSAGE_CONVERSATION '<' <Message Conversation> '>'
+        | METHODPARM '<' <MethodParm> '>'
+        | METHODPARMLIST '<' <MethodParmList> '>'
+        | NEGATE_EXP '<' <Negate Exp> '>'
+        | NOT_EXP '<' <Not Exp> '>'
+        | NUMERIC_EXP '<' <Numeric Exp> '>'
+        | NUMERICMINUSCASTABLE_EXP '<' <Numeric-castable Exp> '>'
+        | NUMERIC_VALUE '<' <Numeric Value> '>'
+        | PARAMETER_LIST '<' <Parameter List> '>'
+        | PAYLOADACCESS '<' <PayloadAccess> '>'
+        | PREDICATE '<' <Predicate> '>'
+        | PROPERTYMAP '<' <PropertyMap> '>'
+        | PROPERTYREF '<' <PropertyRef> '>'
+        | RESULTTARGET '<' <ResultTarget> '>'
+        | SAVEACTION '<' <SaveAction> '>'
+        | SCALAR_EXP '<' <Scalar Exp> '>'
+        | SCALAR_EXPR_SET '<' <Scalar Expr Set> '>'
+        | SCALAR_TUPLE '<' <Scalar Tuple> '>'
+        | SETEVENTATTR '<' <SetEventAttr> '>'
+        | SETEVENTATTRLIST '<' <SetEventAttrList> '>'
+        | SETEXPRTARGET '<' <SetExprTarget> '>'
+        | SETEXPRTARGETLIST '<' <SetExprTargetList> '>'
+        | SETKNOWNTARGET '<' <SetKnownTarget> '>'
+        | SETKNOWNTARGETLIST '<' <SetKnownTargetList> '>'
+        | SETQUOTABLEKNOWNTARGET '<' <SetQuotableKnownTarget> '>'
+        | SETQUOTABLEKNOWNTARGETLIST '<' <SetQuotableKnownTargetList> '>'
+        | SETNAMEDTARGET '<' <SetNamedTarget> '>'
+        | SETNAMEDTARGETLIST '<' <SetNamedTargetList> '>'
+        | SETNAMEDTARGETLISTSIMPLE '<' <SetNamedTargetListSimple> '>'
+        | SETPOSITIONALTARGET '<' <SetPositionalTarget> '>'
+        | SETPOSITIONALTARGETLIST '<' <SetPositionalTargetList> '>'
+        | SETTARGET '<' <SetTarget> '>'
+        | SETTARGETLIST '<' <SetTargetList> '>'
+        | STRING_EXP '<' <String Exp> '>'
+        | STRING_EXPR_LIST '<' <String Expr List> '>'
+        | STRINGLIT '<' StringLiteral '>'
+        | SUM '<' <Sum> '>'
+        | TARGETID '<' <TargetId> '>'
+        | TIMEINTERVAL '<' <TimeInterval> '>'
+        | TYPELESS_EXP '<' <Typeless Exp> '>'
+        | TYPELESS_VALUE '<' <Typeless Value> '>'
+        | VOTINGRULE '<' <VotingRule> '>'
+
+
+! The contents of the PARMS() of a CallIDOMethod/CallDatabaseMethod Action
+! consist of a comma-separated list of "RV(var)" and/or "RE(parm)" and/or "expr":
+
+<MethodParmList> ::= <MethodParm>
+        | <MethodParmList> ',' <MethodParm>
+
+<MethodParm> ::= <Scalar Exp>
+        | <TargetId>
+
+
+! The contents of the PARMS() of a GenerateEvent/CallWebService Action consist of a comma-separated list of "name=expr":
+
+<EventParmList> ::= <EventParm>
+        | <EventParmList> ',' <EventParm>
+
+<EventParm> ::= Id '=' <Scalar Exp>
+        | <String Exp> '=' <Scalar Exp>
+
+
+! The contents of the SET() of a GenerateEvent Action consist of a comma-separated list of "RV(var)=name" and/or "RE(parm)=name":
+
+<SetTargetList> ::= <SetTarget>
+            | <SetTargetList> ',' <SetTarget>
+
+<SetTarget> ::= <TargetId> '=' Id
+
+<TargetId> ::= RV '(' Id ')'
+        | RE '(' Id ')'
+
+
+! The contents of the SET() of a LoadCollection Action, and of a DispatchIDORequest / ExecuteIDORequest / TransformXML / ExtractXmlCollection,
+! consist of "R(resultset)=RESULT", and "RV(var)=RESULT" or "RE(parm)=RESULT", respectively:
+
+! The following definition causes 1 Shift-Reduce Warning (with SET usage above):
+!<ResultTargetId> ::= R '(' Id ')'
+!       | <TargetId>
+
+<ResultTarget> ::= R '(' Id ')' '=' RESULT
+        | <TargetId> '=' RESULT
+
+
+! The contents of SETGLOBVALUES() of a SetValues Action,
+! consist of a comma-separated list of "sessvar=expr" or "'sess-var'=expr":
+
+<SetQuotableKnownTargetList> ::= <SetQuotableKnownTarget>
+            | <SetQuotableKnownTargetList> ',' <SetQuotableKnownTarget>
+
+<SetQuotableKnownTarget> ::= StringLiteral '=' <Scalar Exp>
+            | <SetKnownTarget>
+
+
+! The contents of SETVARVALUES() and SETPARMVALUES() of a SetValues Action,
+! consist of a comma-separated list of "var=expr" and "parm=expr" respectively:
+
+<SetKnownTargetList> ::= <SetKnownTarget>
+            | <SetKnownTargetList> ',' <SetKnownTarget>
+
+<SetKnownTarget> ::= Id '=' <Scalar Exp>
+
+
+! The contents of the SETPROPVALUES() of an UpdateCollection or SetValues Action
+! consists of a comma-separated list of "stringexpr=expr" or "stringexpr=DOCBLOB(expr)":
+
+<SetNamedTargetList> ::= <SetNamedTarget>
+            | <SetNamedTargetList> ',' <SetNamedTarget>
+
+<SetNamedTarget> ::= <String Exp> '=' <Scalar Exp>
+            | <String Exp> '=' DOCBLOB '(' <Numeric-castable Exp> ')'
+
+! The final portion of SETPARMNAMEDENTRIES() or SETVARNAMEDENTRIES() of a SetValues Action
+! consists of a comma-separated list of "stringexpr=expr":
+
+<SetNamedTargetListSimple> ::= <SetNamedTargetSimple>
+            | <SetNamedTargetListSimple> ',' <SetNamedTargetSimple>
+
+<SetNamedTargetSimple> ::= <String Exp> '=' <Scalar Exp>
+
+! The contents of SETMETHODPARMVALUES() or SETTASKPARMVALUES(), or the final portion of SETPARMENTRIES() or SETVARENTRIES(), of a Set Values Action
+! consists of a comma-separated list of "#=expr":
+
+<SetPositionalTargetList> ::= <SetPositionalTarget>
+            | <SetPositionalTargetList> ',' <SetPositionalTarget>
+
+<SetPositionalTarget> ::= <Numeric Exp> '=' <Scalar Exp>
+
+
+! The contents of the SET() of a CallWebService/LoadIDORow Action consist of a comma-separated list of "RV(var)=expr" and/or "RE(parm)=expr":
+
+<SetExprTargetList> ::= <SetExprTarget>
+            | <SetExprTargetList> ',' <SetExprTarget>
+
+<SetExprTarget> ::= <TargetId> '=' <Scalar Exp>
+
+
+! The contents of the PROPERTYMAP() of an ExtractXmlCollection Action
+! consists of a comma-separated list of "stringexpr=stringexpr" or "stringexpr":
+
+<PropertyMap> ::= <PropertyMapping>
+            | <PropertyMap> ',' <PropertyMapping>
+
+<PropertyMapping> ::= <String Exp> '=' <String Exp>
+            | <String Exp> 
+
+! The contents of the SET() of a SetAttributes Action consist of a comma-separated list of "attr=expr":
+
+<SetEventAttrList> ::= <SetEventAttr>
+            | <SetEventAttrList> ',' <SetEventAttr>
+
+<SetEventAttr> ::= <EventAttrName> '=' <Scalar Exp>
+
+! Currently we have only one Event Attribute!
+
+<EventAttrName> ::= EVENTTITLE
+
+
+! ------------------------------------------------- Enumerations
+
+<SaveAction> ::= <SaveActionInsert>
+        | <SaveActionUpdate>
+        | <SaveActionDelete>
+
+<SaveActionInsert> ::= INSERT
+
+<SaveActionUpdate> ::= UPDATE
+
+<SaveActionDelete> ::= DELETE
+
+
+<VotingRule> ::= <VotingRuleMajority>
+        | <VotingRulePlurality>
+        | <VotingRuleConditionalPlurality>
+        | <VotingRuleMinimumCount>
+        | <VotingRuleMinimumPercentage>
+        | <VotingRuleEarliestResponse>
+        | <VotingRulePreferredChoice>
+        | <VotingRuleMinimumCountPreferredChoice>
+        | <VotingRuleMinimumPercentagePreferredChoice>
+
+<VotingRuleMajority> ::= Majority
+
+<VotingRulePlurality> ::= Plurality
+
+<VotingRuleConditionalPlurality> ::= ConditionalPlurality
+
+<VotingRuleMinimumCount> ::= MinimumCount
+
+<VotingRuleMinimumPercentage> ::= MinimumPercentage
+
+<VotingRuleEarliestResponse> ::= EarliestResponse
+
+<VotingRulePreferredChoice> ::= PreferredChoice
+
+<VotingRuleMinimumCountPreferredChoice> ::= MinimumCountPreferredChoice
+
+<VotingRuleMinimumPercentagePreferredChoice> ::= MinimumPercentagePreferredChoice
+
+
+<InitialTaskStatus> ::= <TaskStatusReady>
+            | <TaskStatusWaiting>
+
+<TaskStatusReady> ::= READY
+
+<TaskStatusWaiting> ::= WAITING
+
+
+<PayloadAccess> ::= <PayloadAccessHidden>
+            | <PayloadAccessReadOnly>
+
+<PayloadAccessHidden> ::= HIDDEN
+
+<PayloadAccessReadOnly> ::= READONLY
+
+<AttachSpec> ::= <AttachSpecAll>
+        | <AttachSpecNone>
+        | <AttachSpecInternal>
+        | <AttachSpecExternal>
+        | <String Expr List>
+
+<AttachSpecAll> ::= ALL
+
+<AttachSpecNone> ::= NONE
+
+<AttachSpecInternal> ::= INTERNAL
+
+<AttachSpecExternal> ::= EXTERNAL
+
+<DocumentAction> ::= <DocumentActionAttach>
+        | <DocumentActionLink>
+        | <DocumentActionUpdate>
+        | <DocumentActionDetach>
+
+<DocumentActionAttach> ::= ATTACH
+
+<DocumentActionLink> ::= LINK
+
+<DocumentActionUpdate> ::= UPDATE
+
+<DocumentActionDetach> ::= DETACH
+

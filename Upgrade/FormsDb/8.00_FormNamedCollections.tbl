@@ -1,0 +1,9 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FormNamedCollections](
+	[CollectionName] [nvarchar](80) NULL,
+	[ObjName] [nvarchar](50) NULL
+)
+GO

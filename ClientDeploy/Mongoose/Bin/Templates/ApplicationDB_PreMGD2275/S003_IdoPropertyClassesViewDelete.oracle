@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE TRIGGER IdoPropertyClassesViewDelete
+INSTEAD OF DELETE
+ON IdoPropertyClassesView
+FOR EACH ROW
+BEGIN
+DELETE ido_PropertyClasses
+WHERE ClassName = :OLD.ClassName
+AND DevelopmentFlag = :OLD.DevelopmentFlag;
+END;

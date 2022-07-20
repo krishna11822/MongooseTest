@@ -1,0 +1,4073 @@
+.soho-icon-color:hover {
+  fill: #fff;
+}
+.soho-icon-color-path {
+  fill: none;
+  stroke: #c3c3c2;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+}
+.soho-icon-color-path-white {
+  fill: #fff;
+}
+svg.svg-icons g.soho-icon-color {
+  fill: #c3c3c2;
+}
+svg.svg-icons g.soho-icon-color path.preview:hover {
+  fill: #fff;
+}
+eir-input-field-component.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+eir-input-field-component.disabled > div {
+  opacity: inherit;
+}
+eir-input-field-component input + div.error-message {
+  margin-left: 3px;
+  padding-top: 1px;
+  text-align: left;
+}
+eir-input-field-component input + div.error-message svg {
+  top: 3px;
+}
+eir-input-field-component input + div.error-message p.message-text {
+  max-width: 100%;
+}
+.field-short eir-input-field-component input {
+  width: 100%;
+}
+.field-short eir-input-field-component input + div.error-message {
+  margin-left: 3px;
+  padding-top: 3px;
+}
+.field-short eir-input-field-component input + div.error-message > p.message-text {
+  margin-top: 1px;
+}
+.field-short eir-input-field-component input + div.error-message > svg {
+  top: 3px;
+}
+.field eir-input-field-component input {
+  width: 100%;
+}
+eir-dropdown-field-component .dropdown-field {
+  padding-bottom: 7px;
+}
+.field eir-textarea-field-component textarea {
+  width: 100%;
+}
+.field eir-textarea-field-component div.error-message > p.message-text {
+  margin-top: 10px;
+}
+eir-tag-dropdown.light .searchfield-wrapper {
+  background-color: #fff;
+}
+eir-tag-dropdown.light .btn-icon {
+  background-color: #bdbdbd;
+}
+eir-tag-dropdown.admin .tag.is-dismissable {
+  color: #fff;
+  background-color: #999;
+}
+eir-tag-dropdown.admin .tag.is-dismissable .icon {
+  fill: #fff;
+}
+eir-tag-dropdown .searchfield-wrapper {
+  /* sohoverride v.4.3.1: extra size */
+  width: calc(100% - 45px);
+}
+eir-tag-dropdown .searchfield-wrapper .searchfield {
+  width: 100%;
+}
+eir-tag-dropdown .btn-icon {
+  bottom: 2px;
+  margin-left: 5px;
+  background-color: #7a7b82;
+  border-radius: 5px;
+}
+eir-tag-dropdown .tag-container {
+  margin-top: 5px;
+}
+eir-tag-dropdown .tag-container .tag {
+  margin: 0 10px 15px 0;
+}
+eir-tag-dropdown .tag-container .tag span.dismissable-btn {
+  margin-top: -1px;
+  padding-left: 5px;
+}
+eir-tag-dropdown .tag-container .tag span.dismissable-btn svg.icon {
+  width: 10px;
+  height: 10px;
+}
+eir-filter-tag-component .filter-tag {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+eir-filter-tag-component .filter-tag .btn-icon {
+  bottom: 1px;
+  margin-left: 5px;
+  background-color: #bdbdbd;
+  border-radius: 5px;
+}
+eir-filter-tag-component .filter-tag .tag-container {
+  display: flex;
+  margin-top: 5px;
+}
+eir-filter-tag-component .filter-tag .tag-container .tag {
+  margin: 0 10px 15px 0;
+}
+eir-filter-tag-component .filter-tag .tag-container .tag span.dismissable-btn {
+  margin-top: -1px;
+  padding-left: 5px;
+}
+eir-filter-tag-component .filter-tag .tag-container .tag span.dismissable-btn svg.icon {
+  width: 10px;
+  height: 10px;
+}
+eir-project-tags {
+  display: inline-block;
+  width: 100%;
+}
+eir-project-tags .tag-field {
+  display: flex;
+}
+eir-project-tags .tag-field .tag-container {
+  width: 85%;
+  max-height: 32px;
+  margin: 8px 8px 0;
+  overflow: hidden;
+}
+eir-project-tags .tag-field .tag-container .tag {
+  margin: 0 10px 10px 0;
+}
+eir-project-tags .tag-field .more-tag {
+  margin: 8px 10px 10px 0;
+  font-weight: bold;
+}
+.licenses-dialog {
+  text-align: center;
+}
+.licenses-dialog .modal-content h1 {
+  text-align: center;
+}
+html .transparent {
+  background-color: transparent;
+}
+.sticky-bottom {
+  position: sticky;
+  top: 0;
+  z-index: 3001;
+}
+.modal-page-container {
+  overflow: auto;
+}
+.modal-page-container .warning-text .modal-title {
+  color: #ff9426;
+}
+/* override soho input width.
+using our with-button class */
+.with-button.field-short > .dropdown-wrapper,
+.with-button.field-short input[type="text"] {
+  /* FIXME: calc() is not properly working in edge */
+  width: 230px;
+  /* calc(100% - 40px); */
+}
+.with-button.field-short > .dropdown-wrapper > div,
+.with-button.field-short input[type="text"] > div {
+  width: 100%;
+}
+.with-button.field-short .btn-icon {
+  position: absolute;
+}
+.with-button.field .btn-icon {
+  bottom: 3px;
+}
+.project-setting-button {
+  display: flex;
+}
+.project-setting-button > eir-input-field-component {
+  width: 260px;
+}
+.project-setting-button > .btn-icon {
+  top: 22px;
+}
+.popover.alternate {
+  padding-bottom: 15px;
+}
+.datagrid-container.is-windows.has-vertical-scroll .datagrid-header {
+  margin-right: 8px;
+  /* override from soho 18px */
+}
+.modal-content p.message {
+  white-space: pre-wrap;
+}
+.modal-buttonset {
+  z-index: 1;
+}
+.modal-content {
+  min-width: 320px;
+}
+.pop-tag {
+  display: inline-flex;
+  height: 22px;
+  margin: 0 10px 10px 0;
+  padding: 5px 10px;
+  background-color: #d8d8d8;
+  border-radius: 15px;
+}
+#test-dataservice-dialog {
+  width: 590px;
+}
+#test-dataservice-dialog textarea {
+  width: 100%;
+  max-width: 100%;
+  height: 340px;
+}
+#test-dataservice-dialog table.datagrid {
+  width: inherit;
+}
+#test-dataservice-dialog p {
+  width: 550px;
+}
+#test-dataservice-dialog label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+#test-dataservice-dialog .input-field {
+  display: flex;
+  align-items: center;
+}
+#test-dataservice-dialog .field-input-fields {
+  display: flex;
+  flex-direction: column;
+}
+#test-dataservice-dialog .field-input-fields input {
+  width: 50%;
+}
+#test-dataservice-dialog .field-input-fields .input-field-mandatory {
+  width: 50%;
+  padding-left: 10px;
+}
+#test-dataservice-dialog .field-input-fields .input-field-button {
+  margin-top: 20px;
+}
+#test-dataservice-dialog .field--flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#test-dataservice-dialog hr {
+  width: 100%;
+  margin: 0 0 10px 0;
+  border-right: 0;
+  border-left: 0;
+}
+.export-dialog .field {
+  display: flex;
+  overflow: hidden;
+}
+.export-dialog .field .filename {
+  width: 100%;
+}
+.export-dialog .field .extension {
+  margin: 30px 0 0 5px;
+}
+.chrome-canvas {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.chrome-canvas .canvas-content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  /*
+			need to set height 100% to support the canvas in safari.
+			Also need to set a maxheight to support scrolling in settings sidebar on IE and edge.
+			Height and max-height should not be needed when we refactor the canvas html styling
+		*/
+  height: 100%;
+  max-height: calc(100% - 60px);
+}
+eir-canvas {
+  position: relative;
+  z-index: 6;
+  flex: 1;
+  height: 100%;
+  color: #666;
+  transition: all 0.5s ease;
+}
+eir-canvas .draggable {
+  position: absolute;
+  z-index: 10;
+  padding: 0.5em;
+}
+eir-canvas #canvasSlider {
+  position: absolute;
+  top: calc(50% - 65px);
+  z-index: 7;
+}
+eir-canvas #canvasSlider > #dragHandler {
+  width: 20px;
+  height: 86px;
+  background-image: url(../designer/images/01-mashup-slider.png);
+}
+eir-canvas #canvasSlider > #boundaryAdder {
+  width: 20px;
+  height: 24px;
+  background-image: url(../designer/images/01-mashup-plus-default.png);
+}
+eir-canvas #canvasSlider > #boundaryAdder:hover {
+  background-image: url(../designer/images/01-mashup-plus-hoover.png);
+}
+eir-canvas #canvasSlider > #boundaryAdder:active {
+  background-image: url(../designer/images/01-mashup-plus-pressed.png);
+}
+eir-canvas #canvasSlider > #standardBoundaryAdder {
+  width: 20px;
+  height: 26px;
+  background-image: url(../designer/images/01-mashup-dots-default.png);
+}
+eir-canvas #canvasSlider > #standardBoundaryAdder:hover {
+  background-image: url(../designer/images/01-mashup-dots-hoover.png);
+}
+eir-canvas #canvasSlider > #standardBoundaryAdder:active {
+  background-image: url(../designer/images/01-mashup-dots-pressed.png);
+}
+eir-canvas #insideRuler {
+  position: absolute;
+  top: 23px;
+  left: 18px;
+  z-index: 4;
+  width: calc(100% - 18px);
+  height: calc(100% - 23px - 30px);
+}
+eir-canvas #insideRuler .floating-window > .panel {
+  width: 400px;
+}
+eir-canvas #insideRuler > #gridOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+eir-canvas #insideRuler > #gridOverlay row {
+  height: 100%;
+}
+eir-canvas #insideRuler > #gridOverlay columns {
+  height: 100%;
+  border-right: 1px solid rgba(100, 100, 100, 0.1);
+  border-left: 1px solid rgba(100, 100, 100, 0.1);
+}
+eir-canvas #insideRuler > .grid {
+  height: 100%;
+}
+eir-canvas #insideRuler > .grid > .row,
+eir-canvas #insideRuler > .grid .columns {
+  height: 100%;
+}
+eir-canvas #insideRuler .resizeHandle {
+  position: absolute;
+  z-index: 200;
+  display: none;
+  background-color: #fff;
+  border: 2px solid #8dc9e6;
+  border-radius: 2px;
+  pointer-events: auto;
+}
+eir-canvas #insideRuler .resizeHandle#rhVertic {
+  width: 10px;
+  height: 10px;
+  cursor: ns-resize;
+}
+eir-canvas #insideRuler .resizeHandle#rhHoriz {
+  width: 10px;
+  height: 10px;
+  cursor: ew-resize;
+}
+eir-canvas eir-ruler {
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+eir-canvas eir-ruler > #hRulerContainer {
+  position: absolute;
+  left: 18px;
+  z-index: 4;
+  width: calc(100% - 18px);
+  height: 23px;
+  background-color: #737373;
+  border-bottom: 1px solid black;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../designer/images/ruler_h_segment.png);
+  background-repeat: repeat-x;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .scaleNumber {
+  position: absolute;
+  top: 9px;
+  color: #999;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .defaultBoundaryToggle {
+  position: absolute;
+  right: 0;
+  width: 9px;
+  height: 23px;
+  background-image: url(../designer/images/ResetBoundaryButton_Rest.png);
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .defaultBoundaryToggle:hover {
+  background-image: url(../designer/images/ResetBoundaryButton_Hot.png);
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .hBoundaryMarker {
+  position: absolute;
+  top: 3px;
+  width: 8px;
+  height: 13px;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .hBoundaryMarker > .boundaryMarkerPin {
+  width: 5px;
+  height: 12px;
+  opacity: 0.5;
+  fill: #fff;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .hBoundaryMarker > .boundaryName {
+  position: absolute;
+  right: 10px;
+  bottom: 4px;
+  width: 100px;
+  color: #fff;
+  text-align: right;
+  text-overflow: ellipsis;
+  visibility: hidden;
+  opacity: 0.5;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .hBoundaryMarker > .right {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  z-index: 1000;
+  width: 50px;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .hBoundaryMarker > .right > .boundaryNumber {
+  float: left;
+  color: #fff;
+  opacity: 0.5;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .hBoundaryMarker > .right > .boundaryCloseBtn {
+  float: left;
+  margin-left: 3px;
+  visibility: hidden;
+  opacity: 0.5;
+  fill: #fff;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal > .hBoundaryMarker > .right > .boundaryCloseBtn > .smallIcon {
+  width: 12px;
+  height: 12px;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal .selected > .boundaryName {
+  color: #54a1d3;
+  visibility: visible;
+  opacity: 1;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal .selected > .right > .boundaryNumber {
+  color: #54a1d3;
+  opacity: 1;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal .selected > .boundaryMarkerPin {
+  opacity: 1;
+  fill: #54a1d3;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal :not(.selected):hover > .right > .boundaryNumber {
+  opacity: 1;
+  pointer-events: none;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal :not(.selected):hover > .right > .boundaryCloseBtn {
+  visibility: visible;
+  opacity: 1;
+}
+eir-canvas eir-ruler > #hRulerContainer > #rulerHorizontal :not(.selected):hover > .boundaryMarkerPin {
+  opacity: 1;
+}
+eir-canvas eir-ruler > #hRulerContainer > .sizeBubble {
+  top: -28px;
+}
+eir-canvas eir-ruler > #vRulerContainer {
+  position: absolute;
+  top: 23px;
+  z-index: 4;
+  width: 18px;
+  height: calc(100% - 23px - 30px);
+  /* calc(~"100% - 28px"); */
+  background-color: #737373;
+  border-right: 1px solid black;
+}
+eir-canvas eir-ruler > #vRulerContainer > #rulerVertical {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../designer/images/ruler_v_segment.png);
+  background-repeat: repeat-y;
+}
+eir-canvas eir-ruler > #vRulerContainer > #rulerVertical > .scaleNumber {
+  position: absolute;
+  right: 0;
+  width: 20px;
+  margin-top: 2px;
+  color: #999;
+  text-align: right;
+  transform: rotate(-90deg);
+}
+eir-canvas eir-ruler > #vRulerContainer > .sizeBubble {
+  left: -50px;
+}
+eir-canvas eir-ruler .sizeBubble {
+  position: absolute;
+}
+eir-canvas eir-ruler > #rulerFiller {
+  width: 18px;
+  height: 23px;
+  background-color: #313236;
+}
+eir-canvas eir-ruler .rulerLine {
+  position: absolute;
+  z-index: 1;
+  border-width: 1px;
+  border-color: #69b5dd;
+  pointer-events: none;
+}
+eir-canvas eir-ruler .rulerLine#hRulerLines {
+  top: 20px;
+  height: 8px;
+  border-style: none solid none solid;
+}
+eir-canvas eir-ruler .rulerLine#vRulerLines {
+  left: 20px;
+  width: 8px;
+  border-style: solid none solid none;
+}
+eir-canvas .boundary-popover-button-delete {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+eir-canvas .boundary-popover-button {
+  top: 4px;
+}
+.popupmenu-wrapper #selection-box li {
+  padding: 0;
+  border: none;
+}
+.popupmenu-wrapper #selection-box li .horizontal-ruler-menu {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #737373;
+}
+.popupmenu-wrapper #selection-box .arrow.icon.icon-dropdown {
+  display: block;
+}
+.popupmenu-wrapper #selection-box .arrow {
+  display: none;
+}
+.popupmenu-wrapper #selection-box .enable-option-false {
+  color: #aaa;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
+}
+eir-selection-box {
+  position: fixed;
+  z-index: 20;
+}
+eir-selection-box .actions:hover {
+  background-color: #1d5f8a;
+}
+eir-selection-box .actions {
+  position: absolute;
+  top: -19px;
+  right: 0;
+  z-index: 21;
+  display: block;
+  width: 20px;
+  height: 16px;
+  margin-right: 2px;
+}
+eir-selection-box .actions .btn-menu {
+  top: -1px;
+  width: 20px;
+  min-width: 20px;
+  height: 17px;
+  min-height: 17px;
+}
+eir-selection-box .actions .btn-menu .icon-selectionbox {
+  width: 11px;
+  height: 13px;
+  margin-top: -1px;
+  margin-right: 1px;
+  color: #fff;
+}
+eir-selection-box .actions .disabled {
+  pointer-events: none;
+}
+eir-selection-box .actions .top {
+  margin-top: 0;
+}
+eir-selection-box .actions .edge {
+  margin-left: 0;
+}
+eir-selection-box .component-name-wrapper {
+  position: fixed;
+  height: 0;
+}
+eir-selection-box .selectionbox-wrapper {
+  position: relative;
+  top: -20px;
+  left: -1px;
+  min-width: 60px;
+  max-width: 160px;
+  height: 18px;
+  padding-left: 6px;
+  background-color: #1d5f8a;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 2px #1d5f8a;
+}
+eir-selection-box .selBoxComponentNameInput,
+eir-selection-box .selBoxComponentNameInput:focus,
+eir-selection-box .selBoxComponentNameInput[readonly],
+eir-selection-box .selBoxComponentNameInput:hover {
+  top: -20px;
+  z-index: 21;
+  box-sizing: border-box;
+  min-width: 30px;
+  max-width: 130px;
+  height: 16px;
+  margin-left: 0;
+  padding: 0 0 1px 0;
+  /* Needed for IE */
+  overflow: hidden;
+  color: #fff;
+  text-align: left;
+  text-overflow: ellipsis;
+  background-color: #174a68;
+  border: transparent;
+  transition: width 0.25s;
+}
+eir-selection-box .selBoxComponentNameInput[readonly] {
+  background-color: #1d5f8a;
+  -webkit-text-fill-color: #fff;
+}
+eir-selection-box .selBoxContextActions {
+  position: absolute;
+  right: 0;
+  z-index: 21;
+}
+eir-selection-box .selBoxContextActions .allActions {
+  display: inline-block;
+  transition: opacity 0.25s ease-in-out;
+}
+eir-selection-box .selBoxContextActions .allActions.actions-unfolded {
+  width: auto;
+  height: 35px;
+  opacity: 1;
+}
+eir-selection-box .selBoxContextActions .allActions.actions-folded {
+  height: 35px;
+  opacity: 0;
+}
+eir-selection-box .selBoxContextActions .allActions.actions-unfolded-down,
+eir-selection-box .selBoxContextActions .allActions.actions-folded-down {
+  position: absolute;
+  top: 35px;
+}
+eir-selection-box .selBoxContextActions .allActions.actions-unfolded-down .contextActionButton,
+eir-selection-box .selBoxContextActions .allActions.actions-folded-down .contextActionButton {
+  display: block;
+}
+eir-selection-box .selBoxContextActions .allActions.actions-unfolded-down {
+  opacity: 1;
+}
+eir-selection-box .selBoxContextActions .allActions.actions-folded-down {
+  opacity: 0;
+}
+eir-selection-box .selBoxContextActions .contextActionButton {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  background-color: #2578a9;
+  border-radius: 100%;
+  box-shadow: 0 2px 2px 0 rgba(107, 106, 107, 0.7);
+  cursor: pointer;
+}
+eir-selection-box .selBoxContextActions .contextActionButton .icon {
+  top: 6px;
+  left: 6px;
+  width: 15px;
+  height: 15px;
+  fill: #fff;
+}
+eir-selection-box .selBoxContextActions .contextActionButton .icon-orientation-1 {
+  top: 7px;
+  left: 7px;
+  width: 12px;
+}
+eir-statusbar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 7;
+  height: 30px;
+  background-color: #313236;
+  border-top: 1px solid black;
+}
+eir-statusbar .save-status {
+  float: right;
+  margin-right: 10px;
+  color: #bdbdbd;
+  line-height: 30px;
+}
+eir-statusbar span {
+  margin-left: 15px;
+  padding: 0 5px;
+  color: #d8d8d8;
+  font-size: 12px;
+  line-height: 30px;
+}
+eir-statusbar > div {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+eir-statusbar > div:first-child span {
+  padding-left: 0;
+}
+eir-statusbar > div:last-child {
+  cursor: default;
+}
+eir-statusbar > div:last-child::after,
+eir-statusbar > div:last-child::before,
+eir-statusbar > div:last-child:hover {
+  background-color: transparent;
+  border: none;
+}
+eir-statusbar > div:hover {
+  background-color: #50535a;
+}
+eir-statusbar > div:hover::after {
+  border-left-color: #50535a;
+}
+eir-statusbar > div::after,
+eir-statusbar > div::before {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  z-index: 8;
+  width: 0;
+  height: 0;
+  margin-top: -15px;
+  border: solid transparent;
+  border-width: 15px 0 15px 10px;
+  pointer-events: none;
+  content: " ";
+}
+eir-statusbar > div::after {
+  margin-left: -1px;
+  border-left-color: #313236;
+}
+eir-statusbar > div::before {
+  border-left-color: #5c5c5c;
+}
+eir-new-component .componentIconOverlay {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+eir-new-composite .components .actions:hover {
+  background-color: #5c5c5c;
+}
+eir-new-composite .components .actions {
+  position: absolute;
+  right: 0;
+}
+eir-new-composite .components .actions .composite-btn-menu {
+  top: 0;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  margin: 1px 1px;
+}
+eir-new-composite .components .actions .composite-btn-menu .icon {
+  width: 14px;
+  height: 14px;
+}
+eir-new-composite #below-components {
+  text-align: center;
+}
+eir-new-composite #below-components .no-components-label {
+  margin-top: -10px;
+  opacity: 0.5;
+}
+eir-new-composite #below-components .add-composite-btn {
+  margin-top: 10px;
+}
+eir-new-composite .manage-link {
+  position: relative;
+  margin-top: 15px;
+  text-align: center;
+}
+eir-new-composite .manage-link .hyperlink {
+  color: aliceblue;
+}
+#composite-component-wizard {
+  width: 430px;
+  height: 455px;
+  text-align: center;
+}
+#composite-component-wizard .componentIcon {
+  cursor: pointer;
+  pointer-events: none;
+}
+#composite-component-wizard .include-wizard {
+  margin-left: 70px;
+  text-align: left;
+}
+#new-component-tabs .components {
+  display: inline-block;
+  width: 100%;
+  height: calc(100vh - 200px);
+  padding: 11px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#new-component-tabs .tab-list-container {
+  position: absolute;
+  left: 25%;
+}
+#new-component-tabs .tab-list-container .tab-list {
+  text-align: center;
+}
+#upsert-column {
+  padding-bottom: 20px;
+}
+#upsert-column .capitalize {
+  text-transform: capitalize;
+}
+#upsert-column .accordion.panel {
+  width: auto;
+  background-color: transparent;
+  border-color: transparent;
+  border-right-color: transparent;
+}
+#upsert-column .accordion.panel .accordion-header.is-focused:not(.hide-focus) {
+  border-bottom-color: #368ac0;
+}
+#upsert-column .accordion-header {
+  height: 40px;
+  background-color: #414247;
+  border-bottom-color: #888b94;
+}
+#upsert-column .accordion-header a {
+  padding: 12px 0 13px 5px;
+}
+#upsert-column .accordion-header .btn {
+  padding-left: 15px;
+}
+#upsert-column .accordion-pane {
+  background-color: #414247;
+}
+#upsert-column .accordion-pane .with-button {
+  display: flex;
+  width: 300px;
+}
+#upsert-column .data-service-label {
+  display: flex;
+}
+#upsert-column .data-service-label label {
+  width: 78px;
+}
+#upsert-column .data-service-label .icon {
+  height: 14px;
+}
+#upsert-column #accordion-column-formatters .radio-group {
+  margin-bottom: 0;
+}
+#upsert-column fieldset {
+  margin-bottom: 0;
+}
+#upsert-column .checkbox-label {
+  display: block;
+}
+#autoAddColumnsDialog .row {
+  padding-right: 0;
+}
+.interaction-wizard-dialog {
+  position: absolute;
+  top: calc(50% - 300px);
+  left: calc(50% - 200px);
+  display: block;
+}
+.interaction-wizard-dialog .modal-buttonset {
+  margin-top: 0;
+}
+.interaction-wizard .summary-title {
+  border-bottom: 1px solid #fff;
+}
+.interaction-wizard .wizard-header {
+  margin-right: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.interaction-wizard .wizard-header .tick {
+  pointer-events: none;
+}
+.interaction-wizard .wizard-base {
+  display: flex;
+  flex-direction: column;
+}
+.interaction-wizard .wizard-page-0,
+.interaction-wizard .wizard-page-1 {
+  overflow: hidden;
+}
+.interaction-wizard .wizard-page-3 {
+  height: 500px;
+}
+.interaction-wizard .wizard-page-3 .wizard-content {
+  margin: 30px -20px 0;
+  overflow-y: auto;
+  border-top: 1px solid #313236;
+}
+.interaction-wizard .wizard-content {
+  position: relative;
+  min-height: 356px;
+  margin-top: 40px;
+}
+.interaction-wizard .wizard-content hr {
+  margin: 20px -45px;
+  border: 0;
+  border-top: 1px solid #313236;
+}
+.interaction-wizard .wizard-content .padded-content {
+  padding: 0 44px;
+}
+.interaction-wizard .wizard-content .parameter-wrapper {
+  height: 340px;
+  margin: 0 -20px;
+  padding: 20px;
+  overflow: auto;
+  background-color: #313236;
+  border-top: 1px solid #313236;
+  border-bottom: 1px solid #313236;
+}
+.interaction-wizard .wizard-content .parameter-btn,
+.interaction-wizard .wizard-content .parameter-btn:hover,
+.interaction-wizard .wizard-content .parameter-btn[disabled],
+.interaction-wizard .wizard-content .parameter-btn:focus {
+  width: 100%;
+  height: 50px;
+  color: inherit;
+  text-align: center;
+  background-color: #414247;
+  border-color: #414247;
+}
+.interaction-wizard .wizard-content .parameter-btn .icon,
+.interaction-wizard .wizard-content .parameter-btn:hover .icon,
+.interaction-wizard .wizard-content .parameter-btn[disabled] .icon,
+.interaction-wizard .wizard-content .parameter-btn:focus .icon {
+  fill: #abaeb7;
+}
+.interaction-wizard .wizard-content .parameter-btn span,
+.interaction-wizard .wizard-content .parameter-btn:hover span,
+.interaction-wizard .wizard-content .parameter-btn[disabled] span,
+.interaction-wizard .wizard-content .parameter-btn:focus span {
+  font-size: 1.2rem;
+}
+.interaction-wizard .wizard-content .parameter-item {
+  position: relative;
+  margin-bottom: 3px;
+  padding: 20px 55px;
+  background-color: #414247;
+}
+.interaction-wizard .wizard-content .parameter-item .field-short.with-button + .field-short.with-button {
+  margin-top: 20px;
+}
+.interaction-wizard .wizard-content .parameter-item .metadata-heading {
+  display: none;
+}
+.interaction-wizard .wizard-content .parameter-item .field-short label {
+  padding-top: 0;
+}
+.interaction-wizard .wizard-content .parameter-item .field-short button {
+  width: 40px;
+  min-height: 26px;
+  margin-left: 5px;
+  background-color: #656871;
+  border-radius: 0;
+}
+.interaction-wizard .wizard-content .parameter-item .field-short button.delete-icon {
+  position: absolute;
+  top: -20px;
+  right: -60px;
+}
+.interaction-wizard .wizard-content .parameter-item .field-short button svg {
+  fill: #c8cbd4;
+}
+.interaction-wizard .wizard-content .parameter-item .field-short.with-button .dropdown-wrapper {
+  width: 225px;
+}
+.interaction-wizard .wizard-content .parameter-item .field-short.with-button input[type="text"] {
+  width: 270px;
+}
+.interaction-wizard .wizard-content .user-tip {
+  margin-bottom: 30px;
+  text-align: left;
+}
+.interaction-wizard .wizard-content .user-tip a {
+  font-size: 1.2rem;
+}
+.interaction-wizard .wizard-content .interaction-step {
+  height: 100%;
+}
+.interaction-wizard .wizard-content .interaction-step .component-name-label {
+  margin-bottom: 25px;
+  color: #fff;
+  font-size: 1.4rem;
+}
+.interaction-wizard .wizard-content .summary-wrapper {
+  padding: 0 20px;
+  overflow-x: hidden;
+}
+.interaction-wizard .wizard-content .grey-text {
+  margin-top: 25px;
+  font-size: 1.7rem;
+  text-align: center;
+  opacity: 0.5;
+}
+.interaction-wizard .wizard-content fieldset {
+  margin: 0;
+  padding: 30px;
+}
+.interaction-wizard .wizard-content fieldset:not(:last-of-type) {
+  border-bottom: 1px solid #656871;
+}
+.interaction-wizard .wizard-content fieldset:last-of-type {
+  padding-bottom: 0;
+}
+.interaction-wizard .wizard-content fieldset .summary-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.interaction-wizard .wizard-content fieldset .summary-header button {
+  min-width: auto;
+  padding: 0;
+  font-size: 1.2rem;
+}
+.interaction-wizard .wizard-content fieldset .summary-form .field:first-of-type {
+  margin-bottom: 30px;
+}
+.interaction-wizard .wizard-content fieldset .summary-form .field span {
+  margin-bottom: 0;
+}
+.interaction-wizard .wizard-content fieldset .parameter-wrapper {
+  height: auto;
+  margin: 0 -50px;
+  overflow: inherit;
+}
+.interaction-wizard .wizard-content fieldset .parameter-wrapper hr {
+  margin: 20px -10px;
+}
+.interaction-wizard .wizard-content fieldset .parameter-summary {
+  padding: 20px;
+  background-color: #414247;
+}
+.interaction-wizard .wizard-content fieldset .parameter-summary:not(:last-of-type) {
+  margin-bottom: 4px;
+}
+.interaction-wizard .wizard-content fieldset .parameter-summary .field {
+  padding: 0 30px;
+}
+.modal-page-container .repository-dialog .modal-content {
+  margin-bottom: 130px;
+}
+.modal-page-container .modal-body-wrapper {
+  max-height: inherit;
+}
+.modal-page-container .modal-body-wrapper .modal-body {
+  height: 100%;
+  max-height: inherit;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog {
+  height: 590px;
+  max-height: inherit;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog .has-title {
+  padding-left: 0;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog .manage-datagrid {
+  height: 100%;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog .manage-datagrid > .toolbar {
+  text-align: right;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog .manage-datagrid > .toolbar .searchfield-wrapper.is-open .searchfield {
+  background-color: #212224;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog .manage-datagrid .datagrid-container {
+  height: 90%;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog .manage-datagrid table.datagrid {
+  width: inherit;
+}
+.modal-page-container .modal-body-wrapper .modal-body .manage-dialog .manage-datagrid table.datagrid tbody .datagrid-checkbox-wrapper {
+  width: 0;
+}
+eir-valuesource-settings .value-preview {
+  width: 100%;
+  padding-top: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+eir-valuesource-settings .no-lookup ~ .trigger {
+  display: none;
+}
+eir-valuesource-settings .metadata-heading {
+  margin: 15px 0 5px 0;
+  padding-top: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-size: 1.6rem;
+  border-top: 1px solid #656871;
+}
+eir-valuesource-settings .url-value-label {
+  display: flex;
+}
+eir-valuesource-settings .url-value-label label {
+  width: 68px;
+}
+eir-valuesource-settings .url-value-label .icon {
+  height: 14px;
+}
+eir-valuesource-settings .metadata-setting:not(:last-child) {
+  margin-bottom: 25px;
+}
+.language-dialog .tab-container {
+  border-bottom: 1px solid #bdbdbd;
+}
+.language-dialog .language-text {
+  position: absolute;
+  left: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: #bdbdbd;
+}
+.language-dialog .searchfield-wrapper.is-open .searchfield {
+  background-color: #212224;
+}
+.language-dialog .modal-body-wrapper {
+  height: 590px;
+}
+.language-dialog .modal-body-wrapper .error {
+  border: solid 1px #e84f4f;
+}
+.language-dialog .modal-body-wrapper .error-text {
+  display: none;
+}
+.language-dialog .modal-body-wrapper table.datagrid {
+  width: inherit;
+}
+.language-dialog .modal-body-wrapper table.datagrid th {
+  background-color: #212224;
+}
+.language-dialog .modal-body-wrapper table.datagrid .datagrid-tree-parent {
+  pointer-events: none;
+}
+.language-dialog .modal-body-wrapper table.datagrid .datagrid-tree-parent td:first-child .datagrid-cell-wrapper {
+  pointer-events: auto;
+}
+.language-dialog .modal-body-wrapper .toolbar {
+  text-align: right;
+  /* sohoverride 4.3.1 */
+}
+.edit-binding-dialog .no-lookup ~ .trigger {
+  display: none;
+}
+.mask-options-help .message {
+  max-width: 670px;
+}
+eir-settings {
+  z-index: 10;
+  /**
+	* Sohoverride v4.3.1
+	*  To center tabs and hide the more-tab
+	*/
+}
+eir-settings .sidebar-header .headline {
+  margin-bottom: 15px;
+}
+eir-settings .event-list-item.ng-pristine.ng-valid.ng-binding.ng-scope.is-selected.ng-touched {
+  background-color: #737373;
+}
+eir-settings .listview li:hover,
+eir-settings .listview li:focus {
+  background-color: #737373;
+}
+eir-settings .add-interaction-link {
+  text-align: center;
+}
+eir-settings .add-interaction-link .gray-hyperlink {
+  color: #d8d8d8;
+  font-size: 15px;
+}
+eir-settings .switch:last-child label.checkbox-label {
+  margin-bottom: 0;
+}
+eir-settings .switch:last-child .btn-icon {
+  height: 18px;
+  min-height: 18px;
+}
+eir-settings .field.with-button .btn-icon {
+  height: 100%;
+  min-height: unset;
+}
+eir-settings div.field-short:not(:last-child) {
+  margin-bottom: 20px;
+}
+eir-settings div.field-short label {
+  padding-top: 0;
+}
+eir-settings div.field-short .delete-icon {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  background-color: #313236;
+  border-bottom: 1px solid #212224;
+  border-left: 1px solid #212224;
+}
+eir-settings div.field-short .delete-icon:hover svg {
+  color: #fff;
+}
+eir-settings div.field-short .delete-icon svg {
+  width: 10px;
+  height: 10px;
+}
+eir-settings div.field-short button.btn-icon {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  min-height: 26px;
+  margin: 0 0 0 5px;
+  background-color: #656871;
+  border-radius: 2px;
+}
+eir-settings div.field-short button.btn-icon:disabled svg,
+eir-settings div.field-short button.btn-icon:disabled:hover svg {
+  color: #888b94;
+}
+eir-settings div.field-short button.btn-icon svg {
+  color: #c8cbd4;
+}
+eir-settings div.field-short span {
+  width: 100%;
+}
+eir-settings div.field-short span input[type="text"] {
+  width: 100%;
+}
+eir-settings div.field-short.with-button .dropdown-wrapper,
+eir-settings div.field-short.with-button .lookup-wrapper {
+  width: calc(100% - 45px);
+}
+eir-settings #settings-tabs {
+  height: 40px;
+  padding-left: 30px;
+}
+eir-settings #settings-tabs > .tab-more {
+  display: none;
+}
+eir-settings #settings-tabs > .tab-list-container {
+  width: 300px;
+}
+eir-settings #settings-tabs .tab-container.header-tabs.scrolled-left::after {
+  display: none;
+}
+eir-settings .tab-panel-container {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  /* Enables scrolling on Edge in settings sidebar */
+}
+eir-settings .tab-panel-container .animated-bar {
+  top: 43px;
+}
+eir-settings .tab-panel-container .tab-panel {
+  flex: 1;
+  overflow-y: auto;
+}
+eir-settings .tab-panel-container .tab-panel .accordion-header.is-focused {
+  border: 1px solid transparent;
+  border-bottom-color: #212224;
+  box-shadow: none;
+}
+eir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded {
+  background-color: #212224;
+}
+eir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded .accordion-content {
+  padding: 20px 10px;
+}
+eir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded .accordion-content .individual-settings .field-short {
+  margin-bottom: 20px;
+}
+eir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded .accordion-content .radio-group div:last-child label {
+  margin-bottom: 0;
+}
+div:last-childeir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded .accordion-content:not(.individual-settings) fieldset:last-child {
+  margin-bottom: 0;
+}
+div:last-childeir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded .accordion-content:not(.individual-settings) .field-short {
+  margin-bottom: 0;
+}
+div:last-childeir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded .accordion-content:not(.individual-settings) .field {
+  margin-bottom: 0;
+}
+div:last-childeir-settings .tab-panel-container .tab-panel .accordion-pane.is-expanded .accordion-content:not(.individual-settings) .field:last-of-type .radio-label {
+  margin-bottom: 0;
+}
+eir-settings .tab-panel-container .tab-panel .datagrid-add-column {
+  margin-top: -5px;
+}
+eir-settings .tab-panel-container .tab-panel .columns-label {
+  margin-bottom: 3px;
+}
+eir-settings .tab-panel-container .tab-panel .rows-columns-menu {
+  margin-bottom: 25px;
+}
+eir-settings .tab-panel-container .tab-panel .datagrid-add {
+  margin: 10px 10px 10px 0;
+  color: #d8d8d8;
+}
+eir-settings .tab-panel-container .tab-panel .datagrid-add .icon {
+  margin-bottom: -5px;
+}
+eir-settings .tab-panel-container .tab-panel .top-margin-8 {
+  margin-top: 8px;
+}
+eir-settings .tab-panel-container .tab-panel .link-menu.field {
+  margin-bottom: 10px;
+}
+eir-settings .tab-panel-container .tab-panel .link-menu.field .gray-hyperlink {
+  margin-right: 40px;
+  color: #d8d8d8;
+}
+eir-settings .tab-panel-container .tab-panel .link-menu.field .gray-hyperlink .icon {
+  margin-bottom: -5px;
+}
+eir-settings .tab-panel-container .tab-panel .hyperlink-left {
+  margin-right: 5px;
+}
+eir-settings .tab-panel-container .tab-panel .tab-settings {
+  margin-bottom: 5px;
+}
+eir-settings .tab-panel-container .tab-panel a.title {
+  color: #abaeb7;
+}
+eir-settings .tab-panel-container .tab-list {
+  height: 45px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: inherit;
+  font-size: 13px;
+  text-align: center;
+}
+eir-settings .tab-panel-container .tab-more {
+  display: none;
+}
+eir-settings .selectedBoundaryLabel {
+  margin-bottom: 8px;
+  text-align: center;
+}
+eir-settings .settingstopic .listview {
+  max-height: 100px;
+}
+eir-settings .settingstopic .datasource-labels {
+  display: flex;
+  width: 300px;
+}
+eir-settings .settingstopic .datasource-labels .datasource-link {
+  color: #d8d8d8;
+}
+eir-settings .settingstopic .datasource-labels .datasource-link:hover {
+  color: #368ac0;
+}
+eir-settings .halfSetting {
+  display: inline-block;
+  width: 49%;
+}
+eir-settings .halfSetting .dropdown-wrapper {
+  display: block;
+  margin-bottom: 3px;
+}
+eir-settings .sidebar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+eir-settings .sidebar-message {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+eir-settings .field > .content-settings-header {
+  color: #fff;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+#settings-tabs-content {
+  padding-top: 0;
+}
+#settings-tabs-content .link-menu {
+  padding-top: 20px;
+}
+#settings-tabs-content .child-list.flex-children {
+  padding-top: 30px;
+}
+#settings-tabs-content .child-list .child-item:hover {
+  background-color: #505259;
+}
+#settings-tabs-content .child-list .child-item {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  margin-bottom: 5px;
+  padding: 8px 10px 0 10px;
+  background-color: #414247;
+  border-radius: 2px;
+  cursor: pointer;
+}
+#settings-tabs-content .child-list .child-item label {
+  font-size: 13px;
+}
+#settings-tabs-content .child-list .visible-false svg {
+  fill: #888a91;
+}
+#settings-tabs-content .child-list .visible-false label {
+  color: #888a91;
+}
+#settings-tabs-content .child-list svg {
+  height: 15px;
+}
+#settings-tabs-style .boundary-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  padding: 0 39px;
+  border-bottom: 1px solid #212224;
+}
+#settings-tabs-style .boundary-info p {
+  color: #abaeb7;
+  font-size: 11px;
+  text-align: left;
+}
+#settings-tabs-style .boundary-info .icon.screen {
+  min-width: 36px;
+  min-height: 36px;
+  margin-right: 12px;
+}
+.mask-setting-dialog {
+  padding-bottom: 15px;
+}
+.eir-component-settings .expandable-area:last-of-type .expandable-footer {
+  margin-bottom: -1px;
+}
+.label-tooltip-field {
+  display: flex;
+}
+.label-tooltip-field label {
+  width: 120px;
+}
+.label-tooltip-field .icon {
+  right: 15px;
+  height: 14px;
+}
+.field-short .colorpicker-container {
+  width: 100%;
+}
+.field-short .colorpicker-container .colorpicker {
+  width: 91%;
+}
+.build-link-dialog {
+  width: 500px;
+}
+.build-link-dialog .add-source {
+  margin: 10px 0;
+}
+.build-link-dialog .add-source .btn-icon {
+  top: 2px;
+  margin-left: 5px;
+  background-color: #7a7b82;
+  border-radius: 5px;
+}
+.build-link-dialog .link-text {
+  text-align: center;
+}
+.build-link-dialog .source-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+.build-link-dialog .source-item {
+  display: flex;
+}
+.build-link-dialog .source-item .icon-error {
+  top: 1px;
+}
+.build-link-dialog .source-item .source-input {
+  margin: 0 10px;
+}
+.build-link-dialog .field {
+  overflow-wrap: anywhere;
+}
+.build-link-dialog .textarea {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.expression-dialog .toolbar {
+  text-align: right;
+}
+.expression-dialog .expression-dialog {
+  height: 500px;
+  max-height: 500px;
+}
+.expression-dialog .expression-dialog .searchfield-wrapper.is-open .searchfield {
+  background-color: #212224;
+}
+.expression-dialog .expression-dialog .datagrid-container {
+  height: calc(100% - 50px);
+}
+.expression-dialog .expression-dialog .datagrid-container table.datagrid {
+  width: inherit;
+}
+.expression-dialog .expression-dialog .datagrid-container table.datagrid th {
+  background-color: #212224;
+}
+.expression-dialog .datagrid-tree-parent {
+  pointer-events: none;
+}
+.expression-dialog .datagrid-tree-parent td:first-child .datagrid-cell-wrapper {
+  pointer-events: auto;
+}
+.sidebar {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 301px;
+  min-width: 301px;
+  max-width: 301px;
+  margin-top: 0;
+  margin-left: 0;
+  overflow: hidden;
+  color: #f0f0f0;
+  font-size: 1.1rem;
+  background-color: #313236;
+  border-right: 1px solid #000;
+}
+.sidebar .sidebar-header {
+  flex: none;
+  width: 100%;
+  padding: 10px 15px 20px 15px;
+}
+.sidebar .sidebar-content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+.sidebar .sidebar-options {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 3px;
+}
+.sidebar .sidebar-options .btn-icon {
+  display: inline-block;
+}
+.sidebar .sidebar-options .attach-icon {
+  display: none !important;
+}
+.sidebar .headline .icon-close {
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+.sidebar .headline {
+  margin-bottom: -15px;
+}
+.sidebar .data-source-bar {
+  margin-top: 20px;
+}
+.sidebar .data-source-bar .input-md {
+  margin-bottom: 20px;
+}
+.sidebar .data-source-bar .component-name {
+  margin-bottom: -7px;
+}
+.sidebar h2.content-title {
+  margin-bottom: 10px;
+  color: #abaeb7;
+  font-weight: 600;
+  font-size: 14px;
+}
+.sidebar .link-menu {
+  padding: 0 10px 20px;
+  border-bottom: 1px solid #212224;
+}
+.sidebar .link-menu .content-title {
+  margin-bottom: 15px;
+}
+.sidebar .link-menu button {
+  height: 100%;
+}
+.sidebar .link-menu .flexbox-layout-container {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .link-menu .flexbox-layout-container .flex-count-container {
+  display: flex;
+  flex-direction: row;
+}
+.sidebar .link-menu .flexbox-layout-container .flex-count-container .flex-text {
+  color: #abaeb7;
+  font-size: 13px;
+  line-height: 16px;
+}
+.sidebar .link-menu .flexbox-layout-container .flex-count-container .flex-count {
+  width: 35px;
+  text-align: center;
+  background-color: #414247;
+}
+.sidebar .link-menu .flexbox-layout-container .flex-count-container .box-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0;
+  padding: 2px;
+  background-color: #7d8088;
+  border-radius: 2px;
+}
+.sidebar .link-menu .flexbox-layout-container .flex-count-container .box-icon:first-of-type {
+  margin-left: 8px;
+}
+.sidebar .link-menu .flexbox-layout-container .flex-count-container .box-icon svg {
+  width: 100%;
+  height: 100%;
+  color: #313236;
+}
+.sidebar .link-menu .flexbox-layout-container button.btn-tertiary {
+  height: 100%;
+  padding: 0;
+  font-size: 12px;
+  text-align: left;
+}
+.sidebar .link-menu .flexbox-layout-container button.btn-tertiary:not(:last-child) {
+  margin-bottom: 15px;
+}
+.sidebar .link-menu > button:last-child {
+  display: block;
+  margin-top: 10px;
+  margin-left: auto;
+  padding: 0;
+}
+.sidebar .btn-actions {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+.sidebar .btn-actions:focus {
+  border: 1px solid #fff;
+  box-shadow: none;
+}
+.sidebar .btn-actions:focus span {
+  color: #fff;
+}
+.sidebar .btn-actions .icon {
+  fill: #fff;
+}
+.sidebar.hidden {
+  width: 0;
+}
+.sidebar ul.content-list > li {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 15px;
+  color: #c8cbd4;
+  font-size: 13px;
+  background-color: #414247;
+  border-radius: 2px;
+}
+.sidebar ul.content-list > li:not(:last-of-type) {
+  margin-bottom: 5px;
+}
+.sidebar ul.content-list > li:hover {
+  background-color: #505259;
+}
+.sidebar ul.content-list > li .handle.draggable {
+  height: 17px;
+  margin: 0 6px;
+}
+.sidebar ul.content-list > li .handle.draggable .icon {
+  width: 3px;
+  height: 17px;
+}
+.sidebar ul.content-list > li .btn-menu {
+  margin-left: auto;
+}
+.sidebar ul.content-list.arrange > li {
+  padding-left: 0;
+}
+eir-topbar {
+  flex: none;
+  height: 61px;
+}
+.design {
+  user-select: none;
+}
+.design.header {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: content-box;
+  padding: 0;
+  background-color: #313236;
+  border-bottom: 2px solid #000;
+}
+.design .left {
+  width: 250px;
+}
+.design .left .btn-icon {
+  display: inline-block;
+  width: 38px;
+  height: 60px;
+  margin-right: 0;
+  color: #bdbdbd;
+  vertical-align: top;
+  border-top: 3px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+}
+.design .left .btn-icon .icon {
+  padding: 0;
+}
+.design .left .btn-icon.selected,
+.design .left .btn-icon:hover {
+  background-color: #383838;
+  border-top: 3px solid #368ac0;
+}
+.design .left .btn-icon.selected.icon-left,
+.design .left .btn-icon:hover.icon-left {
+  color: #fff;
+}
+.design .left .btn-icon.selected.icon-left .icon,
+.design .left .btn-icon:hover.icon-left .icon {
+  color: #fff;
+}
+.design .middle {
+  width: 250px;
+  font-size: 0;
+}
+.design .middle .buttonContainer {
+  display: inline-block;
+  margin-top: 12px;
+}
+.design .right {
+  position: relative;
+  width: 250px;
+  margin-right: 20px;
+}
+.design .right .buttonContainer {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  margin-top: 12px;
+  /* no toggle button yet in soho xi */
+}
+.design .right .buttonContainer .btn-tertiary {
+  border: none;
+  box-shadow: none;
+}
+.design .right .buttonContainer .btn-tertiary.toggled {
+  color: #368ac0;
+}
+.design .right .buttonContainer .btn-tertiary.toggled .icon {
+  color: #368ac0;
+}
+.design .right .buttonContainer .btn-icon {
+  /* .btn-icon selector contain styling for the save-action-indicator-icon */
+}
+.design .right .buttonContainer .btn-icon .alert {
+  /* position of the indicator-icon */
+  position: absolute;
+  top: 23px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+}
+.design .right .buttonContainer .btn-icon .alert.icon-confirm {
+  color: #80ce4d;
+}
+.design .right .buttonContainer .btn-icon .alert.icon-in-progress {
+  color: #806594;
+}
+.design .right .buttonContainer .btn-icon .alert.icon-error {
+  color: #e84f4f;
+}
+.design .right .switch-input {
+  display: none;
+}
+.design .right .switch-div {
+  display: inline-block;
+  width: 140px;
+  margin-top: 22px;
+  margin-right: 20px;
+  margin-bottom: 0;
+}
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 60px;
+  color: #fff;
+  background-color: #000;
+  opacity: 0.5;
+}
+.header-overlay.finder-overlay {
+  background-color: #66a140;
+  opacity: 1;
+}
+.header-overlay span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-size: 14px;
+  line-height: 60px;
+  text-align: center;
+}
+.header-overlay button {
+  position: absolute;
+  top: 12px;
+  right: 0;
+}
+.shortcutsModal {
+  width: 800px;
+}
+.shortcutsWrapper {
+  padding-left: 30px;
+  overflow: auto;
+}
+.shortcut-label {
+  font-size: 16px;
+}
+.shortcutsModal-content {
+  display: inline-table;
+  width: 45%;
+  margin-right: 2.4%;
+  margin-bottom: 3%;
+  margin-left: 2.4%;
+}
+.shortcutsModal-content .shortcutsHeading {
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: solid 1px #636261;
+}
+.shortcutsModal-content dl {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.shortcutsModal-content dt,
+.shortcutsModal-content dd {
+  padding: 4px;
+  font-size: 14px;
+  line-height: 28px;
+}
+.shortcutsModal-content dt {
+  display: table-cell;
+  width: 50%;
+  padding-left: 20px;
+  text-align: left;
+  vertical-align: top;
+}
+kbd {
+  display: inline-block;
+  margin: 0 0.1em;
+  padding: 0.1em 0.6em;
+  color: #333;
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+}
+.base-template-dialog .searchfield-wrapper.is-open .searchfield {
+  background-color: #212224;
+}
+.base-template-dialog .datagrid-container {
+  height: calc(100% - 50px);
+}
+.base-template-dialog .datagrid-container table.datagrid {
+  width: inherit;
+}
+.base-template-dialog .datagrid-container table.datagrid th {
+  background-color: #212224;
+}
+.base-template-dialog .toolbar {
+  text-align: right;
+}
+.base-template-dialog .questions-grid {
+  width: 800px;
+  height: 400px;
+}
+.base-template-dialog .questions-grid .datagrid {
+  width: 100%;
+}
+.toolbar .buttonset {
+  width: auto !important;
+  /* Removes fixed width set on the element by SoHo */
+}
+.toolbar .return-container {
+  position: absolute;
+  top: 22px;
+  right: 40%;
+  left: 40%;
+  text-align: center;
+}
+.toolbar .return-container .return-to-project {
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.toolbar .return-container .return-to-project:hover {
+  opacity: 1;
+}
+eir-project-card.card {
+  position: relative;
+  display: inline-block;
+  width: 320px;
+  min-width: 320px;
+  height: 340px;
+  min-height: 340px;
+  margin: 15px;
+  vertical-align: top;
+  /* Needed for Edge */
+}
+eir-project-card.card:hover .card-overlay {
+  opacity: 1;
+}
+eir-project-card.card.selected::after {
+  position: absolute;
+  top: calc(50% - 35px);
+  width: 100%;
+  height: 70px;
+  color: #d8d8d8;
+  font-size: 13px;
+  line-height: 70px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  content: "Current Project";
+}
+eir-project-card.card.selected:hover::after {
+  opacity: 0;
+}
+eir-project-card.card .card-content {
+  width: 100%;
+  height: 288px;
+  min-height: 288px;
+  overflow: hidden;
+}
+eir-project-card.card .card-content .image-container {
+  padding: 20px;
+  text-align: center;
+}
+eir-project-card.card .card-content .image-container img {
+  max-height: 180px;
+  border: 1px solid #d8d8d8;
+}
+eir-project-card.card .card-content .description {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 47px;
+  border-top: 1px solid #ccc;
+}
+eir-project-card.card .card-content .description > div {
+  display: inline-block;
+  width: 50%;
+  padding: 5px;
+  text-align: center;
+}
+eir-project-card.card .card-content .description > div .date {
+  margin-top: 2px;
+}
+eir-project-card.card .card-content .description > div span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+eir-project-card.card .card-content .description hr {
+  height: 25px;
+  margin: 0;
+  border: 0 solid #ccc;
+  border-left-width: 1px;
+}
+eir-project-card.card .card-overlay {
+  position: absolute;
+  top: 50px;
+  z-index: 10;
+  width: 100%;
+  height: 288px;
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+eir-project-card.card .card-overlay > .components {
+  position: absolute;
+  top: calc(100% - 60px);
+  left: 2px;
+  display: none;
+  width: calc(100% - 5px);
+  height: 46px;
+  text-align: center;
+  background-color: #fff;
+}
+eir-project-card.card .card-overlay .overlay-buttons {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+  text-align: center;
+  background-color: #fff;
+  cursor: default;
+}
+eir-project-card.card .card-overlay .overlay-buttons a {
+  margin: 0 10px;
+  cursor: pointer;
+}
+eir-project-card.card .card-overlay .overlay-buttons a:hover .icon {
+  fill: #368ac0;
+}
+eir-project-card.card .card-overlay .overlay-buttons a:hover span {
+  color: #368ac0;
+}
+eir-project-card.card .card-overlay .overlay-buttons a span {
+  display: block;
+  padding-top: 5px;
+  color: #454545;
+  font-size: 12px;
+}
+eir-project-card.card .card-overlay .project-description {
+  height: 120px;
+  margin: 0 20px;
+  overflow: hidden;
+  color: #d8d8d8;
+  font-size: 13px;
+}
+eir-project-card.card .card-overlay .open-project {
+  display: inline-block;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+eir-project-card.card .card-overlay .open-project > label {
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+eir-project-card.card .widget-title {
+  width: 100%;
+  overflow: hidden;
+  color: #454545;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+eir-project-card.card .editing-display-name-field {
+  margin-top: 4px;
+  padding: 0;
+  font-size: 1.6rem;
+  vertical-align: top;
+  border: none;
+}
+.publish-modal {
+  width: 500px;
+}
+eir-dashboard {
+  /**
+	* Sohoverride v4.3.1
+	* To center the loading indicator when loading projects in dashboard
+	*/
+}
+eir-dashboard .list {
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 15px auto 0;
+}
+@media screen and (max-width: 1400px) {
+  eir-dashboard .list {
+    max-width: 1050px;
+  }
+}
+@media screen and (max-width: 1065px) {
+  eir-dashboard .list {
+    max-width: 700px;
+  }
+}
+@media screen and (max-width: 715px) {
+  eir-dashboard .list {
+    max-width: 350px;
+  }
+}
+eir-dashboard .list .sort-container {
+  text-align: right;
+}
+eir-dashboard .tab-panel-container {
+  position: relative;
+  height: 100%;
+  padding-bottom: 120px;
+  overflow: auto;
+}
+eir-dashboard .tab-panel-container .toolbar {
+  text-align: right;
+}
+eir-dashboard .img-container {
+  text-align: center;
+}
+eir-dashboard .img-container img {
+  max-width: 180px;
+  border: 1px solid #d8d8d8;
+}
+eir-dashboard .busy-indicator-container.blocked-ui {
+  position: fixed;
+}
+eir-dashboard eir-licenses-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+eir-dashboard eir-paginator {
+  align-self: center;
+  margin: 20px 0 20px 0;
+}
+/* Soho overrides */
+eir-dashboard .create {
+  display: block;
+  padding-top: 20px;
+  padding-right: 0;
+}
+eir-dashboard .create .layoutForm {
+  width: 500px;
+  margin: 40px auto 80px auto;
+}
+eir-dashboard .create .layoutForm input,
+eir-dashboard .create .layoutForm textarea {
+  width: 100%;
+  background-color: #fff;
+}
+eir-dashboard .create .layoutForm .icon-error {
+  width: 18px;
+  /* Overriding soho rule ".error-message .icon" */
+}
+eir-dashboard .create #newProject-container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+eir-dashboard .create #newProject-container > .tab-list {
+  text-align: center;
+}
+eir-dashboard .create #newProject-container .template-header {
+  margin: 0 12px 20px;
+  text-align: left;
+}
+eir-dashboard .create #newProject-container .template-header > #page-template-header {
+  margin: 15px;
+}
+eir-dashboard .create #newProject-container .template-header > .separator {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #bdbdbd;
+}
+eir-dashboard .create #newProject-container .template-container {
+  text-align: center;
+}
+eir-dashboard .create #newProject-container .tmplListItem {
+  display: inline-block;
+  padding: 10px;
+}
+eir-dashboard .create #newProject-container .tmplListItem > input {
+  position: fixed;
+  width: 0;
+  opacity: 0;
+}
+eir-dashboard .create #newProject-container .tmplListItem label {
+  margin: 0;
+}
+eir-dashboard .create #newProject-container .tmplListItem.selected {
+  background-color: #d8d8d8;
+}
+eir-dashboard .create #newProject-container .tmplListItem img:first-child {
+  background-color: #fff;
+}
+eir-dashboard .create #newProject-container .tmplListItem img {
+  width: 259px;
+  height: 191px;
+  border: 1px solid #d8d8d8;
+}
+eir-dashboard .create #newProject-container .tmplListItem img:hover {
+  border: 2px solid #368ac0;
+}
+.view-json-dialog {
+  width: 60vw;
+  min-width: 715px;
+  max-height: inherit;
+}
+.view-json-dialog textarea {
+  width: 100%;
+  min-height: 400px;
+  /* TODO: Fill dialog height */
+  font-size: medium;
+  font-family: monospace;
+}
+.view-json-dialog .field {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 20px;
+  padding-bottom: 10px;
+}
+.view-json-dialog .field .root input#root {
+  margin-bottom: 0;
+}
+#datasource-wizard .step-three {
+  width: 400px;
+  margin: auto;
+}
+#datasource-wizard .step-three .field label {
+  text-align: left;
+}
+#datasource-wizard .step-three .field textarea {
+  width: 100%;
+  max-width: 100%;
+}
+#datasource-wizard #buttonViewJson {
+  width: 110px;
+  margin-left: -3px;
+}
+#datasource-wizard #wizard-input-parameter .datasource-param-field input {
+  width: inherit;
+}
+#datasource-wizard .test-button {
+  margin: 1em 0 5em;
+  text-align: center;
+}
+#datasource-wizard .value-label-info {
+  display: flex;
+}
+#datasource-wizard .value-label-info label {
+  width: 68px;
+}
+#datasource-wizard .value-label-info .icon {
+  right: 15px;
+  height: 14px;
+}
+#datasource-wizard #wizard-summary eir-datasource-parameter table.datagrid {
+  width: inherit;
+}
+#datasource-wizard #wizard-summary .data.summary {
+  height: 100%;
+}
+#datasource-wizard .inline-list-summary table.datagrid {
+  width: inherit;
+}
+eir-datasource-parameter eir-input-field-component input + div.error-message {
+  max-width: 158px;
+}
+eir-datasource-parameter .datasource-header {
+  display: flex;
+}
+eir-datasource-parameter .datasource-header .fieldset-title {
+  flex-grow: 1;
+}
+eir-datasource-parameter .datasource-header .btn-tertiary {
+  margin-top: 20px;
+  margin-right: 5px;
+}
+eir-datasource-parameter .button-content {
+  display: flex;
+  flex-direction: column;
+}
+eir-datasource-parameter .button-content .button-container {
+  align-self: flex-end;
+  height: 34px;
+}
+eir-datasource-parameter .datasource-param-container .override-soho-field-short-is-input {
+  width: 225px;
+}
+eir-datasource-parameter .datasource-param-container .override-soho-field-short-is-not-input {
+  width: 415px;
+}
+eir-datasource-parameter .datasource-param-container .override-soho-field-short-container {
+  width: 70px;
+  text-align: center;
+}
+eir-datasource-parameter .datasource-param-container .override-soho-field-short-label-mandatory {
+  width: 70px;
+}
+eir-datasource-parameter .datasource-param-container .override-soho-field-short-label-type {
+  width: 95px;
+}
+eir-datasource-parameter .datasource-param-container .override-soho-field-short-label-alias {
+  width: 150px;
+}
+eir-datasource-parameter .datasource-param-container .override-soho-field-short-label-path {
+  width: 100%;
+  padding-top: 0;
+}
+eir-datasource-parameter .row {
+  width: calc(100% - 50px);
+  padding: 0;
+}
+eir-resource-url-editor .content {
+  display: flex;
+  flex-direction: row;
+}
+eir-resource-url-editor .content .input-container {
+  width: calc(100% - 50px);
+}
+eir-resource-url-editor .content .input-container .sub-label {
+  margin-top: 5px;
+  color: #888b94;
+  font-size: 11px;
+  word-wrap: break-word;
+}
+eir-resource-url-editor .content .btn-tertiary {
+  min-width: 50px;
+}
+eir-resource-url-editor .input-full {
+  text-overflow: ellipsis;
+}
+#edit-dialog {
+  width: 1000px;
+  height: 135px;
+}
+#edit-dialog .warning-label {
+  padding-bottom: 30px;
+  font-size: 14px;
+}
+#edit-dialog .input-field-component {
+  width: 100%;
+}
+#request-editor-dialog {
+  width: 800px;
+}
+#request-editor-dialog table.datagrid {
+  width: inherit;
+}
+#request-editor-dialog .row {
+  padding-top: 20px;
+}
+#request-editor-dialog .row eir-input-field-component .component-base {
+  height: 80px;
+}
+eir-request-header-editor .six.columns {
+  margin-left: 0;
+}
+#jsonhelp-dialog .field p {
+  padding-top: 5px;
+}
+.local-ido-dataservice-wizard-parameters h2.fieldset-title {
+  cursor: pointer;
+}
+.local-ido-dataservice-wizard-parameters .field-short {
+  width: 31%;
+  cursor: pointer;
+}
+.local-ido-dataservice-wizard-parameters .field-short input {
+  width: 100%;
+}
+.local-ido-dataservice-wizard-parameters eir-local-ido-dataservice-parameters {
+  display: none;
+}
+.local-ido-dataservice-wizard-parameters #local-ido-settings {
+  display: none;
+}
+.local-ido-dataservice-wizard-parameters #local-ido-settings .dropdown-wrapper {
+  padding-bottom: 20px;
+}
+.local-ido-dataservice-wizard-parameters #local-ido-settings eir-input-field-component .error-message {
+  left: 1px;
+}
+.local-ido-dataservice-wizard-parameters #local-ido-settings .local-ido-dataservice-icon-help {
+  position: absolute;
+  top: -11px;
+  margin: 0;
+}
+.local-ido-dataservice-wizard-parameters .row-divider {
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+.local-ido-dataservice-wizard-parameters .show-less-more {
+  padding-top: 10px;
+}
+.local-ido-dataservice-wizard-parameters .sticky-bottom {
+  background: #fff;
+}
+.local-ido-parameter-field {
+  max-height: 300px;
+  overflow: auto;
+}
+eir-local-ido-dataservice-summary-datagrid-component table.datagrid {
+  width: inherit;
+}
+#dataservice-search-wizard .operation-details {
+  max-width: 950px;
+  max-height: calc(100vh - 315px);
+  overflow-y: auto;
+}
+.dataservice-search-wizard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.dataservice-search-wizard .results {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 80px);
+}
+.dataservice-search-wizard .results .filters {
+  margin-left: 20px;
+}
+.dataservice-search-wizard .results .list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 20px;
+}
+.dataservice-search-wizard #search-result-list {
+  overflow-x: hidden;
+}
+.dataservice-search-wizard #search-result-list .search-li {
+  display: flex;
+}
+.dataservice-search-wizard #search-result-list .search-li .summary {
+  width: 80%;
+}
+.dataservice-search-wizard #search-result-list .search-li .summary .listview-subheading {
+  width: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.dataservice-inline-list-wizard .grid-button-field {
+  display: flex;
+  flex-direction: row;
+}
+.dataservice-inline-list-wizard .grid-button-field .field {
+  flex: auto;
+}
+.dataservice-inline-list-wizard .grid-button-field .field table {
+  width: 100%;
+}
+.dataservice-inline-list-wizard .grid-button-field .buttons {
+  display: flex;
+  flex-direction: column;
+}
+.dataservice-inline-list-wizard .grid-button-field .buttons .btn-secondary {
+  margin: 5px;
+}
+.dataservice-inline-list-wizard .grid-button-field .is-selected {
+  height: 30px;
+}
+eir-inline-list-dataservice-summary-datagrid-component table.datagrid {
+  width: inherit;
+}
+.select-source .radio-group {
+  margin-bottom: 0;
+}
+#ido-wizard {
+  /* &.modal {
+		 top: 15%;
+		 height: 70%;
+	 } */
+}
+#ido-wizard.wizard-dialog .wizard-content {
+  text-align: left;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-one {
+  /* TODO:
+				Fix this duplicate.
+				For some reason import doesn't work as expected, that is it doesn't import into
+				the limited scope.
+			*/
+  /* import ends */
+  width: 500px;
+  margin: auto;
+  padding-bottom: 15px;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-one .field eir-textarea-field-component textarea {
+  width: 100%;
+  max-width: 100%;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-one .field eir-textarea-field-component div.error-message > p.message-text {
+  margin-top: 10px;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-one .field .dropdown-lg {
+  width: 500px;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-two > .row {
+  display: flex;
+  margin-bottom: 15px;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-two .show-type-help {
+  position: absolute;
+  top: 21px;
+  right: -43px;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-two .form-container {
+  width: 305px;
+  padding-right: 50px;
+  border-right: 1px solid #bdbdbd;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-two .properties-container {
+  padding-right: 50px;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-two .field .disabled .error-text {
+  display: none;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-two .field .error-text {
+  display: block;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-three > .row {
+  margin-bottom: 15px;
+}
+#ido-wizard.wizard-dialog .wizard-content .step-three table.datagrid {
+  width: inherit;
+}
+#IdoPreviewDialog .row:last-child {
+  margin-bottom: 37px;
+}
+eir-repository {
+  display: block;
+  height: 100%;
+}
+eir-repository #repository-tabs {
+  padding: 5px 0 0 40px;
+  background: #fff;
+}
+eir-repository #repository-tabs .tab-list-container {
+  overflow-x: initial;
+}
+eir-repository .repository-tab {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 80px);
+}
+eir-repository .repository-tab .toolbar {
+  text-align: right;
+}
+#conflict-dialog .center {
+  text-align: center;
+}
+#conflict-dialog .label-warning {
+  color: red;
+}
+.edit-modal {
+  width: 95vh;
+  min-width: 300px;
+  max-height: 95vh;
+  overflow: visible;
+}
+.create-modal {
+  min-width: 715px;
+  overflow: visible;
+}
+.edit-modal .modal-content .modal-body-wrapper {
+  max-height: 80vh;
+  overflow-y: hidden;
+}
+.create-modal .modal-content .modal-body-wrapper {
+  min-width: 950px;
+  height: 60vh;
+  overflow-y: hidden;
+}
+fieldset > legend {
+  margin-top: 0 !important;
+}
+#generic-output-parameter {
+  width: 100%;
+  height: 100px;
+}
+.operation-details-grid table.datagrid {
+  width: inherit;
+}
+.runtimeMode .eir-component > div,
+.runtimeMode .eir-component dcustomcomponent {
+  pointer-events: auto;
+}
+.insertMode .generatedComponent,
+.insertMode .eir-component:not(.layoutComponent) {
+  pointer-events: none;
+}
+.insertMode .isInsertChild {
+  border: 2px solid #806594;
+  opacity: 0.5;
+}
+.insertMode .isInsertChild,
+.insertMode .isInsertChild * {
+  pointer-events: none !important;
+}
+.selectionMode eir-component *,
+.selectionMode eir-component.layoutComponent.generatedComponent {
+  pointer-events: none !important;
+}
+.selectionMode .componentCommon *,
+.selectionMode eir-component.eir-component,
+.selectionMode eir-component eir-selection-box * {
+  pointer-events: auto !important;
+}
+.eir-component {
+  position: relative;
+  display: block;
+  pointer-events: auto;
+  /* Mixins to DRY */
+}
+.eir-component.isSelected.layoutComponent {
+  box-shadow: inset 0 0 0 2px #1e7bb1;
+}
+.eir-component.isSelected.layoutComponent eir-selection-box .arrow-down-outer {
+  display: none;
+}
+.eir-component .inWizard eir-selection-box {
+  display: none;
+}
+.eir-component .component-tooltip {
+  position: relative;
+  top: -20px;
+  display: none;
+  min-width: 60px;
+  height: 22px;
+  pointer-events: none !important;
+}
+.eir-component .component-name {
+  position: relative;
+  display: none;
+  min-width: 60px;
+  max-width: 160px;
+  height: 16px;
+  margin-left: -1px;
+  padding: 0 22px 0 5px;
+  overflow: hidden;
+  color: white;
+  line-height: 16px;
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  border: 1px solid white;
+  border-bottom-width: 0;
+  border-radius: 2px;
+  pointer-events: auto !important;
+}
+.eir-component .component-name > span {
+  margin-top: 2px;
+  color: #fff;
+}
+.eir-component .component-name .focus-type-source,
+.eir-component .component-name .focus-type-target {
+  display: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.eir-component .wizard-source .focus-type-source {
+  display: block;
+}
+.eir-component .wizard-source:hover ~ .arrow-down-outer {
+  opacity: 0.5;
+}
+.eir-component .wizard-source:hover {
+  opacity: 0.5;
+}
+.eir-component .wizard-target .focus-type-target {
+  display: block;
+}
+.eir-component .wizard-target:hover ~ .arrow-down-outer {
+  opacity: 0.5;
+}
+.eir-component .wizard-target:hover {
+  opacity: 0.5;
+}
+.eir-component .arrow-down-outer {
+  position: absolute;
+  z-index: 1001;
+  display: none;
+  margin-left: 5px;
+  border-top: 9px solid white;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+.eir-component .arrow-down-outer .arrow-down-inner {
+  position: absolute;
+  left: 1px;
+  margin-top: -10px;
+  margin-left: -7px;
+  border-top: 8px solid #66a140;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}
+.eir-component.isSelected eir-selection-box .arrow-down-outer {
+  display: block;
+  margin-top: -3px;
+}
+.eir-component.isSelected eir-selection-box .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #1d5f8a;
+}
+.eir-component.isWizardFocus > .componentCommon .component-tooltip {
+  display: inline-block;
+}
+.eir-component.isWizardFocus > .componentCommon .component-tooltip:hover {
+  pointer-events: none !important;
+}
+.eir-component.isWizardFocus > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  width: 150px;
+  height: 34px;
+  margin-top: -16px;
+  background-color: #66a140;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isWizardFocus > .componentCommon .component-name .icon-selectionbox {
+  display: none;
+}
+.eir-component.isWizardFocus > .componentCommon .arrow-down-outer {
+  display: block;
+}
+.eir-component.isWizardFocus > .componentCommon .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #66a140;
+}
+.eir-component.isWizardRest > .componentCommon .component-tooltip {
+  display: inline-block;
+}
+.eir-component.isWizardRest > .componentCommon .component-tooltip:hover {
+  pointer-events: none !important;
+}
+.eir-component.isWizardRest > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  width: 150px;
+  height: 34px;
+  margin-top: -16px;
+  background-color: #7d7d7d;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isWizardRest > .componentCommon .component-name .icon-selectionbox {
+  display: none;
+}
+.eir-component.isWizardRest > .componentCommon .arrow-down-outer {
+  display: block;
+}
+.eir-component.isWizardRest > .componentCommon .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #7d7d7d;
+}
+.eir-component.isHovered.layoutComponent {
+  outline: 1px solid #999 !important;
+}
+.eir-component.isHovered.layoutComponent > .componentCommon .component-tooltip {
+  display: inline-block;
+  pointer-events: all !important;
+}
+.eir-component.isHovered.layoutComponent > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  z-index: 1000;
+  height: 18px;
+  background-color: #7d7d7d;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isHovered.layoutComponent > .componentCommon .component-name .icon-selectionbox {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  width: 11px;
+  height: 13px;
+  margin-top: -1px;
+  margin-right: 1px;
+  fill: #b0b0b0;
+}
+.eir-component.isHovered.generatedComponent.eir-component > .componentCommon .component-name p {
+  margin-top: 2px !important;
+  color: white;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent),
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) {
+  outline: 1px solid #999 !important;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .component-tooltip,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .component-tooltip {
+  display: inline-block;
+  pointer-events: all !important;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .component-name,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .component-name {
+  display: inline-block;
+  cursor: default;
+  z-index: 1000;
+  height: 18px;
+  background-color: #7d7d7d;
+  border-bottom: 1px solid #fff;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .component-name .icon-selectionbox,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .component-name .icon-selectionbox {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  width: 11px;
+  height: 13px;
+  margin-top: -1px;
+  margin-right: 1px;
+  fill: #b0b0b0;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .arrow-down-outer,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .arrow-down-outer {
+  display: block;
+}
+.eir-component.isHovered:not(.isWizardFocus):not(.isSelected):not(.isWizardRest):not(.layoutComponent) > .componentCommon .arrow-down-outer .arrow-down-inner,
+.eir-component .isFinder:not(.isWizardFocus):not(.isWizardRest) > .componentCommon .arrow-down-outer .arrow-down-inner {
+  border-top: 8px solid #7d7d7d;
+}
+.eir-component.isInsertParent {
+  outline: 2px solid pink !important;
+}
+.eir-component.isInsertParent .ng-enter {
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+.eir-component.isInsertParent .ng-enter.ng-enter-active {
+  opacity: 0.5;
+}
+.eir-component.isInsertParent .ng-move {
+  transition: 0.25s ease left, 0.25s ease top;
+}
+.eir-component.isInsertParent.Horizontal .ng-move {
+  left: 50px;
+}
+.eir-component.isInsertParent.Horizontal .ng-move.ng-move-active {
+  left: 0;
+}
+.eir-component.isInsertParent.Vertical .ng-move {
+  top: 40px;
+}
+.eir-component.isInsertParent.Vertical .ng-move.ng-move-active {
+  top: 0;
+}
+.eir-component > div.componentCommon {
+  /* Using position: fixed; to get label above all elements (even outside of canvas).
+		However this impares us to use the top, left, right and bottom properties. */
+  position: fixed;
+  z-index: 25;
+  width: 0;
+  height: 0;
+}
+.eir-component > div.componentCommon > .errorMessage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin: 4px;
+  pointer-events: auto;
+}
+.eir-component > div.componentCommon > .errorMessage svg {
+  top: 0;
+  fill: #df332f;
+}
+.eir-component > div,
+.eir-component dcustomcomponent {
+  pointer-events: none;
+}
+eir-canvas .runtimeMode .eir-component,
+eir-app-launcher .eir-component {
+  border: none;
+}
+.eirButton {
+  width: auto;
+  height: auto;
+  border-width: 0;
+  /* No border by default */
+}
+.eirButton > div {
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+}
+.eirButton .btn-full-width {
+  height: 100%;
+}
+.eirCheckbox .checkbox {
+  display: none;
+  /* sohoverride: To avoid large "ghost" when dragging checkbox */
+}
+eir-component dcustomcomponent {
+  display: block;
+}
+.eirDatagrid .ab-datagrid-wrapper {
+  height: 100%;
+}
+.eirDatagrid .ab-datagrid-wrapper .title {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+.eirDatagrid .ab-datagrid-wrapper .title .datagrid-result-count {
+  margin-left: 5px;
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container.has-toolbar {
+  height: calc(100% - 45px);
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container.has-toolbar.paginated {
+  height: calc(100% - 90px);
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container.paginated {
+  height: calc(100% - 45px);
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-container .remove-icon .icon {
+  display: none;
+}
+.eirDatagrid .ab-datagrid-wrapper .datagrid-summary-row td.is-readonly {
+  background-color: #fff;
+}
+.datagrid-export-content .radio-group {
+  margin-bottom: 0;
+}
+.eirList.hide-header > .card > .card-header {
+  display: none;
+}
+.eirList.hide-header > .card > .card-content {
+  height: 100%;
+}
+.eirList > .card {
+  height: 100%;
+  min-height: 100%;
+  margin-bottom: 0;
+  background-color: inherit;
+}
+.eirList > .card > .card-header {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: inherit;
+}
+.eirList > .card > .card-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 50px);
+  min-height: calc(100% - 50px);
+}
+.eirList > .card > .card-content .searchfield {
+  background-color: #efeff0;
+}
+.eirList > .card > .card-content > .listview {
+  height: 100%;
+  pointer-events: auto;
+}
+.eirList > .card > .card-content > .listview > ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.eirList > .card > .card-content > .listview > ul > li:not(:hover):not(.is-selected) {
+  background-color: transparent;
+}
+.eirList > .card > .card-content > .listview > ul > li {
+  cursor: auto;
+}
+.eirList > .card > .card-content > .listview > ul > li > eir-component {
+  height: auto;
+  margin: 0;
+}
+.eirList > .card > .card-content > .listview > ul > li > eir-component .childCage {
+  position: static;
+  /* Resetting to static for all childCages in list template, i.e. scrolling overflow does not work here */
+}
+.eirList > .card > .card-content > .listview > ul > li eir-component {
+  border: none;
+}
+.eirList > .card > .card-content > .listview > ul > li label,
+.eirList > .card > .card-content > .listview > ul > li .label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.eirList > .card > .card-content > .listview > ul > li:first-of-type eir-component:not(.eirFlexbox) {
+  pointer-events: auto;
+}
+.eirList > .card > .card-content .eirFlexbox {
+  outline: none;
+}
+.eirList > .card > .card-content .eirFlexbox > .childCage {
+  overflow: visible;
+}
+.runtimeMode .eirList .card > .card-content > .listview > ul > li {
+  cursor: pointer;
+  pointer-events: auto;
+}
+.runtimeMode .eirList .card > .card-content > .listview > ul > li * {
+  background-color: transparent;
+  /* TODO: Temporary until stylesets are good */
+  cursor: inherit;
+  pointer-events: auto;
+}
+.runtimeMode .eirList .card > .card-content > .listview > ul > li .errorMessage {
+  cursor: help;
+}
+.radio-group {
+  padding-top: 0;
+}
+.mashupRootContainer > .eir-component.eirFlexbox {
+  height: 100%;
+}
+.eir-component.eirFlexbox,
+.eir-component.eirTabPanel {
+  margin: 0;
+}
+.eir-component.eirFlexbox.overflowWrap > .childCage > eir-children,
+.eir-component.eirTabPanel.overflowWrap > .childCage > eir-children {
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirFlexbox.overflowScroll > .childCage,
+.eir-component.eirTabPanel.overflowScroll > .childCage {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.eir-component.eirFlexbox.overflowScroll > .childCage.vertical,
+.eir-component.eirTabPanel.overflowScroll > .childCage.vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.eir-component.eirFlexbox.generatedComponent .childCage,
+.eir-component.eirTabPanel.generatedComponent .childCage {
+  height: auto;
+}
+.eir-component.eirFlexbox > .childCage,
+.eir-component.eirTabPanel > .childCage {
+  position: absolute;
+  /* Needed to make overflow work */
+  display: flex;
+  /* Used for alignment setting */
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.eir-component.eirFlexbox > .childCage > eir-children,
+.eir-component.eirTabPanel > .childCage > eir-children {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: inherit;
+  align-items: inherit;
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirFlexbox > .childCage > eir-children > eir-component.eirFlexbox,
+.eir-component.eirTabPanel > .childCage > eir-children > eir-component.eirFlexbox {
+  height: 100%;
+}
+.eir-component.eirFlexbox > .childCage > eir-children > eir-component,
+.eir-component.eirTabPanel > .childCage > eir-children > eir-component {
+  display: inline-block;
+  flex: 0 0 auto;
+  height: auto;
+}
+.eir-component.eirFlexbox > .childCage.flex-parent > eir-children,
+.eir-component.eirTabPanel > .childCage.flex-parent > eir-children {
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirFlexbox > .childCage.vertical > eir-children,
+.eir-component.eirTabPanel > .childCage.vertical > eir-children {
+  flex-direction: column;
+}
+.eir-component.eirFlexbox > .childCage.vertical > eir-children > eir-component.eirFlexbox,
+.eir-component.eirTabPanel > .childCage.vertical > eir-children > eir-component.eirFlexbox {
+  width: 100%;
+  height: 0;
+}
+eir-canvas .eirFlexbox {
+  outline: 1px solid #d0d0d0;
+}
+eir-canvas .runtimeMode .eirFlexbox {
+  outline: none;
+}
+.eir-component.eirImage {
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirImage .image {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0;
+}
+.eir-component.eirImage .img-fill {
+  background-size: 100% 100%;
+}
+.eir-component.eirImage .img-fit {
+  background-size: contain;
+}
+.eir-component.eirLabel {
+  width: auto;
+  height: auto;
+}
+.eir-component.eirLabel > .label-container > span {
+  min-width: 10px;
+  margin: 0;
+  /* Sohoverride v4.3.1, Margin should be controlled by label-settings */
+}
+.eir-component.eirLabel > .label-container > .paragraph {
+  margin-bottom: 3px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 13px;
+}
+.eir-component.eirLabel > .label-container > .small-heading {
+  font-weight: bold;
+}
+.eir-component.eirLabel > .label-container > .medium-heading {
+  min-height: 16px;
+  font-size: 15px;
+  font-size: 1.5rem;
+  line-height: 15px;
+}
+.eir-component.eirLabel > .label-container > .large-heading {
+  min-height: 21px;
+  margin-bottom: 3px;
+  font-size: 20px;
+  font-size: 2rem;
+  line-height: 20px;
+}
+.label-container .font-size-px-72 {
+  font-size: 7.2rem;
+  line-height: 1.25em;
+}
+.label-container .font-size-px-60 {
+  font-size: 6rem;
+  line-height: 1.2em;
+}
+.label-container .font-size-px-48 {
+  font-size: 4.8rem;
+  line-height: 1.25em;
+}
+.label-container .font-size-px-40 {
+  font-size: 4rem;
+  line-height: 1.2em;
+}
+.label-container .font-size-px-32 {
+  font-size: 3.2rem;
+  line-height: 1.25em;
+}
+.label-container .font-size-px-28 {
+  font-size: 2.8rem;
+  line-height: 1.28em;
+}
+.label-container .font-size-px-24 {
+  font-size: 2.4rem;
+  line-height: 1.3em;
+}
+.label-container .font-size-px-20 {
+  font-size: 2rem;
+  line-height: 1.4em;
+}
+.label-container .font-size-px-16 {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+}
+.label-container .font-size-px-14 {
+  font-size: 1.4rem;
+  line-height: 1.7em;
+}
+.label-container .font-size-px-12 {
+  font-size: 1.2rem;
+  line-height: 1.5em;
+  text-transform: uppercase;
+}
+.label-container .font-size-px-10 {
+  font-size: 1rem;
+  line-height: 1.6em;
+  text-transform: uppercase;
+}
+.label-container .text-descriptive {
+  color: #737373 !important;
+}
+.label-container .text-link {
+  color: #368ac0 !important;
+  text-decoration: underline;
+}
+.label-container .text-muted {
+  color: #999 !important;
+}
+.label-container .text-emphasis {
+  font-style: italic !important;
+}
+.label-container .text-strong {
+  font-weight: 700 !important;
+}
+.label-container .text-alert {
+  color: #e84f4f !important;
+}
+.eirHyperlink {
+  width: auto;
+  height: auto;
+  border-width: 0;
+  /* No border by default */
+}
+.eirHyperlink .hyperlink svg.icon {
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+.chart {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+.chart .widget-header h2 {
+  float: none;
+  width: 100%;
+  text-align: center;
+}
+.chart .widget-content {
+  height: calc(100% - 30px);
+  min-height: 200px;
+  overflow: visible;
+}
+.chart .widget-content.has-header {
+  height: calc(100% - 60px - 30px);
+}
+.chart .widget-content.has-title {
+  height: calc(100% - 50px - 30px);
+}
+.chart .widget-content.has-header.has-title {
+  height: calc(100% - 50px - 60px - 30px);
+}
+.chart .widget-content .chart-container {
+  overflow: visible;
+  font-size: 14px;
+}
+.chart .widget-content .chart-container .chart-legend {
+  height: 100%;
+}
+.eir-component.eirTabs {
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirTabs .tab-container.vertical {
+  background: unset;
+}
+.eir-component.eirTabs .tab-container.vertical .tab-panel {
+  margin: 0;
+}
+.eir-component.eirTabs .tab-container.vertical .tab-list-container,
+.eir-component.eirTabs .tab-container.vertical .tab-list {
+  padding-top: 0;
+  background: unset;
+}
+.eir-component.eirTabs .tab-container .tab-panel-container {
+  background: unset;
+}
+.eir-component.eirTabs .tab-panel {
+  width: 100%;
+  height: 100%;
+  padding-top: 0;
+  /* sohoverride v4.3.1: removing padding */
+}
+.eir-component.eirTabs .tab-panel .eirTabPanel {
+  width: 100%;
+  height: 100%;
+}
+.eir-component.eirTabs .tab-wrapper.horizontal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.eir-component.eirTabs .tab-wrapper.horizontal > .tab-panel {
+  position: absolute;
+}
+.eirTextBox {
+  width: auto;
+  height: auto;
+}
+.eirTextBox .warning-text {
+  vertical-align: middle;
+}
+.application-header .toolbar .title {
+  width: calc(100% - 1rem);
+  /* If no themeswitch, fill out */
+}
+.application-header .toolbar .title > * {
+  width: calc(100% - 1.7rem - 1.7rem);
+  overflow: hidden;
+}
+.application-header.with-themeswitcher .toolbar .title {
+  width: calc(100% - 1rem - 60px);
+}
+.application-header.with-themeswitcher .toolbar .buttonset {
+  width: 60px;
+}
+.sizePredicter {
+  position: absolute;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 4px;
+  white-space: nowrap;
+  visibility: hidden;
+}
+.url-variable-dialog {
+  height: 365px;
+}
+.url-variable-dialog .variable {
+  display: flex;
+}
+.url-variable-dialog .variable .variable-name {
+  margin-right: 20px;
+}
+.url-variable-dialog .variable .variable-description {
+  height: 34px;
+  margin-right: 5px;
+}
+.url-variable-dialog .variable button.btn-icon.new-variable {
+  top: 21px;
+  background-color: #7a7b82;
+  border-radius: 5px;
+}
+.url-variable-dialog .existing-variables .empty-message {
+  margin-top: 45px;
+  text-align: center;
+}
+.wizard-dialog.large {
+  min-width: 950px;
+  max-width: 950px;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper {
+  max-height: none !important;
+  /* Scroll overrides */
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body {
+  height: 60vh;
+  /* Scroll overrides */
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard {
+  width: 800px;
+  height: 100%;
+  /* Scroll overrides */
+  margin: auto;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard {
+  width: 550px;
+  margin: auto;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard .wizard-header {
+  margin-right: 0;
+  /* Override for wizard.less */
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content {
+  overflow: auto;
+  /* Scroll overrides */
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .wizard-content-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .hr-field {
+  width: 100%;
+  margin: 0 0 10px 0;
+  border-right: 0;
+  border-left: 0;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .field-button {
+  display: flex;
+  justify-content: center;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: left;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .container .field {
+  padding: 5px;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .container .field .radio-group {
+  padding: 0;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .container .warning-field {
+  color: #abaeb7;
+  font-style: italic;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .container .summary {
+  word-wrap: break-word;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .container .btn-tertiary {
+  padding: 0;
+}
+.wizard-dialog.large .modal-content .modal-body-wrapper .modal-body eir-wizard .wizard-content .container .radio-group {
+  padding: 10px;
+}
+.wizard-dialog.large .modal-content .modal-buttonset {
+  position: absolute;
+  /* Scroll overrides */
+  bottom: 0;
+  /* Scroll overrides */
+  width: 100%;
+  /* Scroll overrides */
+  background-color: inherit;
+}
+.wizard-dialog eir-wizard {
+  display: block;
+  width: 398px;
+  height: 455px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.wizard-dialog .summary-title {
+  border-bottom: 1px solid #fff;
+}
+.wizard-dialog .wizard-header {
+  margin-right: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.wizard-dialog .wizard-header .tick {
+  cursor: pointer;
+}
+.wizard-dialog .wizard-header .tick[disabled] {
+  cursor: default;
+}
+.wizard-dialog .wizard-content {
+  position: relative;
+  padding: 30px 65px 30px 65px;
+  text-align: center;
+}
+.wizard-dialog .wizard-content .space {
+  position: relative;
+  top: 20px;
+  height: 10px;
+  margin: 10px -20px 30px -20px;
+  background-color: #414247;
+}
+.wizard-dialog .wizard-content .user-tip {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.wizard-dialog .wizard-content .user-tip a {
+  font-size: 12px;
+}
+.wizard-dialog .wizard-content .grey-text {
+  margin-top: 25px;
+  font-size: 1.7em;
+  text-align: center;
+  opacity: 0.5;
+}
+.wizard-dialog .wizard-content fieldset {
+  padding-top: 0;
+  text-align: left;
+}
+.wizard-dialog .wizard-content fieldset .summary-legend {
+  position: relative;
+  padding-bottom: 2px;
+  font-size: 1.4em;
+  border-bottom: 1px solid #fff;
+}
+.wizard-dialog .wizard-content fieldset .summary-legend .btn-tertiary {
+  position: absolute;
+  top: -8px;
+  right: 0;
+}
+.wizard-dialog .wizard-content fieldset .summary-form {
+  margin: 10px 0 10px 0;
+}
+.wizard-dialog .wizard-content fieldset .summary-form .field {
+  margin-bottom: 4px;
+}
+.modal-engaged .draggable-dialog + .overlay {
+  display: none;
+}
+.chart-dialog .info-row {
+  display: flex;
+}
+.chart-dialog .info-row svg {
+  top: -4px;
+  margin-left: 10px;
+}
+.chart-modal.modal-buttonset {
+  display: flex;
+}
+.chart-modal.modal-buttonset .delete {
+  width: 50%;
+}
+.componentIcon {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 33%;
+  height: 90px;
+  margin-bottom: -2px;
+  text-align: center;
+  background-color: #3f3f3f;
+  border: 1px #313236 solid;
+  cursor: pointer;
+}
+.componentIcon .title {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.componentIcon .image {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.componentIcon .extra-TextBox {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+}
+.componentIcon .extra-TextBox::after {
+  content: "Label";
+}
+.componentIcon:hover,
+.componentIcon.selected {
+  color: #fff;
+  background-color: #525252;
+}
+.componentIcon:hover.notAvailable,
+.componentIcon.selected.notAvailable {
+  background-color: #4b2a5e;
+}
+.componentIcon:hover .image-Button,
+.componentIcon.selected .image-Button {
+  background-image: url(../designer/images/components/ic-pushbn-hot.png);
+}
+.componentIcon:hover .image-Checkbox,
+.componentIcon.selected .image-Checkbox {
+  background-image: url(../designer/images/components/ic-checkbox-hot.png);
+}
+.componentIcon:hover .image-ColorPicker,
+.componentIcon.selected .image-ColorPicker {
+  background-image: url(../designer/images/components/ic-colorpicker-hot.png);
+}
+.componentIcon:hover .image-Datepicker,
+.componentIcon.selected .image-Datepicker {
+  background-image: url(../designer/images/components/ic-datepicker-hot.png);
+}
+.componentIcon:hover .image-Dropdown,
+.componentIcon.selected .image-Dropdown {
+  background-image: url(../designer/images/components/ic-dropdown-hot.png);
+}
+.componentIcon:hover .image-Hyperlink,
+.componentIcon.selected .image-Hyperlink {
+  background-image: url(../designer/images/components/ic-hyperlink-hot.png);
+}
+.componentIcon:hover .image-Image,
+.componentIcon.selected .image-Image {
+  background-image: url(../designer/images/components/ic-image-hot.png);
+}
+.componentIcon:hover .image-Label,
+.componentIcon.selected .image-Label {
+  background-image: url(../designer/images/components/ic-label-hot.png);
+}
+.componentIcon:hover .image-List,
+.componentIcon.selected .image-List {
+  background-image: url(../designer/images/components/ic-listpanel-01-hot.png);
+}
+.componentIcon:hover .image-Lookup,
+.componentIcon.selected .image-Lookup {
+  background-image: url(../designer/images/components/ic-look-up-hot.png);
+}
+.componentIcon:hover .image-RadioButton,
+.componentIcon.selected .image-RadioButton {
+  background-image: url(../designer/images/components/ic-radiobn-hot.png);
+}
+.componentIcon:hover .image-Spinbox,
+.componentIcon.selected .image-Spinbox {
+  background-image: url(../designer/images/components/ic-spinbox-hot.png);
+}
+.componentIcon:hover .image-TextArea,
+.componentIcon.selected .image-TextArea {
+  background-image: url(../designer/images/components/ic-textarea-hot.png);
+}
+.componentIcon:hover .image-TextBox,
+.componentIcon.selected .image-TextBox {
+  background-image: url(../designer/images/components/ic-inputfield-hot.png);
+}
+.componentIcon:hover .image-Timepicker,
+.componentIcon.selected .image-Timepicker {
+  background-image: url(../designer/images/components/ic-timepicker-hot.png);
+}
+.componentIcon .image-Chart {
+  background-image: url(../designer/images/components/ic-barchart.png);
+}
+.componentIcon .image-Button {
+  background-image: url(../designer/images/components/ic-pushbn-rest.png);
+}
+.componentIcon .image-ColorPicker {
+  background-image: url(../designer/images/components/ic-colorpicker-rest.png);
+}
+.componentIcon .image-Checkbox {
+  background-image: url(../designer/images/components/ic-checkbox-rest.png);
+}
+.componentIcon .image-Datagrid {
+  background-image: url(../designer/images/components/ic-datagrid.png);
+}
+.componentIcon .image-Datepicker {
+  background-image: url(../designer/images/components/ic-datepicker-rest.png);
+}
+.componentIcon .image-Dropdown {
+  background-image: url(../designer/images/components/ic-dropdown-rest.png);
+}
+.componentIcon .image-Flexbox,
+.componentIcon .image-TabPanel {
+  background-image: url(../designer/images/components/ic-layout-box-rest.png);
+}
+.componentIcon .image-Image {
+  background-image: url(../designer/images/components/ic-image-rest.png);
+}
+.componentIcon .image-Hyperlink {
+  background-image: url(../designer/images/components/ic-hyperlink-rest.png);
+}
+.componentIcon .image-Label {
+  background-image: url(../designer/images/components/ic-label-rest.png);
+}
+.componentIcon .image-List {
+  background-image: url(../designer/images/components/ic-listpanel-01-rest.png);
+}
+.componentIcon .image-Lookup {
+  background-image: url(../designer/images/components/ic-look-up-rest.png);
+}
+.componentIcon .image-RadioButton {
+  background-image: url(../designer/images/components/ic-radiobn-rest.png);
+}
+.componentIcon .image-Spinbox {
+  background-image: url(../designer/images/components/ic-spinbox-rest.png);
+}
+.componentIcon .image-Tabs {
+  background-image: url(../designer/images/components/ic-add-tab.png);
+}
+.componentIcon .image-TextBox {
+  background-image: url(../designer/images/components/ic-inputfield-rest.png);
+}
+.componentIcon .image-TextArea {
+  background-image: url(../designer/images/components/ic-textarea-rest.png);
+}
+.componentIcon .image-Timepicker {
+  background-image: url(../designer/images/components/ic-timepicker-rest.png);
+}
+.field-short label {
+  display: block;
+  text-align: left;
+}
+.modal {
+  transform: none;
+  opacity: 1;
+  /* Force modal opened by messageService to be visible */
+}
+.field-short .colorpicker {
+  margin-bottom: 0;
+}
+/* Scrollbar from Infor Control */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 1px;
+}
+::-webkit-scrollbar-track:hover {
+  background-color: #e5e5e5;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+body {
+  overflow: hidden;
+  /* Fix for soho lookup-dialog problem MUPS-1040 */
+}
+body > .lookup-modal {
+  display: none;
+}
+.no-overlay .overlay {
+  display: none;
+}
+.no-overlay .modal-wrapper {
+  overflow: visible;
+}
+.svg-icons,
+.svg-icons-extended {
+  display: none;
+}
+.finderBtn {
+  fill: #efefef;
+}
+#designer {
+  height: 100%;
+}
+#designer ng-view {
+  display: block;
+  height: 100%;
+}
+#designer eir-editor {
+  display: block;
+  height: 100%;
+}
+#designer .switch input {
+  display: none;
+}
+#designer .tab-panel-container {
+  margin-bottom: 0;
+}
+#designer::after {
+  display: none;
+  content: url(../designer/images/splash/splash-gray.png) url(../designer/images/02-thumb.png) url(../designer/images/01-mashup-slider.png) url(../designer/images/01-mashup-plus-default.png) url(../designer/images/01-mashup-plus-hoover.png) url(../designer/images/01-mashup-plus-pressed.png) url(../designer/images/01-mashup-dots-default.png) url(../designer/images/01-mashup-dots-hoover.png) url(../designer/images/01-mashup-dots-pressed.png) url(../designer/images/ruler_h_segment.png) url(../designer/images/ResetBoundaryButton_Rest.png) url(../designer/images/ResetBoundaryButton_Hot.png) url(../designer/images/ruler_v_segment.png) url(../designer/images/components/ic-pushbn-hot.png) url(../designer/images/components/ic-checkbox-hot.png) url(../designer/images/components/ic-colorpicker-hot.png) url(../designer/images/components/ic-datepicker-hot.png) url(../designer/images/components/ic-dropdown-hot.png) url(../designer/images/components/ic-hyperlink-hot.png) url(../designer/images/components/ic-image-hot.png) url(../designer/images/components/ic-label-hot.png) url(../designer/images/components/ic-listpanel-01-hot.png) url(../designer/images/components/ic-look-up-hot.png) url(../designer/images/components/ic-radiobn-hot.png) url(../designer/images/components/ic-spinbox-hot.png) url(../designer/images/components/ic-switchcontrol-hot.png) url(../designer/images/components/ic-textarea-hot.png) url(../designer/images/components/ic-inputfield-hot.png) url(../designer/images/components/ic-timepicker-hot.png) url(../designer/images/components/ic-barchart.png) url(../designer/images/components/ic-pushbn-rest.png) url(../designer/images/components/ic-colorpicker-rest.png) url(../designer/images/components/ic-checkbox-rest.png) url(../designer/images/components/ic-datagrid.png) url(../designer/images/components/ic-datepicker-rest.png) url(../designer/images/components/ic-dropdown-rest.png) url(../designer/images/components/ic-layout-box-rest.png) url(../designer/images/components/ic-image-rest.png) url(../designer/images/components/ic-hyperlink-rest.png) url(../designer/images/components/ic-label-rest.png) url(../designer/images/components/ic-listpanel-01-rest.png) url(../designer/images/components/ic-look-up-rest.png) url(../designer/images/components/ic-radiobn-rest.png) url(../designer/images/components/ic-spinbox-rest.png) url(../designer/images/components/ic-switchcontrol-rest.png) url(../designer/images/components/ic-add-tab.png) url(../designer/images/components/ic-inputfield-rest.png) url(../designer/images/components/ic-textarea-rest.png) url(../designer/images/components/ic-timepicker-rest.png);
+}
+.noSelect {
+  user-select: none;
+}
+eir-designer {
+  display: block;
+  height: 100%;
+}
+eir-designer > div {
+  height: 100%;
+}
+.browseLayoutTemplates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+}
+.browseLayoutTemplate {
+  display: inline-block;
+  padding: 10px;
+}
+.browseLayoutTemplate.selected {
+  background-color: #d8d8d8;
+}
+.browseLayoutTemplate img {
+  width: 259px;
+  height: 191px;
+  border: 1px solid #d8d8d8;
+}
+.browseLayoutTemplate img:hover {
+  border: 2px solid #368ac0;
+}
+.insertMode {
+  user-select: none;
+}
+.setting-content {
+  padding-right: 20px;
+}
+ul.popupmenu > li.is-disabled {
+  pointer-events: none;
+}
+.designer-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1020;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.designer-splash.gray {
+  background-color: #f0f0f0;
+  background-image: url(../designer/images/splash/splash-light-gray.png);
+}
+.designer-splash.gray .busy-indicator-container.blocked-ui {
+  top: calc(50% + 250px);
+}
+
+eir-interaction-settings .buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+eir-interaction-settings .buttonContainer #multicall-tooltip {
+  align-self: center;
+  margin-right: auto;
+}
+eir-interaction-settings .buttonContainer .btn-icon {
+  margin-right: 0;
+}
+eir-interaction-settings eir-parameter-handler .parameter-btn,
+eir-interaction-settings eir-parameter-handler .parameter-btn:hover,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled],
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled]:hover,
+eir-interaction-settings eir-parameter-handler .parameter-btn:focus,
+eir-interaction-settings eir-parameter-handler .parameter-btn:active {
+  width: 100%;
+  background-color: #313236;
+  border: none;
+}
+eir-interaction-settings eir-parameter-handler .parameter-btn:hover:not([disabled]) svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn:hover:hover:not([disabled]) svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled]:hover:not([disabled]) svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled]:hover:hover:not([disabled]) svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn:focus:hover:not([disabled]) svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn:active:hover:not([disabled]) svg {
+  color: #fff;
+}
+eir-interaction-settings eir-parameter-handler .parameter-btn:hover:not([disabled]) span,
+eir-interaction-settings eir-parameter-handler .parameter-btn:hover:hover:not([disabled]) span,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled]:hover:not([disabled]) span,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled]:hover:hover:not([disabled]) span,
+eir-interaction-settings eir-parameter-handler .parameter-btn:focus:hover:not([disabled]) span,
+eir-interaction-settings eir-parameter-handler .parameter-btn:active:hover:not([disabled]) span {
+  color: #fff;
+}
+eir-interaction-settings eir-parameter-handler .parameter-btn svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn:hover svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled] svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled]:hover svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn:focus svg,
+eir-interaction-settings eir-parameter-handler .parameter-btn:active svg {
+  color: #abaeb7;
+}
+eir-interaction-settings eir-parameter-handler .parameter-btn span,
+eir-interaction-settings eir-parameter-handler .parameter-btn:hover span,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled] span,
+eir-interaction-settings eir-parameter-handler .parameter-btn[disabled]:hover span,
+eir-interaction-settings eir-parameter-handler .parameter-btn:focus span,
+eir-interaction-settings eir-parameter-handler .parameter-btn:active span {
+  padding-left: 7px;
+  color: #abaeb7;
+  font-size: 12px;
+}
+eir-interaction-settings eir-parameter-handler hr {
+  margin: 20px 0;
+  border-color: #212224;
+  border-top: none;
+}
+eir-interaction-settings .edit-topic {
+  position: inherit;
+}
+eir-interaction-settings .edit-topic > .settingsTitle {
+  margin-top: 30px;
+}
+eir-interaction-settings .interaction-container {
+  padding: 0 10px 10px;
+}
+eir-interaction-settings .interaction-list {
+  outline: none;
+}
+eir-interaction-settings .interaction-list .interaction-list-item {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  color: #c8cbd4;
+  background-color: #414247;
+  border-bottom: none;
+  border-radius: 2px;
+}
+eir-interaction-settings .interaction-list .interaction-list-item:focus {
+  outline: none;
+}
+eir-interaction-settings .interaction-list .interaction-list-item:hover {
+  background-color: #505259;
+}
+eir-interaction-settings .interaction-list .interaction-list-item.is-selected {
+  color: #fff;
+  background-color: #656871;
+  border-left: 3px solid #368ac0;
+}
+eir-interaction-settings .interaction-list .interaction-list-item.is-selected > span:first-of-type {
+  padding-left: 7px;
+}
+eir-interaction-settings .interaction-list .interaction-list-item:not(:last-of-type) {
+  margin-bottom: 2px;
+}
+eir-interaction-settings .interaction-list .interaction-list-item > div {
+  width: 15px;
+  height: inherit;
+  border-right: 1px solid #313236;
+  border-left: 1px solid #313236;
+}
+eir-interaction-settings .interaction-list .interaction-list-item > div svg {
+  width: 15px;
+  height: 100%;
+  color: #c8cbd4;
+}
+eir-interaction-settings .interaction-list .interaction-list-item > span {
+  width: 100%;
+  padding: 0 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+eir-interaction-settings .settings-content {
+  padding: 20px 10px;
+}
+eir-interaction-settings .data-mapping-content {
+  padding: 10px;
+  background-color: #212224;
+}
+eir-interaction-settings .data-mapping-content .parameter-item {
+  margin-bottom: 4px;
+  padding: 20px 10px;
+  background-color: #313236;
+}
+eir-interaction-settings .data-mapping-content .parameter-item .metadata-heading {
+  display: none;
+}
+eir-interaction-settings .settingstopic .settings-title {
+  height: 36px;
+  padding: 11px 10px;
+  background-color: #414247;
+  border-top: 1px solid #212224;
+  border-bottom: 1px solid #212224;
+}
+eir-interaction-settings .settingstopic .settings-title label {
+  margin: 0;
+  font-size: 13px;
+}
+
+.eir2-component {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+.eir2-component .is-hidden {
+  display: none;
+}
+component-container.is-hidden {
+  display: none;
+}
+children-component-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+component-container {
+  display: block;
+  height: 100%;
+}
+component-container .child-cage {
+  display: flex;
+  /* Used for alignment setting */
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+component-container .child-cage children-component-container.vertical {
+  flex-direction: column;
+}
+component-container .child-cage children-component-container.vertical component-container.eir2-component {
+  height: auto;
+}
+.eir2-list-component .full-height {
+  height: calc(100% - 10px);
+  margin: 0;
+  background-color: transparent;
+  border: 1px solid #bdbdbd;
+}
+.eir2-list-component .full-height soho-toolbar-flex {
+  padding: 13px 20px;
+  border-bottom: 1px solid #bdbdbd;
+}
+.eir2-list-component .full-height soho-listview {
+  height: calc(100% - 47px);
+  overflow-y: scroll;
+}
+.eir2-list-component .full-height soho-listview li {
+  font-size: 1.2rem;
+  background-color: transparent;
+}
+.eir2-list-component .full-height soho-listview li.is-selected {
+  background-color: #c8e9f4;
+}
+
+
+/*# sourceMappingURL=designer.css.map*/

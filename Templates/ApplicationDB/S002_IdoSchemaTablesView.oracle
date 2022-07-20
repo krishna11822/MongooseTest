@@ -1,0 +1,16 @@
+﻿CREATE VIEW IdoSchemaTablesView
+AS
+SELECT OBJECT_NAME AS TABLE_NAME, CASE WHEN OBJECT_TYPE = 'TABLE' THEN 'BASE TABLE' ELSE OBJECT_TYPE END AS TABLE_TYPE 
+, ild.ProfileName
+FROM USER_OBJECTS t
+LEFT OUTER JOIN IdoLinkedTable ilt
+   ON ilt.ViewName = t.OBJECT_NAME
+LEFT OUTER JOIN IdoLinkedDatabase ild
+   ON ild.IdoLinkDatabase = ilt.IdoLinkDatabase
+WHERE OBJECT_TYPE IN ('TABLE', 'VIEW')
+AND OBJECT_NAME != 'dtproperties'
+  AND OBJECT_NAME NOT LIKE '%[_]committed'
+  AND OBJECT_NAME NOT LIKE '%[_]impacted'
+  AND OBJECT_NAME NOT LIKE 'tt[_]%'
+  AND OBJECT_NAME NOT LIKE '%[_]dd'
+  AND OBJECT_NAME NOT LIKE '%[_]ii'

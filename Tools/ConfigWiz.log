@@ -1,0 +1,352 @@
+**************************************************************************************
+ Current Wizard Version: 2022.03.01
+ InforCommon Version: 2022.03.01
+ InforDatabase Version: 2022.03.01
+ InforIIS Version: 2022.03.01
+ InforServices Version: 2022.03.01
+ Opened at 6/15/2022 3:05 PM
+**************************************************************************************
+
+6/15/2022 3:05:18 PM  Detected Infor Directory: C:\Program Files\Infor\
+6/15/2022 3:05:18 PM  Detected WinStudio Directory: C:\Program Files\Infor\Mongoose\
+6/15/2022 3:05:18 PM  Detected Product Version: 2022.03.01
+6/15/2022 3:05:18 PM  Detected WWWRoot: C:\inetpub\wwwroot\
+6/15/2022 3:05:18 PM  Detected Common Programs: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\
+6/15/2022 3:05:18 PM  Detected Common Desktop: C:\Users\Public\Desktop\
+6/15/2022 3:05:18 PM  Detected SQL Server Tools Path: C:\Program Files\Microsoft SQL Server\150\Tools\Binn\
+6/15/2022 3:05:18 PM  Detected BCP path: C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\bcp.exe
+6/15/2022 3:05:18 PM  Detected BCP installed: True
+6/15/2022 3:05:18 PM  Detected SMO installed: True
+6/15/2022 3:05:18 PM  Detected Utility Server: True
+6/15/2022 3:05:18 PM  Detected DMZ Server: False
+6/15/2022 3:05:18 PM  No SavedValues.xml found
+6/15/2022 3:05:18 PM  Restrict Web Permissions: True
+6/15/2022 3:05:18 PM  Detected Computer Name: INHYNVTETALA01
+6/15/2022 3:05:18 PM  Express Configuration Enabled
+6/15/2022 3:07:10 PM  ConfigWiz cancelled by user.
+**************************************************************************************
+ Closed at 6/15/2022
+**************************************************************************************
+
+**************************************************************************************
+ Current Wizard Version: 2022.03.01
+ InforCommon Version: 2022.03.01
+ InforDatabase Version: 2022.03.01
+ InforIIS Version: 2022.03.01
+ InforServices Version: 2022.03.01
+ Opened at 6/15/2022 3:28 PM
+**************************************************************************************
+
+6/15/2022 3:28:13 PM  Detected Infor Directory: C:\Program Files\Infor\
+6/15/2022 3:28:13 PM  Detected WinStudio Directory: C:\Program Files\Infor\Mongoose\
+6/15/2022 3:28:13 PM  Detected Product Version: 2022.03.01
+6/15/2022 3:28:13 PM  Detected WWWRoot: C:\inetpub\wwwroot\
+6/15/2022 3:28:13 PM  Detected Common Programs: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\
+6/15/2022 3:28:13 PM  Detected Common Desktop: C:\Users\Public\Desktop\
+6/15/2022 3:28:13 PM  Detected SQL Server Tools Path: C:\Program Files\Microsoft SQL Server\150\Tools\Binn\
+6/15/2022 3:28:13 PM  Detected BCP path: C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\bcp.exe
+6/15/2022 3:28:13 PM  Detected BCP installed: True
+6/15/2022 3:28:13 PM  Detected SMO installed: True
+6/15/2022 3:28:13 PM  Detected Utility Server: True
+6/15/2022 3:28:13 PM  Detected DMZ Server: False
+6/15/2022 3:28:13 PM  No SavedValues.xml found
+6/15/2022 3:28:13 PM  Restrict Web Permissions: True
+6/15/2022 3:28:13 PM  Detected Computer Name: INHYNVTETALA01
+6/15/2022 3:28:13 PM  Express Configuration Enabled
+6/15/2022 3:29:12 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:29:42 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:30:05 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:30:57 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:31:19 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:32:18 PM  		Validating service account: INFOR/vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:32:44 PM  ConfigWiz cancelled by user.
+**************************************************************************************
+ Closed at 6/15/2022
+**************************************************************************************
+
+**************************************************************************************
+ Current Wizard Version: 2022.03.01
+ InforCommon Version: 2022.03.01
+ InforDatabase Version: 2022.03.01
+ InforIIS Version: 2022.03.01
+ InforServices Version: 2022.03.01
+ Opened at 6/15/2022 3:32 PM
+**************************************************************************************
+
+6/15/2022 3:32:50 PM  Detected Infor Directory: C:\Program Files\Infor\
+6/15/2022 3:32:50 PM  Detected WinStudio Directory: C:\Program Files\Infor\Mongoose\
+6/15/2022 3:32:51 PM  Detected Product Version: 2022.03.01
+6/15/2022 3:32:51 PM  Detected WWWRoot: C:\inetpub\wwwroot\
+6/15/2022 3:32:51 PM  Detected Common Programs: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\
+6/15/2022 3:32:51 PM  Detected Common Desktop: C:\Users\Public\Desktop\
+6/15/2022 3:32:51 PM  Detected SQL Server Tools Path: C:\Program Files\Microsoft SQL Server\150\Tools\Binn\
+6/15/2022 3:32:51 PM  Detected BCP path: C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\bcp.exe
+6/15/2022 3:32:51 PM  Detected BCP installed: True
+6/15/2022 3:32:51 PM  Detected SMO installed: True
+6/15/2022 3:32:51 PM  Detected Utility Server: True
+6/15/2022 3:32:51 PM  Detected DMZ Server: False
+6/15/2022 3:32:51 PM  No SavedValues.xml found
+6/15/2022 3:32:51 PM  Restrict Web Permissions: True
+6/15/2022 3:32:51 PM  Detected Computer Name: INHYNVTETALA01
+6/15/2022 3:32:51 PM  Express Configuration Enabled
+6/15/2022 3:33:25 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:35:57 PM  ConfigWiz cancelled by user.
+**************************************************************************************
+ Closed at 6/15/2022
+**************************************************************************************
+
+**************************************************************************************
+ Current Wizard Version: 2022.03.01
+ InforCommon Version: 2022.03.01
+ InforDatabase Version: 2022.03.01
+ InforIIS Version: 2022.03.01
+ InforServices Version: 2022.03.01
+ Opened at 6/15/2022 3:39 PM
+**************************************************************************************
+
+6/15/2022 3:39:21 PM  Detected Infor Directory: C:\Program Files\Infor\
+6/15/2022 3:39:21 PM  Detected WinStudio Directory: C:\Program Files\Infor\Mongoose\
+6/15/2022 3:39:21 PM  Detected Product Version: 2022.03.01
+6/15/2022 3:39:21 PM  Detected WWWRoot: C:\inetpub\wwwroot\
+6/15/2022 3:39:21 PM  Detected Common Programs: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\
+6/15/2022 3:39:21 PM  Detected Common Desktop: C:\Users\Public\Desktop\
+6/15/2022 3:39:21 PM  Detected SQL Server Tools Path: C:\Program Files\Microsoft SQL Server\150\Tools\Binn\
+6/15/2022 3:39:21 PM  Detected BCP path: C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\bcp.exe
+6/15/2022 3:39:21 PM  Detected BCP installed: True
+6/15/2022 3:39:21 PM  Detected SMO installed: True
+6/15/2022 3:39:21 PM  Detected Utility Server: True
+6/15/2022 3:39:21 PM  Detected DMZ Server: False
+6/15/2022 3:39:21 PM  No SavedValues.xml found
+6/15/2022 3:39:21 PM  Restrict Web Permissions: True
+6/15/2022 3:39:21 PM  Detected Computer Name: INHYNVTETALA01
+6/15/2022 3:39:21 PM  Express Configuration Enabled
+6/15/2022 3:39:49 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:40:16 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:40:50 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:41:24 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:42:13 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:42:59 PM  		Validating service account: INFOR\vtetala...Validation failed. The server could not be contacted.
+6/15/2022 3:43:31 PM  Validation of users for services. CheckServicesData().
+6/15/2022 3:44:01 PM  Starting to configure tasks....
+6/15/2022 3:44:01 PM  ---------------------------------
+6/15/2022 3:44:01 PM  Creating database: Mongoose_App
+6/15/2022 3:44:01 PM  ---------------------------------
+6/15/2022 3:44:01 PM  SQL Server version: 15.0.4083
+6/15/2022 3:44:01 PM  SQL Server name: INHYNVTETALA01\SQLEXPRESS
+6/15/2022 3:44:01 PM  SQL Server instance name: SQLEXPRESS
+6/15/2022 3:44:01 PM  Using default collation.
+6/15/2022 3:44:02 PM  Database Mongoose_App created
+6/15/2022 3:44:03 PM  CloudDb: False
+6/15/2022 3:44:03 PM  AlwaysOn: False
+6/15/2022 3:44:03 PM  PopulateDb: False
+6/15/2022 3:44:03 PM  ScriptedDb: False
+6/15/2022 3:44:03 PM  All-in-one: True
+6/15/2022 3:44:03 PM  NoMetaData: False
+6/15/2022 3:44:03 PM  ResolvedName: 
+6/15/2022 3:44:03 PM  Setting recovery to simple...
+6/15/2022 3:44:03 PM  Submitting SQL scripts to Mongoose_App
+6/15/2022 3:44:04 PM  	 Submitting folder: DataTypes
+6/15/2022 3:44:06 PM  	 Submitting folder: SchemaFreeFunctions
+6/15/2022 3:44:07 PM  	 Submitting folder: PreTableFunctions
+6/15/2022 3:44:08 PM  	 Submitting folder: Tables
+6/15/2022 3:44:33 PM  	 Submitting folder: TableDependentFunctions
+6/15/2022 3:44:34 PM  	 Submitting folder: ForeignKeys
+6/15/2022 3:44:34 PM  	 Submitting folder: InitData
+6/15/2022 3:44:42 PM  	 Submitting folder: StoredProcedures
+6/15/2022 3:44:49 PM  	 Submitting folder: Views
+6/15/2022 3:44:50 PM  	 Submitting folder: ViewDependentFunctions
+6/15/2022 3:44:50 PM  	 Submitting folder: Triggers
+6/15/2022 3:44:51 PM  Configuring MasterServerRestartSp
+6/15/2022 3:44:51 PM  Configuring Intranet Record
+6/15/2022 3:44:51 PM  Loading Time Zones
+6/15/2022 3:44:52 PM  Configuring Site record
+6/15/2022 3:44:52 PM  Configuring Site Hierarchy
+6/15/2022 3:44:52 PM  Configuring Parms tables
+6/15/2022 3:44:52 PM  Configuring Database Identifier
+6/15/2022 3:44:52 PM  Retrusting Foreign Keys and Check Constraints
+6/15/2022 3:44:52 PM  Generating table triggers
+6/15/2022 3:45:02 PM  	Submitting: ArabicCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: BulgarianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: CzechCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: DanishCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: GermanCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: ArgentineanCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: ChileanCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: ColombianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: EcuadorianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: SpainCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: MexicanCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: VenezuelanCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: FinnishCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: CanadianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: FrenchCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: HebrewCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: HungarianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: ItalianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: JapaneseCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: KoreanCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: NorwegianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: DutchCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: PolishCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: BrazilianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: PortugalCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: RomanianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: RussianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: SlovenianCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: SwedishCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: ThaiCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: TurkishCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: VietnameseCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: SimplifiedChineseCountryPackInfo.sql
+6/15/2022 3:45:02 PM  	Submitting: TraditionalChineseCountryPackInfo.sql
+6/15/2022 3:45:02 PM  Setting Product Version
+6/15/2022 3:45:02 PM  Setting MGVersion
+6/15/2022 3:45:02 PM  	Updating MGVersion to 2022.03.01 for Mongoose_App
+6/15/2022 3:45:02 PM  Embedding Forms DB
+6/15/2022 3:45:02 PM  SQL Server version: 15.0.4083
+6/15/2022 3:45:02 PM  SQL Server name: INHYNVTETALA01\SQLEXPRESS
+6/15/2022 3:45:02 PM  SQL Server instance name: SQLEXPRESS
+6/15/2022 3:45:02 PM  CloudDb: False
+6/15/2022 3:45:02 PM  AlwaysOn: False
+6/15/2022 3:45:02 PM  PopulateDb: True
+6/15/2022 3:45:02 PM  ScriptedDb: False
+6/15/2022 3:45:02 PM  All-in-one: True
+6/15/2022 3:45:02 PM  NoMetaData: False
+6/15/2022 3:45:02 PM  ResolvedName: 
+6/15/2022 3:45:02 PM  Setting recovery to simple...
+6/15/2022 3:45:02 PM  Submitting SQL scripts to Mongoose_App
+6/15/2022 3:45:02 PM  	 Submitting folder: DataTypes
+6/15/2022 3:45:05 PM  	 Submitting folder: SchemaFreeFunctions
+6/15/2022 3:45:05 PM  	 Submitting folder: Tables
+6/15/2022 3:45:09 PM  	 Submitting folder: Functions
+6/15/2022 3:45:09 PM  	 Submitting folder: StoredProcedures
+6/15/2022 3:45:09 PM  	 Submitting folder: Views
+6/15/2022 3:45:09 PM  	 Submitting folder: Triggers
+6/15/2022 3:45:10 PM  	 Submitting folder: Data
+6/15/2022 3:45:14 PM  Embedding Objects DB
+6/15/2022 3:45:14 PM  SQL Server version: 15.0.4083
+6/15/2022 3:45:14 PM  SQL Server name: INHYNVTETALA01\SQLEXPRESS
+6/15/2022 3:45:14 PM  SQL Server instance name: SQLEXPRESS
+6/15/2022 3:45:14 PM  CloudDb: False
+6/15/2022 3:45:14 PM  AlwaysOn: False
+6/15/2022 3:45:14 PM  PopulateDb: True
+6/15/2022 3:45:14 PM  ScriptedDb: False
+6/15/2022 3:45:14 PM  All-in-one: True
+6/15/2022 3:45:14 PM  NoMetaData: False
+6/15/2022 3:45:14 PM  ResolvedName: 
+6/15/2022 3:45:14 PM  Setting recovery to simple...
+6/15/2022 3:45:14 PM  Submitting SQL scripts to Mongoose_App
+6/15/2022 3:45:15 PM  	 Submitting folder: DataTypes
+6/15/2022 3:45:17 PM  	 Submitting folder: SchemaFreeFunctions
+6/15/2022 3:45:18 PM  	 Submitting folder: Tables
+6/15/2022 3:45:19 PM  	 Submitting folder: Functions
+6/15/2022 3:45:19 PM  	 Submitting folder: StoredProcedures
+6/15/2022 3:45:19 PM  	 Submitting folder: Triggers
+6/15/2022 3:45:20 PM  	 Submitting folder: Data
+6/15/2022 3:45:21 PM  Embedding Templates DB
+6/15/2022 3:45:21 PM  SQL Server version: 15.0.4083
+6/15/2022 3:45:21 PM  SQL Server name: INHYNVTETALA01\SQLEXPRESS
+6/15/2022 3:45:21 PM  SQL Server instance name: SQLEXPRESS
+6/15/2022 3:45:21 PM  CloudDb: False
+6/15/2022 3:45:21 PM  AlwaysOn: False
+6/15/2022 3:45:21 PM  PopulateDb: True
+6/15/2022 3:45:21 PM  ScriptedDb: False
+6/15/2022 3:45:21 PM  All-in-one: True
+6/15/2022 3:45:21 PM  NoMetaData: False
+6/15/2022 3:45:21 PM  ResolvedName: 
+6/15/2022 3:45:21 PM  Setting recovery to simple...
+6/15/2022 3:45:21 PM  Submitting SQL scripts to Mongoose_App
+6/15/2022 3:45:22 PM  	 Submitting folder: DataTypes
+6/15/2022 3:45:24 PM  	 Submitting folder: SchemaFreeFunctions
+6/15/2022 3:45:25 PM  	 Submitting folder: Tables
+6/15/2022 3:45:25 PM  	 Submitting folder: Functions
+6/15/2022 3:45:25 PM  	 Submitting folder: StoredProcedures
+6/15/2022 3:45:25 PM  	 Submitting folder: Data
+6/15/2022 3:45:25 PM  Setting recovery to full...
+6/15/2022 3:45:25 PM  Database creation complete!
+6/15/2022 3:45:25 PM  ExistsConfiguration()
+6/15/2022 3:45:25 PM  ---------------------------------
+6/15/2022 3:45:25 PM  Creating Config
+6/15/2022 3:45:25 PM  ---------------------------------
+6/15/2022 3:45:28 PM  CreateConfiguration() Stdout = 
+6/15/2022 3:45:28 PM  	Locked Config For Update..
+6/15/2022 3:45:28 PM  	Config Name: Mongoose
+6/15/2022 3:45:28 PM  	Action: Create
+6/15/2022 3:45:28 PM  	Application Name: <default>
+6/15/2022 3:45:28 PM  	Application connection profile created for profile type Runtime and role type App
+6/15/2022 3:45:28 PM  	Forms connection profile created for profile type Runtime and role type Forms
+6/15/2022 3:45:28 PM  	Forms connection profile created for profile type Runtime and role type FormTemplates
+6/15/2022 3:45:28 PM  	Site Name: DEFAULT
+6/15/2022 3:45:28 PM  	Smart Client Partial Trust is unchecked
+6/15/2022 3:45:28 PM  	Web Client Partial Trust is checked
+6/15/2022 3:45:28 PM  	IDO Extension classes Partial Trust is checked
+6/15/2022 3:45:28 PM  	NoDistributedTransactions is True
+6/15/2022 3:45:28 PM  	Committed Config Changes..
+6/15/2022 3:45:28 PM  	Config name -Mongoose- already exists
+6/15/2022 3:45:28 PM  	Retrieved configuration for Mongoose
+6/15/2022 3:45:28 PM  	Object DB Source INHYNVTETALA01\SQLEXPRESS
+6/15/2022 3:45:28 PM  	Object DB Name Mongoose_App
+6/15/2022 3:45:28 PM  	Runtime App DB Source INHYNVTETALA01\SQLEXPRESS
+6/15/2022 3:45:28 PM  	Runtime App DB Name Mongoose_App
+6/15/2022 3:45:28 PM  	Valid connection!
+6/15/2022 3:45:28 PM  ---------------------------------
+6/15/2022 3:45:28 PM  Creating Web App
+6/15/2022 3:45:28 PM  ---------------------------------
+6/15/2022 3:45:28 PM  Creating web application- virtual dir: IDORequestService, physical path: C:\inetpub\wwwroot\IDORequestService, site: Default Web Site, app pool: IDORequestServiceAppPool
+6/15/2022 3:45:29 PM  CreateApplicationPool: Output: APPPOOL object "IDORequestServiceAppPool" added
+6/15/2022 3:45:29 PM  Assigning app pool permissions...
+6/15/2022 3:45:30 PM  CreateWebApp: Output: APP object "Default Web Site/IDORequestService" addedVDIR object "Default Web Site/IDORequestService" added
+6/15/2022 3:45:30 PM  Configuring C:\inetpub\wwwroot\IDORequestService\web.config file
+6/15/2022 3:45:31 PM  ---------------------------------
+6/15/2022 3:45:31 PM  Creating Web App
+6/15/2022 3:45:31 PM  ---------------------------------
+6/15/2022 3:45:31 PM  Creating web application- virtual dir: InboundQueue, physical path: C:\inetpub\wwwroot\InboundQueue, site: Default Web Site, app pool: InboundQueueAppPool
+6/15/2022 3:45:31 PM  CreateApplicationPool: Output: APPPOOL object "InboundQueueAppPool" added
+6/15/2022 3:45:32 PM  Assigning app pool permissions...
+6/15/2022 3:45:32 PM  CreateWebApp: Output: APP object "Default Web Site/InboundQueue" addedVDIR object "Default Web Site/InboundQueue" added
+6/15/2022 3:45:33 PM  Configuring C:\inetpub\wwwroot\InboundQueue\web.config file
+6/15/2022 3:45:33 PM  ---------------------------------
+6/15/2022 3:45:33 PM  Configuring Web Client
+6/15/2022 3:45:33 PM  ---------------------------------
+6/15/2022 3:45:33 PM  CreateApplicationPool: Output: APPPOOL object "WSWebClientAppPool" added
+6/15/2022 3:45:33 PM  Assigning app pool permissions...
+6/15/2022 3:45:34 PM  Creating web application- virtual dir: WSWebClient, physical path: C:\inetpub\wwwroot\WSWebClient, site: Default Web Site, app pool: WSWebClientAppPool
+6/15/2022 3:45:34 PM  Assigning app pool permissions...
+6/15/2022 3:45:35 PM  CreateWebApp: Output: APP object "Default Web Site/WSWebClient" addedVDIR object "Default Web Site/WSWebClient" added
+6/15/2022 3:45:35 PM  Configuring C:\inetpub\wwwroot\WSWebClient\web.config file
+6/15/2022 3:45:36 PM  Configuring C:\inetpub\wwwroot\IDORequestService\web.config file
+6/15/2022 3:45:36 PM  Configuring C:\inetpub\wwwroot\InboundQueue\web.config file
+6/15/2022 3:45:36 PM  ---------------------------------
+6/15/2022 3:45:36 PM  Configuring Help
+6/15/2022 3:45:36 PM  ---------------------------------
+6/15/2022 3:45:39 PM  Unzipped C:\inetpub\wwwroot\MG\Language\en-US\MongooseHelp.zip
+6/15/2022 3:45:39 PM  The Infor Mongoose Configuration Wizard has finished committing changes with 0 error(s)
+
+**************************************************************************************
+ Closed at 6/15/2022
+**************************************************************************************
+
+**************************************************************************************
+ Current Wizard Version: 2022.03.01
+ InforCommon Version: 2022.03.01
+ InforDatabase Version: 2022.03.01
+ InforIIS Version: 2022.03.01
+ InforServices Version: 2022.03.01
+ Opened at 6/30/2022 12:44 PM
+**************************************************************************************
+
+6/30/2022 12:44:56 PM  Detected Infor Directory: C:\Program Files\Infor\
+6/30/2022 12:44:56 PM  Detected WinStudio Directory: C:\Program Files\Infor\Mongoose\
+6/30/2022 12:44:56 PM  Detected Product Version: 2022.03.01
+6/30/2022 12:44:56 PM  Detected WWWRoot: C:\inetpub\wwwroot\
+6/30/2022 12:44:56 PM  Detected Common Programs: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\
+6/30/2022 12:44:56 PM  Detected Common Desktop: C:\Users\Public\Desktop\
+6/30/2022 12:44:56 PM  Detected SQL Server Tools Path: C:\Program Files\Microsoft SQL Server\150\Tools\Binn\
+6/30/2022 12:44:56 PM  Detected BCP path: C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\bcp.exe
+6/30/2022 12:44:56 PM  Detected BCP installed: True
+6/30/2022 12:44:56 PM  Detected SMO installed: True
+6/30/2022 12:44:56 PM  Detected Utility Server: True
+6/30/2022 12:44:56 PM  Detected DMZ Server: False
+6/30/2022 12:44:56 PM  Restrict Web Permissions: True
+6/30/2022 12:44:56 PM  Detected Computer Name: INHYNVTETALA01
+6/30/2022 12:44:56 PM  Express Configuration Enabled

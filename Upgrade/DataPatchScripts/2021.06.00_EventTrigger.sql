@@ -1,0 +1,4 @@
+UPDATE EventTrigger
+SET FailureRetestInterval = 1800
+WHERE EventTriggerId = 'B8429D4E-E3D1-4F97-83F7-5470CB829C5E'
+GO

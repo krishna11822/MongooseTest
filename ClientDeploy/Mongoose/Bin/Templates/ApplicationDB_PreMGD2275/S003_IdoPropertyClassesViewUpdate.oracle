@@ -1,0 +1,49 @@
+﻿CREATE OR REPLACE TRIGGER IdoPropertyClassesViewUpdate
+INSTEAD OF UPDATE ON IdoPropertyClassesView
+FOR EACH ROW
+BEGIN
+UPDATE ido_PropertyClasses pc
+SET 
+  ParentClassName = :NEW.ParentClassName
+, Description = :NEW.Description
+, LockBy = :NEW.LockBy
+, RevisionNo = :NEW.RevisionNo
+, RevisionDate = :NEW.RevisionDate
+, DevelopmentFlag = :NEW.DevelopmentFlag
+, AccessAs = :NEW.AccessAs
+, BinaryDataFormat = :NEW.BinaryDataFormat
+, BoolFalseValue = :NEW.BoolFalseValue
+, BoolTrueValue = :NEW.BoolTrueValue
+, CaseFormat = :NEW.CaseFormat
+, ColumnDataType = :NEW.ColumnDataType
+, DataDecimalPos = :NEW.DataDecimalPos
+, DataLength = :NEW.DataLength
+, DataType = :NEW.DataType
+, DateFormat = :NEW.DateFormat
+, DefaultIMECharset = :NEW.DefaultIMECharset
+, DefaultValue = :NEW.DefaultValue
+, DisplayDecimalPos = :NEW.DisplayDecimalPos
+, DomainIDOName = :NEW.DomainIDOName
+, DomainListProperties = :NEW.DomainListProperties
+, DomainProperty = :NEW.DomainProperty
+, InputMask = :NEW.InputMask
+, InputMaskPrompt = :NEW.InputMaskPrompt
+, IsHTML = :NEW.IsHTML
+, IsReadOnly = :NEW.IsReadOnly
+, IsRequired = :NEW.IsRequired
+, IsRORecordFlag = :NEW.IsRORecordFlag
+, JustifyFormat = :NEW.JustifyFormat
+, LabelStringID = :NEW.LabelStringID
+, InlineList = :NEW.InlineList
+, Validators = :NEW.Validators
+, InWorkflow = :NEW.InWorkflow
+, NoteExistsFlag = :NEW.NoteExistsFlag
+, RecordDate = :NEW.RecordDate
+, RowPointer = :NEW.RowPointer
+, CreatedBy = :NEW.CreatedBy
+, UpdatedBy = :NEW.UpdatedBy
+, CreateDate = :NEW.CreateDate
+WHERE
+pc.ClassName = :OLD.ClassName
+and pc.DevelopmentFlag = :OLD.DevelopmentFlag
+END;

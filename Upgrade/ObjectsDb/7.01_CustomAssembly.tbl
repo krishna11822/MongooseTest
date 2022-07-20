@@ -1,0 +1,53 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CustomAssembly]') AND type IN (N'U'))
+DROP TABLE [dbo].[CustomAssembly]
+GO
+/* $Header: /InforMongoose/InstallSource/Infor/Mongoose/Upgrade/ObjectsDb/7.01_CustomAssembly.tbl 1     11/18/13 1:45p Jmorris $ */
+/*
+Copyright © 2007 Infor Global Solutions Technology GmbH and/or its affiliates and subsidiaries.
+All rights reserved. The word and design marks set forth herein are trademarks and/or registered
+trademarks of Infor Global Solutions Technology GmbH and/or its affiliates and subsidiaries.
+All rights reserved. All other trademarks listed herein are the property of their respective owners.
+*/
+CREATE TABLE [dbo].[CustomAssembly] (
+  [AssemblyName]         [nvarchar](80)    NOT NULL
+, [DevelopmentFlag]      [int]             NOT NULL CONSTRAINT [DF_CustomAssembly_DevFlag] DEFAULT (0)
+, [FullName]             [nvarchar](200)   NOT NULL
+, [AssemblyImage]        [varbinary](max)  NOT NULL
+, [AssemblySymbols]      [varbinary](max)  NULL
+, [FileName]             [nvarchar](80)    NOT NULL
+, [SymbolFileName]       [nvarchar](80)    NULL
+, [LockBy]               [nvarchar](80)    NULL
+, [RevisionNo]           [int]             NOT NULL CONSTRAINT [DF_CustomAssembly_RevisionNo] DEFAULT (1)
+, [RevisionDate]         [datetime]        NOT NULL CONSTRAINT [DF_CustomAssembly_RevisionDate] DEFAULT (getdate())
+, [AccessAs]             [nvarchar](50)    NULL
+, [InWorkflow]           [FlagNyType]      NOT NULL CONSTRAINT [DF_CustomAssembly_InWorkflow] DEFAULT (0)
+, [NoteExistsFlag]       [FlagNyType]      NOT NULL CONSTRAINT [DF_CustomAssembly_NoteExistsFlag] DEFAULT (0)
+, [RecordDate]           [CurrentDateType] NOT NULL CONSTRAINT [DF_CustomAssembly_RecordDate] DEFAULT (getdate())
+, [RowPointer]           [RowPointerType]  NOT NULL CONSTRAINT [DF_CustomAssembly_RowPointer] DEFAULT (newid())
+, [CreatedBy]            [UsernameType]    NOT NULL CONSTRAINT [DF_CustomAssembly_CreatedBy] DEFAULT (suser_sname())
+, [UpdatedBy]            [UsernameType]    NOT NULL CONSTRAINT [DF_CustomAssembly_UpdatedBy] DEFAULT (suser_sname())
+, [CreateDate]           [CurrentDateType] NOT NULL CONSTRAINT [DF_CustomAssembly_CreateDate] DEFAULT (getdate())
+, [DataRowversion] [ROWVERSION] NOT NULL
+  CONSTRAINT [PK_CustomAssembly] PRIMARY KEY CLUSTERED
+  (
+    [AssemblyName]
+  , [DevelopmentFlag]
+  ) WITH  FILLFACTOR = 90 ON [PRIMARY],
+
+  CONSTRAINT UQ_FullName UNIQUE NONCLUSTERED 
+  (
+    [FullName]
+  , [DevelopmentFlag]
+  ) ON [PRIMARY],
+
+  CONSTRAINT [IX_CustomAssembly_RowPointer] UNIQUE NONCLUSTERED
+  (
+    [RowPointer]
+  ) ON [PRIMARY]
+) ON [PRIMARY]
+GO

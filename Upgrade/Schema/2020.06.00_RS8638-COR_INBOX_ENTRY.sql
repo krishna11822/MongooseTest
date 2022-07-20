@@ -1,0 +1,36 @@
+IF EXISTS ( SELECT 1 FROM INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = 'dbo'
+            AND   TABLE_NAME = 'COR_INBOX_ENTRY' )
+AND NOT EXISTS ( SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS
+                 WHERE TABLE_SCHEMA = 'dbo'
+                 AND   TABLE_NAME = 'COR_INBOX_ENTRY'
+                 AND   COLUMN_NAME = 'PREFIXED_LOGICAL_ID' )
+BEGIN
+   ALTER TABLE dbo.COR_INBOX_ENTRY
+   ADD [PREFIXED_LOGICAL_ID] AS CASE WHEN LEFT(c_logical_id, 6) = 'lid://' THEN c_logical_id ELSE 'lid://' + c_logical_id END PERSISTED
+
+   EXEC dbo.SchemaAdditionalTasksSp
+     @PStartingTable = N'COR_INBOX_ENTRY'
+   , @PEndingTable = N'COR_INBOX_ENTRY'
+   , @Infobar = ''
+   , @pModuleName = 'Core'
+END
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[COR_INBOX_ENTRY]') AND name = N'IX_PRIORITY_INCLUDE_DATA')
+BEGIN
+CREATE NONCLUSTERED INDEX [IX_PRIORITY_INCLUDE_DATA] ON [dbo].[COR_INBOX_ENTRY]
+(
+	[PREFIXED_LOGICAL_ID],
+	[C_WAS_PROCESSED],
+	[C_MESSAGE_PRIORITY],
+	[C_ID]
+)
+INCLUDE
+(
+	[C_XML],
+	[C_TENANT_ID],
+	[RecordDate],
+	[RowPointer]
+)
+END
+GO
